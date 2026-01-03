@@ -1,4 +1,4 @@
-= Example for Mermaid 
+# Example for Mermaid 
 
 ```mermaid
 pie title Which animals do you prefer as pets?

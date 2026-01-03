@@ -2,3 +2,27 @@ site_name: Fabian's Framework
 site_url: https://kikkirej.github.io/framework
 theme:
   name: material
+plugins:
+  - search
+  - social:
+      enabled: true
+      cache: true
+      cache_dir: .cache/plugins/social
+      cards: true
+      log: true
+      cards_dir: assets/images/social
+      cards_layout_dir: layouts
+      debug: false
+      debug_on_build: false
+      debug_grid: true
+      debug_grid_step: 32
+      debug_color: yellow
+  - mermaid2 
+site_author: Fabian Lemke
+markdown_extensions:
+  - pymdownx.superfences:
+        # make exceptions to highlighting of code:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:mermaid2.fence_mermaid_custom

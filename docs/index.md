@@ -21,7 +21,7 @@ Besides processes and standards also practical tools from my point of view are r
 ## Collaboration
 If you find a mistake or a missing citation, happily write me on [LinkedIn](https://www.linkedin.com/in/fabian-lemke/) or via [Mastodon]()
 
-You can also happily fork and add your own information. 
+You can also happily fork and add your own information. This documentation is currently hosted on [GitHub](https://github.com/Kikkirej/framework)
 
 ## License
 This documentation is licensed as [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). 

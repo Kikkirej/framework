@@ -1,0 +1,4 @@
+site_name: Fabian's Framework
+site_url: https://kikkirej.github.io/framework
+theme:
+  name: material

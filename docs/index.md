@@ -18,6 +18,8 @@ This is a collection to help in the establishment of an EA Capability or a Servi
 
 Besides processes and standards also practical tools from my point of view are referenced. 
 
+This won't be rocketscience, but is just my view on it!
+
 ## Collaboration
 If you find a mistake or a missing citation, happily write me on [LinkedIn](https://www.linkedin.com/in/fabian-lemke/) or via [Mastodon]()
 

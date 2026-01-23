@@ -17,7 +17,7 @@ Lots of incidents also are reported internally for example by Monitoring systems
 ---
 title: Incident communication Flow
 ---
-flowchart LR
+flowchart 
 start@{shape: sm-circ }
 classify["classifiy impact"]
 client_affected@{label: "is the client affected?", shape: diam}
@@ -64,6 +64,8 @@ To implement this some kind of Incident management must be implemented. In best 
 Also directly define Ownerships and Templates so it is clear who is responsible and in what format it should be send.
 
 ## Unplanned Change
+
+Unplanned Changes should b
 
 ## Planned Change
 

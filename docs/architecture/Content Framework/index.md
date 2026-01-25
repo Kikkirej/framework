@@ -29,11 +29,12 @@ Here are different documents for different architecture purposes. These document
 
 ### General for all purposes
 
-This doesn´t mean, that 
+These document are also created for a purpose. They therefore exist in every purpose. 
 
 | Document | Description | Phase |
 | ------- | ------ | ------|
 | [Architecture Work Request](./Documents/arch-work-request.md) | Document to request architecture work | Preliminary |
+| [Architecture Vision](./Documents/arch-vision.md) | Document to define architecture vision | A |
 | [Architecture Principles](./Documents/arch-principles.md) | Document to define architecture principles | Preliminary |
 | [Architecture Contract](./Documents/arch-contract.md) | Document to define architecture contract between architecture team and stakeholders | F |
 | [Architecture Requirememts Specification](./Documents/arch-requirements-specification.md) | Document to define architecture requirements specification | Requirements Management |
@@ -55,6 +56,7 @@ As strategic projects are very individual the pre defined structure is very limi
 | Document | Description | Phase |
 | ------- | ------ | ------|
 | [Product/Project Documentation](./Documents/product-project-documentation.md) | Special ADD describing the complete product or project | B, C, D |
+| [Compliance Assessment](./Documents/compliance-assessment.md) | Document to assess compliance requirements for a product or project | G |
 
 ### Solution Delivery Purpose
 
@@ -67,7 +69,7 @@ As strategic projects are very individual the pre defined structure is very limi
 Arrows show dependencies between documents.
 
 ```mermaid
-flowchart TB
+flowchart BT
   awr["Architecture Work Request"]
   principles["Architecture Principles"]
   contract["Architecture Contract"]
@@ -98,7 +100,33 @@ contract --> add
 chg --> add
 ``` 
 
+### Superior Architectures
+When working on an architecture project, it is important to understand the superior architectures. These are the architectures from higher levels in the enterprise architecture structure. 
 
+TOGAF doesn´t define the levels over the enterprise, but in practical experience these often exist. Also Reference Architectures need to be considered and are added in this view.
+```mermaid
+flowchart BT
+  enterprise["Architectures from levels over the enterprise"]
+  principles["Architecture Principles"]
+  strategy["Strategic Architectures"]
+  portfolio["Portfolio Architectures"]
+  project["Project / Product Architectures"]
+  solution["Solution Delivery Architectures"]
+  reference["References Architectures"]
+
+  solution --> project
+  project --> portfolio
+  portfolio --> strategy
+  strategy --> principles
+  strategy --> enterprise
+
+  project --> reference
+  solution --> reference
+  reference --> strategy
+  reference --> enterprise
+```
+
+Reference Architecutres might also be used for Strategy or Portfolio architectures directly, but this is less common. 
 
 ## Document Storage Structure
 

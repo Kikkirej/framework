@@ -7,7 +7,7 @@ On this journey I learned some standards in different detail grades.
 This standards include, but not limit to
 
 * [The Open Group Architecture Framework(TOGAF)](https://www.opengroup.org/togaf)
-    + including linked publications like the [TOGAF Leader's guide](https://publications.opengroup.org/g168)
+    + including linked publications like the [TOGAF® Leader's guide](https://publications.opengroup.org/g168)
 * [arc42](https://arc42.org/)
 * ITIL 4
 * ...

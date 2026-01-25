@@ -1,6 +1,6 @@
 # Building EA Capability
 
-This chapter is oriented on the TOGAF guide corresponding to this.
+This chapter is oriented on the TOGAF® guide corresponding to this.
 
 For a much more detailed view look at the standard!
 

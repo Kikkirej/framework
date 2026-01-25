@@ -4,18 +4,18 @@ If you want to build your own architecture content framework, I can recommend [T
 
 ## Scope 
 
-This is not the classic TOGAF like internal enterprise architecture documentation. Instead this is a content framework focussing on software products and services. 
+This is not the classic TOGAF® like internal enterprise architecture documentation. Instead this is a content framework focussing on software products and services. 
 These can be SaaS or on-premise products.
 
 ## Structure
 
-Architectures come, as defined by TOGAF standard, in four purposes.
+Architectures come, as defined by TOGAF® standard, in four purposes.
 
 | Purpose Capability | Description | Examples | 
 | ------- | ------ | ------| 
 | Strategy | Architecture projects which scope the overall strategic ideas. These are very specified. | New Product Development, Mergers & Acquisitions, Market Analysis | 
 | Portfolio | Architecture projects which scope a portfolio of products or services. These are more generalised. | Group of products for the same market, Group of products on same tech stack |
-| Projects (or Products) | Architecture projects which scope a single product or service. These are very detailed. Besides the Project which is common for TOGAF structure,  | Single SaaS Product, Single On-Premise Software |
+| Projects (or Products) | Architecture projects which scope a single product or service. These are very detailed. Besides the Project which is common for TOGAF® structure,  | Single SaaS Product, Single On-Premise Software |
 | Solution Delivery | Architecture projects which scope a single solution delivery. These are very technical and detailed. | Single Customer Solution, Single Deployment |
 
 These are the main structure. An architecture project can be in one of these categories. 
@@ -104,7 +104,7 @@ chg --> add
 ### Superior Architectures
 When working on an architecture project, it is important to understand the superior architectures. These are the architectures from higher levels in the enterprise architecture structure. 
 
-TOGAF doesn´t define the levels over the enterprise, but in practical experience these often exist. Also Reference Architectures need to be considered and are added in this view.
+TOGAF® doesn´t define the levels over the enterprise, but in practical experience these often exist. Also Reference Architectures need to be considered and are added in this view.
 ```mermaid
 flowchart BT
   enterprise["Architectures from levels over the enterprise"]

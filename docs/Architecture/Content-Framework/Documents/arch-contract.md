@@ -1,5 +1,5 @@
 # Architecture Contract
-
+<!-- https://digital-portfolio.opengroup.org/togaf-standard-architecture-content/latest/01-doc/chap04.html -->
 ## Role/Purpose
 The Architecture Contract defines the agreement between the architecture team and the project teams regarding the responsibilities, deliverables, and expectations for architecture-related activities. 
 
@@ -22,17 +22,16 @@ The contract is between different parties, which are shared in the following. Al
 ### Contract between Architecture Design and Development Partners
 
 This will start with the preliminary phase
-
-| Content | Description |
-|---------|-------------|
-| Introduction and Background | Overview of the architecture project and its context for everyone to get the clear |
-| Scope of the Architecture | Define the scope of the architecture work, including systems, domains, and boundaries |
-| Architecture and strategic principles and requirements | Refer to the corresponding documents and if needed, shortly summarize importan points. |
-| Conformance Requirements | Define the requirements for architecture compliance, including processes, tools, and standards to be followed by the development teams |
-| Target Architecture Measures | Define the metrics and criteria for measuring the success of the architecture implementation |
-| Defined phases of deliverables | Define the phases of the architecture work and the corresponding deliverables for each phase |
-| Prioritized joint workplan | Define a joint workplan that outlines the tasks, timelines, and responsibilities for both the architecture team and the development partners |
-| Time window | this will be often handled by Product Management/Product Owner. But the Architect should definetly moderate it. |
+| Content | Description | Required |
+|---------|-------------|----------|
+| Introduction and Background | Overview of the architecture project and its context for everyone to get the clear | Yes |
+| Scope of the Architecture | Define the scope of the architecture work, including systems, domains, and boundaries | No |
+| Architecture and strategic principles and requirements | Refer to the corresponding documents and if needed, shortly summarize important points. | Yes |
+| Conformance Requirements | Define the requirements for architecture compliance, including processes, tools, and standards to be followed by the development teams | Yes |
+| Target Architecture Measures | Define the metrics and criteria for measuring the success of the architecture implementation | No |
+| Defined phases of deliverables | Define the phases of the architecture work and the corresponding deliverables for each phase | No |
+| Prioritized joint workplan | Define a joint workplan that outlines the tasks, timelines, and responsibilities for both the architecture team and the development partners | No |
+| Time window | this will be often handled by Product Management/Product Owner. But the Architect should definitely moderate it. | No |
 
 ### Contract between Architecture Function and Business Stakeholders
 

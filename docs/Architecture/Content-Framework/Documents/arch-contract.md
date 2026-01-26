@@ -22,6 +22,7 @@ The contract is between different parties, which are shared in the following. Al
 ### Contract between Architecture Design and Development Partners
 
 This will start with the preliminary phase
+
 | Content | Description | Required |
 |---------|-------------|----------|
 | Introduction and Background | Overview of the architecture project and its context for everyone to get the clear | Yes |
@@ -37,14 +38,14 @@ This will start with the preliminary phase
 
 This will be started when the migration and impelmentation plan has been agreed to gether with the business stakeholders. This guarantees the business stakeholders are aware of their responsibilities and the architecture work. This also ensures that the architecture work is aligned with business goals and objectives.
 
-| Content | Description |
-|---------|-------------|
-| Introduction and Background | Overview of the architecture project and its context for everyone to get the clear |
-| Scope | Define the scope of the contract |
-| Strategic Requirements | | Define the strategic requirements from a business perspective that the architecture must support |
-| Architecture deliverables | Define the architecture deliverables that will be provided to the business stakeholders |
-| Conformance Requirements | Define the requirements for architecture compliance, including processes, tools, and standards to be followed by the business stakeholders |
-| Time Window and SLA | Define the time window for architecture deliverables and the service level agreements (SLAs) for response times and issue resolution |
+| Content | Description | Required |
+|---------|-------------|----------|
+| Introduction and Background | Overview of the architecture project and its context for everyone to get the clear | Yes |
+| Scope | Define the scope of the contract | Yes |
+| Strategic Requirements | Define the strategic requirements from a business perspective that the architecture must support | Yes |
+| Architecture deliverables | Define the architecture deliverables that will be provided to the business stakeholders | Yes |
+| Conformance Requirements | Define the requirements for architecture compliance, including processes, tools, and standards to be followed by the business stakeholders | Yes |
+| Time Window and SLA | Define the time window for architecture deliverables and the service level agreements (SLAs) for response times and issue resolution | No |
 
 ## Document States
 

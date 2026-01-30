@@ -41,6 +41,15 @@ These document are also created for a purpose. They therefore exist in every pur
 | [Change Request](./Documents/change-request.md) | Document to request changes to architecture | H | Only if needed |
 | [Architecture Definition Document (ADD)](./Documents/arch-definition-document.md) | Main architecture document | B, C, D | Yes |
 | [Building Block](./Documents/building-block.md) | Document to define a building block | B, C, D | No |
+| [Compliance Assessment](./Documents/compliance-assessment.md) | Document to assess compliance requirements for a product or project | G | No |
+
+### Repository
+
+The repository is a special document... I am a bit conflicted how to handle this. 
+
+It is basically a database. 
+
+A detailed view on what information with what info should be stored here is in [Architecture Repository](./Documents/arch-repository.md) chapter. 
 
 ### Strategic Purpose
 

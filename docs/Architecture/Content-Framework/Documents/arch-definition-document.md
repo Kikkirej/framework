@@ -45,3 +45,4 @@ All parts are from the TOGAF® standard. Parts with * are from arc42 template.
 An example template is part of [TOGAF® Standard, 10th Edition Template Deliverables](https://publications.opengroup.org/i094). This might be a good starting point. 
 
 Besides that I am also a fan of the [Arc42 Template](https://arc42.org/) which is more lightweight and easier to use. 
+Arc42 has also much more detailed information to fill the document with content. If you look for a one fits all approach, this might be the best choice.

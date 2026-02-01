@@ -1,0 +1,1303 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="Fabian Lemke" name="author"/>
+<link href="https://kikkirej.github.io/framework/Architecture/Content-Framework/" rel="canonical"/>
+<link href="../capability-building/" rel="prev"/>
+<link href="Documents/arch-contract/" rel="next"/>
+<link href="../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.7.1" name="generator"/>
+<title>Overview - Fabian's Framework</title>
+<link href="../../assets/stylesheets/main.484c7ddc.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#overview">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header md-header--shadow" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="Fabian's Framework" class="md-header__button md-logo" data-md-component="logo" href="../.." title="Fabian's Framework">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            Fabian's Framework
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Overview
+            
+          </span>
+</div>
+</div>
+</div>
+<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="Fabian's Framework" class="md-nav__button md-logo" data-md-component="logo" href="../.." title="Fabian's Framework">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+    Fabian's Framework
+  </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../..">
+<span class="md-ellipsis">
+    
+  
+    Welcome
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../mermaid-example/">
+<span class="md-ellipsis">
+    
+  
+    Example for Mermaid
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Architecture
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../capability-building/">
+<span class="md-ellipsis">
+    
+  
+    Building EA Capability
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_3_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Content Framework
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_3_2_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_2">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Content Framework
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+<span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+</a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#scope">
+<span class="md-ellipsis">
+      
+        Scope
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#structure">
+<span class="md-ellipsis">
+      
+        Structure
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#documents">
+<span class="md-ellipsis">
+      
+        Documents
+      
+    </span>
+</a>
+<nav aria-label="Documents" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#general-for-all-purposes">
+<span class="md-ellipsis">
+      
+        General for all purposes
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#repository">
+<span class="md-ellipsis">
+      
+        Repository
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#strategic-purpose">
+<span class="md-ellipsis">
+      
+        Strategic Purpose
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#portfolio-purpose">
+<span class="md-ellipsis">
+      
+        Portfolio Purpose
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#project-product-purpose">
+<span class="md-ellipsis">
+      
+        Project / Product Purpose
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#solution-delivery-purpose">
+<span class="md-ellipsis">
+      
+        Solution Delivery Purpose
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#document-relation">
+<span class="md-ellipsis">
+      
+        Document Relation
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#superior-architectures">
+<span class="md-ellipsis">
+      
+        Superior Architectures
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#document-storage-structure">
+<span class="md-ellipsis">
+      
+        Document Storage Structure
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tooling">
+<span class="md-ellipsis">
+      
+        Tooling
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#metadata">
+<span class="md-ellipsis">
+      
+        Metadata
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_2_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_2_2" id="__nav_3_2_2_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Documents
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_2_2_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_3_2_2">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Documents
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="Documents/arch-contract/">
+<span class="md-ellipsis">
+    
+  
+    Architecture Contract
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="Documents/arch-definition-document/">
+<span class="md-ellipsis">
+    
+  
+    Architecture Definition Document (ADD)
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="Documents/arch-principles/">
+<span class="md-ellipsis">
+    
+  
+    Architecture Principles
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="Documents/arch-repository/">
+<span class="md-ellipsis">
+    
+  
+    Architecture Repository
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="Documents/arch-requirements-specification/">
+<span class="md-ellipsis">
+    
+  
+    Architecture Requirement Specification
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="Documents/arch-vision/">
+<span class="md-ellipsis">
+    
+  
+    Architecture Vision
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="Documents/arch-work-request/">
+<span class="md-ellipsis">
+    
+  
+    Request for Architecture Work
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="Documents/building-block/">
+<span class="md-ellipsis">
+    
+  
+    Building block
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="Documents/change-request/">
+<span class="md-ellipsis">
+    
+  
+    Change Request
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="Documents/compliance-assessment/">
+<span class="md-ellipsis">
+    
+  
+    Compliance Assessment
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="Documents/infrastructure-definition/">
+<span class="md-ellipsis">
+    
+  
+    Infrastructure Definition and Sizing
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="Documents/portfolio-documentation/">
+<span class="md-ellipsis">
+    
+  
+    Portfolio documentation
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="Documents/product-project-documentation/">
+<span class="md-ellipsis">
+    
+  
+    Product / Project Documentation
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Saas ops
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Saas ops
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../saas-ops/authentication/">
+<span class="md-ellipsis">
+    
+  
+    Authentication/Authorization
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../saas-ops/communication/">
+<span class="md-ellipsis">
+    
+  
+    Client Communication
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#scope">
+<span class="md-ellipsis">
+      
+        Scope
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#structure">
+<span class="md-ellipsis">
+      
+        Structure
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#documents">
+<span class="md-ellipsis">
+      
+        Documents
+      
+    </span>
+</a>
+<nav aria-label="Documents" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#general-for-all-purposes">
+<span class="md-ellipsis">
+      
+        General for all purposes
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#repository">
+<span class="md-ellipsis">
+      
+        Repository
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#strategic-purpose">
+<span class="md-ellipsis">
+      
+        Strategic Purpose
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#portfolio-purpose">
+<span class="md-ellipsis">
+      
+        Portfolio Purpose
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#project-product-purpose">
+<span class="md-ellipsis">
+      
+        Project / Product Purpose
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#solution-delivery-purpose">
+<span class="md-ellipsis">
+      
+        Solution Delivery Purpose
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#document-relation">
+<span class="md-ellipsis">
+      
+        Document Relation
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#superior-architectures">
+<span class="md-ellipsis">
+      
+        Superior Architectures
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#document-storage-structure">
+<span class="md-ellipsis">
+      
+        Document Storage Structure
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tooling">
+<span class="md-ellipsis">
+      
+        Tooling
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#metadata">
+<span class="md-ellipsis">
+      
+        Metadata
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="overview">Overview</h1>
+<p>If you want to build your own architecture content framework, I can recommend <a href="https://publications.opengroup.org/g168">The TOGAF® Leader's Guide</a> as a starting point. It can be accessed for free after registration on The Open Group website.</p>
+<h2 id="scope">Scope</h2>
+<p>This is not the classic TOGAF® like internal enterprise architecture documentation. Instead this is a content framework focussing on software products and services. 
+These can be SaaS or on-premise products.</p>
+<h2 id="structure">Structure</h2>
+<p>Architectures come, as defined by TOGAF® standard, in four purposes.</p>
+<table>
+<thead>
+<tr>
+<th>Purpose Capability</th>
+<th>Description</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Strategy</td>
+<td>Architecture projects which scope the overall strategic ideas. These are very specified.</td>
+<td>New Product Development, Mergers &amp; Acquisitions, Market Analysis</td>
+</tr>
+<tr>
+<td>Portfolio</td>
+<td>Architecture projects which scope a portfolio of products or services. These are more generalised.</td>
+<td>Group of products for the same market, Group of products on same tech stack</td>
+</tr>
+<tr>
+<td>Projects (or Products)</td>
+<td>Architecture projects which scope a single product or service. These are very detailed. Besides the Project which is common for TOGAF® structure,</td>
+<td>Single SaaS Product, Single On-Premise Software</td>
+</tr>
+<tr>
+<td>Solution Delivery</td>
+<td>Architecture projects which scope a single solution delivery. These are very technical and detailed.</td>
+<td>Single Customer Solution, Single Deployment</td>
+</tr>
+</tbody>
+</table>
+<p>These are the main structure. An architecture project can be in one of these categories. </p>
+<p>High level strategic topics start on a general level. An example here is ¨AI Adoption¨. This is often thought for the complete enterprise. Once it strategic architecture is clear it gets either planned for Portfolion or Project(/Product) level.</p>
+<h2 id="documents">Documents</h2>
+<p>Here are different documents for different architecture purposes. These documents might have a bit different structure depending on the purpose.</p>
+<h3 id="general-for-all-purposes">General for all purposes</h3>
+<p>These document are also created for a purpose. They therefore exist in every purpose. </p>
+<table>
+<thead>
+<tr>
+<th>Document</th>
+<th>Description</th>
+<th>Phase</th>
+<th>Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="Documents/arch-work-request/">Architecture Work Request</a></td>
+<td>Document to request architecture work</td>
+<td>Preliminary</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><a href="Documents/arch-vision/">Architecture Vision</a></td>
+<td>Document to define architecture https://file+.vscode-resource.vscode-cdn.net/home/fabian/git/framework/docs/Architecture/Content-Framework/Documents/arch-requirements-specification.mdvision</td>
+<td>A</td>
+<td>No</td>
+</tr>
+<tr>
+<td><a href="Documents/arch-principles/">Architecture Principles</a></td>
+<td>Document to define architecture principles</td>
+<td>Preliminary</td>
+<td>No</td>
+</tr>
+<tr>
+<td><a href="Documents/arch-contract/">Architecture Contract</a></td>
+<td>Document to define architecture contract between architecture team and stakeholders</td>
+<td>F</td>
+<td>Recommended</td>
+</tr>
+<tr>
+<td><a href="Documents/arch-requirements-specification/">Architecture Requirememts Specification</a></td>
+<td>Document to define architecture requirements specification</td>
+<td>Requirements Management</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><a href="Documents/change-request/">Change Request</a></td>
+<td>Document to request changes to architecture</td>
+<td>H</td>
+<td>Only if needed</td>
+</tr>
+<tr>
+<td><a href="Documents/arch-definition-document/">Architecture Definition Document (ADD)</a></td>
+<td>Main architecture document</td>
+<td>B, C, D</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><a href="Documents/building-block/">Building Block</a></td>
+<td>Document to define a building block</td>
+<td>B, C, D</td>
+<td>No</td>
+</tr>
+<tr>
+<td><a href="Documents/compliance-assessment/">Compliance Assessment</a></td>
+<td>Document to assess compliance requirements for a product or project</td>
+<td>G</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<h3 id="repository">Repository</h3>
+<p>The repository is a special document... I am a bit conflicted how to handle this. </p>
+<p>It is basically a database. </p>
+<p>A detailed view on what information with what info should be stored here is in <a href="Documents/arch-repository/">Architecture Repository</a> chapter. </p>
+<h3 id="strategic-purpose">Strategic Purpose</h3>
+<p>As strategic projects are very individual the pre defined structure is very limited here.</p>
+<h3 id="portfolio-purpose">Portfolio Purpose</h3>
+<table>
+<thead>
+<tr>
+<th>Document</th>
+<th>Description</th>
+<th>Phase</th>
+<th>Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="Documents/portfolio-documentation/">Portfolio Documentation</a></td>
+<td>Describing the relation for the portfolio, including all projects / portfolios</td>
+<td>B, C, D</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<h3 id="project-product-purpose">Project / Product Purpose</h3>
+<table>
+<thead>
+<tr>
+<th>Document</th>
+<th>Description</th>
+<th>Phase</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="Documents/product-project-documentation/">Product/Project Documentation</a></td>
+<td>Special ADD describing the complete product or project</td>
+<td>B, C, D</td>
+</tr>
+<tr>
+<td><a href="Documents/compliance-assessment/">Compliance Assessment</a></td>
+<td>Document to assess compliance requirements for a product or project</td>
+<td>G</td>
+</tr>
+</tbody>
+</table>
+<h3 id="solution-delivery-purpose">Solution Delivery Purpose</h3>
+<table>
+<thead>
+<tr>
+<th>Document</th>
+<th>Description</th>
+<th>Phase</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="Documents/infrastructure-definition/">Infrastructure Sizing and Definition</a></td>
+<td>Special ADD describing the infrastructure sizing and definition for a solution delivery</td>
+<td>B, C, D</td>
+</tr>
+</tbody>
+</table>
+<h3 id="document-relation">Document Relation</h3>
+<p>Arrows show dependencies between documents.</p>
+<pre class="mermaid"><code>flowchart BT
+  awr["Architecture Work Request"]
+  principles["Architecture Principles"]
+  contract["Architecture Contract"]
+  reqs["Architecture Requirements Specification"]
+  add["Architecture Definition Document"]
+  chg["Change Request"]
+
+ %% subgraph Architecture
+ %%   direction TB
+ %%   cf_idx["Content Framework / index.md"]
+ %%   arch_def["Arch Definition"]
+ %% end
+
+ %% subgraph SaaS-Ops
+ %%   direction TB
+ %%   auth["Authentication"]
+ %%   comms["Communication"]
+ %% end
+
+  %% Example relationships
+  %% idx --&gt; cf_idx
+  %% cap --&gt; arch_def
+  %% auth --&gt; comms
+reqs --&gt; awr
+add --&gt; reqs
+add --&gt; principles
+contract --&gt; add
+chg --&gt; add
+</code></pre>
+<h3 id="superior-architectures">Superior Architectures</h3>
+<p>When working on an architecture project, it is important to understand the superior architectures. These are the architectures from higher levels in the enterprise architecture structure. </p>
+<p>TOGAF® doesn´t define the levels over the enterprise, but in practical experience these often exist. Also Reference Architectures need to be considered and are added in this view.
+<pre class="mermaid"><code>flowchart BT
+  enterprise["Architectures from levels over the enterprise"]
+  principles["Architecture Principles"]
+  strategy["Strategic Architectures"]
+  portfolio["Portfolio Architectures"]
+  project["Project / Product Architectures"]
+  solution["Solution Delivery Architectures"]
+  reference["References Architectures"]
+
+  solution --&gt; project
+  project --&gt; portfolio
+  portfolio --&gt; strategy
+  strategy --&gt; principles
+  strategy --&gt; enterprise
+
+  project --&gt; reference
+  solution --&gt; reference
+  reference --&gt; strategy
+  reference --&gt; enterprise
+</code></pre></p>
+<p>Reference Architecutres might also be used for Strategy or Portfolio architectures directly, but this is less common. </p>
+<h2 id="document-storage-structure">Document Storage Structure</h2>
+<p>File system Structure is displayed in the following table. Each deescription in <em>italic</em> is abstract and will be replaced with the actual name.</p>
+<table>
+<thead>
+<tr>
+<th>Level</th>
+<th>Parent</th>
+<th>Name</th>
+<th>Kind</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>root</td>
+<td>Strategy</td>
+<td>Folder</td>
+<td>Containing all Strategy related arch projects</td>
+</tr>
+<tr>
+<td>0</td>
+<td>root</td>
+<td>Portfolio</td>
+<td>Folder</td>
+<td>Containing all Portfolio related arch projects</td>
+</tr>
+<tr>
+<td>0</td>
+<td>root</td>
+<td>Reference Architecture</td>
+<td>Folder</td>
+<td>Containing all Reference Architecture related arch projects</td>
+</tr>
+<tr>
+<td>0</td>
+<td>root</td>
+<td><em>Others</em></td>
+<td>Folder</td>
+<td>Special folders for Solution Delivery etc. which don't fit in one of the resources</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>1</td>
+<td>Portfolio</td>
+<td><em>Portfolio Name</em></td>
+<td>Folder</td>
+<td>Containing all Products / Projects for this portfolio</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Strategy</td>
+<td><em>Strategy Architecture Name</em></td>
+<td>Folder</td>
+<td>Containing all related documents for this strategy</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Strategy</td>
+<td>Principles</td>
+<td>File</td>
+<td>Containing all enterprise architecture principles</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Reference Architecture</td>
+<td><em>Reference Architecture Name</em></td>
+<td>Folder</td>
+<td>Containing all related documents for this reference architecture</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td><em>Protfolio Name</em></td>
+<td>Portfolio Documentation</td>
+<td>File</td>
+<td>Containing all related documents for this product / project</td>
+</tr>
+<tr>
+<td>2</td>
+<td><em>Portfolio Name</em></td>
+<td>Product / Project Name</td>
+<td>Folder</td>
+<td>Containing all related documents for this product / project</td>
+</tr>
+<tr>
+<td>2</td>
+<td><em>Portfolio Name</em></td>
+<td>Solution Delivery</td>
+<td>Folder</td>
+<td>Containing all related documents for solution delivery projects</td>
+</tr>
+<tr>
+<td>2</td>
+<td><em>Strategy Architecture Name</em></td>
+<td>Documents</td>
+<td>File</td>
+<td>Containing all related documents for this strategy/project</td>
+</tr>
+<tr>
+<td>2</td>
+<td><em>Reference Architecture Name</em></td>
+<td>Documents</td>
+<td>File</td>
+<td>Containing all related documents for this reference architecture</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td><em>Product / Project Name</em></td>
+<td>Documents</td>
+<td>File</td>
+<td>Containing all related documents for this product / project</td>
+</tr>
+<tr>
+<td>3</td>
+<td><em>Product / Project Name</em></td>
+<td><em>Arch Project</em></td>
+<td>Folder</td>
+<td>Containing all related documents for this product / project</td>
+</tr>
+<tr>
+<td>3</td>
+<td><em>Solution Delivery</em></td>
+<td><em>Customer Name</em></td>
+<td>Folder</td>
+<td>Containing all related documents for this customer solution delivery</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td><em>Customer Name</em></td>
+<td>Documents</td>
+<td>File</td>
+<td>Containing all related documents for this customer solution delivery</td>
+</tr>
+<tr>
+<td>4</td>
+<td><em>Arch Project</em></td>
+<td>Documents</td>
+<td>File</td>
+<td>Containing all related documents for this architecture project</td>
+</tr>
+</tbody>
+</table>
+<p>To make the overview a bit easier: here is a graph for this with examples. 
+<pre class="mermaid"><code>graph TD
+    root["📁 Architecture Repository"]
+
+    %% Level 0 - Root folders
+    root --&gt; strategic["📁 Strategy"]
+    root --&gt; portfolio["📁 Portfolio"]
+    root --&gt; refarch["📁 Reference Architecture"]
+    root --&gt; others["📁 Others<br/>(Solution Delivery, etc.)"]
+
+    %% Level 1 - Strategy branch
+    strategic --&gt; stratproj["📁 AI-Adoption-2025"]
+    strategic --&gt; principles["📄 Principles"]
+
+    %% Level 1 - Portfolio branch
+    portfolio --&gt; portname["📁 SaaS-Product-Portfolio"]
+
+    %% Level 1 - Reference Architecture branch
+    refarch --&gt; refname["📁 Microservices-Reference-Architecture"]
+
+    %% Level 2 - Portfolio branch
+    portname --&gt; portdoc["📄 Portfolio Documentation"]
+    portname --&gt; prodproj["📁 Authentication-Service"]
+    portname --&gt; soldeliv["📁 Solution Delivery"]
+
+    %% Level 2 - Strategy branch
+    stratproj --&gt; stratdocs["📄 Documents"]
+
+    %% Level 2 - Reference Architecture branch
+    refname --&gt; refdocs["📄 Documents"]
+
+    %% Level 3 - Product/Project branch
+    prodproj --&gt; proddocs["📄 Documents"]
+    prodproj --&gt; archproj["📁 OAuth-Implementation-2025"]
+
+    %% Level 3 - Solution Delivery branch
+    soldeliv --&gt; custname["📁 Acme-Corp"]
+
+    %% Level 4 - Customer branch
+    custname --&gt; custdocs["📄 Documents"]
+
+    %% Level 4 - Arch Project branch
+    archproj --&gt; archprojdocs["📄 Documents"]
+
+    %% Styling
+
+</code></pre></p>
+<h2 id="tooling">Tooling</h2>
+<p>Generally use the document managenent system your enterprise uses anyway.</p>
+<p>This can be...</p>
+<ul>
+<li>Microsoft Sharepoint</li>
+<li>Atlassian Confluence</li>
+</ul>
+<p>There are also some specialised tools for architecture documentation, which might make sense for an onboarding.</p>
+<ul>
+<li>Sparx Enterprise Architecture </li>
+<li>(my secret favourite, but expensive and looks a bit old fashioned)</li>
+<li>Archi</li>
+</ul>
+<p>It makes sense to have some tool for the architecture landscape aswell. While Archi and Enterprise Architect have some capabilities for this, specialised tools are:</p>
+<ul>
+<li>SAP LeanIX</li>
+<li>Bizzdesign Enterprise Studio</li>
+<li>this is the only tool I haven´t used in this list. If you have experience, happily tell me about it! :-) </li>
+</ul>
+<h2 id="metadata">Metadata</h2>
+<p>For the Enterprise Continuum in the repository, each document should be able to be added with the following metadata:</p>
+<table>
+<thead>
+<tr>
+<th>Metadata</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Title</td>
+<td>Title of the document</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Purpose Capability</td>
+<td>Purpose capability of the architecture project</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Document Type</td>
+<td>Type of the document</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Owner</td>
+<td>Owner of the document</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Stakeholders</td>
+<td>Stakeholders related to the document</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Authors</td>
+<td>Authors of the document</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Created On</td>
+<td>Creation date of the document</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Last Updated On</td>
+<td>Last updated date of the document</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Version</td>
+<td>Version of the document</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Status</td>
+<td>Status of the document (Draft, Review, Approved)</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Related Architectures</td>
+<td>Related architectures in the enterprise architecture repository</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Related Building Blocks</td>
+<td>Related building blocks in the architecture repository</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+</article>
+</div>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+<script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+<script type="module">import mermaid from "https://unpkg.com/mermaid@10.4.0/dist/mermaid.esm.min.mjs";
+window.mermaidConfig = {default: {
+    startOnLoad: false
+}};</script></body>
+</html>

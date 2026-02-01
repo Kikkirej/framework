@@ -19,9 +19,13 @@ This can also been seen as a baseline architecture document for an architecture 
 | Content | Description | Required |
 |---------|-------------|----------|
 | Business Capabilities| Describe the business capabilities that are impacted by the product or project | Yes |
-
-todo
-
+| Product/Project Overview | Provide an overview of the product or project, including its purpose, scope, and objectives | Yes |
+| Architecture Overview | Summarize the architecture of the product or project, including key components, systems, and technologies used | Yes |
+| Architecture Diagrams | Include architecture diagrams that illustrate the structure and relationships of the product or project | Yes |
+| Key Design Decisions | Document the key design decisions made during the development of the product or project | Recommended |
+| Implementation Details | Provide details on the implementation of the product or project, including technologies, frameworks, and tools used | Yes |
+| Testing and Validation | Describe the testing and validation processes used to ensure the quality and reliability of the product or project | Recommended |
+| Deployment and Maintenance | Outline the deployment and maintenance procedures for the product or project | Recommended |
 
 ## Document States
 
@@ -37,4 +41,4 @@ This document is more a documentation and doesn´t need the classic approval wor
 
 ## Document Templates
 
-An example template is [Arc42 Template](https://arc42.org/) which is more lightweight and easier to use.
+An example template is [Arc42 Template](https://arc42.org/) which is lightweight and easy to use.

@@ -30,5 +30,10 @@ Following data should be part of each requirement:
 * Rationale
 * Source
 * Priority
+* Date (optional)
+* Owner (optional)
+* Fit Criterion
+* Supporting Materials (optional)
+* Dependencies (optional)
 
 This might be done in a table or in a requirements management tool. Also EA tools like Sparx EA or others can be used to manage this information.

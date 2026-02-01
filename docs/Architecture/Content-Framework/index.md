@@ -34,7 +34,7 @@ These document are also created for a purpose. They therefore exist in every pur
 | Document | Description | Phase | Required |
 | ------- | ------ | ------| --|
 | [Architecture Work Request](./Documents/arch-work-request.md) | Document to request architecture work | Preliminary | Yes |
-| [Architecture Vision](./Documents/arch-vision.md) | Document to define architecture vision | A | No |
+| [Architecture Vision](./Documents/arch-vision.md) | Document to define architecture https://file+.vscode-resource.vscode-cdn.net/home/fabian/git/framework/docs/Architecture/Content-Framework/Documents/arch-requirements-specification.mdvision | A | No |
 | [Architecture Principles](./Documents/arch-principles.md) | Document to define architecture principles | Preliminary | No |
 | [Architecture Contract](./Documents/arch-contract.md) | Document to define architecture contract between architecture team and stakeholders | F | Recommended |
 | [Architecture Requirememts Specification](./Documents/arch-requirements-specification.md) | Document to define architecture requirements specification | Requirements Management | Yes |

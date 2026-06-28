@@ -1,4 +1,4 @@
-# 00 Intro
+# Intro
 
 This area describes some high level notes for the foundation of [ISAQB CPSA](https://www.isaqb.org/certifications/cpsa-certifications/cpsa-foundation-level/?noredirect=true). 
 

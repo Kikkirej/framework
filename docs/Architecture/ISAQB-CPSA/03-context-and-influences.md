@@ -15,6 +15,7 @@ Collecting those helps with decision making and makes sure no uncertainities com
 Constraints can be technical or organisational.
 
 **Technical constraints** (examples):
+
 * Programming language or runtime must be used (e.g. Java, Python)
 * Target operating system or platform (e.g. Linux, Windows, embedded)
 * Specific database system required (e.g. Oracle, PostgreSQL)
@@ -25,6 +26,7 @@ Constraints can be technical or organisational.
 * Performance requirements (response time, throughput)
 
 **Organisational constraints** (examples):
+
 * Budget and cost limits
 * Deadlines and release dates
 * Team size and skill set

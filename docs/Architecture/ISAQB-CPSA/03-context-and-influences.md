@@ -49,9 +49,9 @@ Scenarios are good for
 
 They typically have 3 aspects
 
-. Source
-. Artifact (what really happens)
-. Measurment
+1. Source
+2. Artifact (what really happens)
+3. Measurment
 
 Example: A remote user (source) sends at high load a request  over the network (Artifact) and gets a reply in 5 seconds(measurement).
 

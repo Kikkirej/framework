@@ -1,0 +1,1206 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="Fabian Lemke" name="author"/>
+<link href="https://kikkirej.github.io/framework/Architecture/ISAQB-CPSA/05-meta-architecture/" rel="canonical"/>
+<link href="../04-architecture-development/" rel="prev"/>
+<link href="../06-modularization/" rel="next"/>
+<link href="../../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.7.6" name="generator"/>
+<title>Meta Architecture - Fabian's Framework</title>
+<link href="../../../assets/stylesheets/main.484c7ddc.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#meta-architecture">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header md-header--shadow" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="Fabian's Framework" class="md-header__button md-logo" data-md-component="logo" href="../../.." title="Fabian's Framework">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            Fabian's Framework
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Meta Architecture
+            
+          </span>
+</div>
+</div>
+</div>
+<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="Fabian's Framework" class="md-nav__button md-logo" data-md-component="logo" href="../../.." title="Fabian's Framework">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+    Fabian's Framework
+  </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../..">
+<span class="md-ellipsis">
+    
+  
+    Welcome
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../mermaid-example/">
+<span class="md-ellipsis">
+    
+  
+    Example for Mermaid
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Architecture
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../capability-building/">
+<span class="md-ellipsis">
+    
+  
+    Building EA Capability
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Content Framework
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_2_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_2">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Content Framework
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Content-Framework/">
+<span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_2_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_2_2" id="__nav_3_2_2_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Documents
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_2_2_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_3_2_2">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Documents
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Content-Framework/Documents/arch-contract/">
+<span class="md-ellipsis">
+    
+  
+    Architecture Contract
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Content-Framework/Documents/arch-definition-document/">
+<span class="md-ellipsis">
+    
+  
+    Architecture Definition Document (ADD)
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Content-Framework/Documents/arch-principles/">
+<span class="md-ellipsis">
+    
+  
+    Architecture Principles
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Content-Framework/Documents/arch-repository/">
+<span class="md-ellipsis">
+    
+  
+    Architecture Repository
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Content-Framework/Documents/arch-requirements-specification/">
+<span class="md-ellipsis">
+    
+  
+    Architecture Requirement Specification
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Content-Framework/Documents/arch-vision/">
+<span class="md-ellipsis">
+    
+  
+    Architecture Vision
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Content-Framework/Documents/arch-work-request/">
+<span class="md-ellipsis">
+    
+  
+    Request for Architecture Work
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Content-Framework/Documents/building-block/">
+<span class="md-ellipsis">
+    
+  
+    Building block
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Content-Framework/Documents/change-request/">
+<span class="md-ellipsis">
+    
+  
+    Change Request
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Content-Framework/Documents/compliance-assessment/">
+<span class="md-ellipsis">
+    
+  
+    Compliance Assessment
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Content-Framework/Documents/infrastructure-definition/">
+<span class="md-ellipsis">
+    
+  
+    Infrastructure Definition and Sizing
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Content-Framework/Documents/portfolio-documentation/">
+<span class="md-ellipsis">
+    
+  
+    Portfolio documentation
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Content-Framework/Documents/product-project-documentation/">
+<span class="md-ellipsis">
+    
+  
+    Product / Project Documentation
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_3_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    ISAQB CPSA
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_3_3_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_3">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    ISAQB CPSA
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../">
+<span class="md-ellipsis">
+    
+  
+    Intro
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../01-what-is-architecture/">
+<span class="md-ellipsis">
+    
+  
+    What is architecture?
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../02-correct-procedure/">
+<span class="md-ellipsis">
+    
+  
+    Correct Procedure...
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../03-context-and-influences/">
+<span class="md-ellipsis">
+    
+  
+    Context and Influences
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../04-architecture-development/">
+<span class="md-ellipsis">
+    
+  
+    Architecture Development
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    
+  
+    Meta Architecture
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+<span class="md-ellipsis">
+    
+  
+    Meta Architecture
+  
+
+    
+  </span>
+</a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#architecutre-patterns">
+<span class="md-ellipsis">
+      
+        Architecutre Patterns
+      
+    </span>
+</a>
+<nav aria-label="Architecutre Patterns" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#layered-architecture">
+<span class="md-ellipsis">
+      
+        Layered Architecture
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#pipes-filters">
+<span class="md-ellipsis">
+      
+        Pipes &amp; Filters
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#shared-repository">
+<span class="md-ellipsis">
+      
+        Shared Repository
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#microcore-architecture">
+<span class="md-ellipsis">
+      
+        Microcore Architecture
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#model-view-controller">
+<span class="md-ellipsis">
+      
+        Model-View-Controller
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#deployment-monolith">
+<span class="md-ellipsis">
+      
+        Deployment Monolith
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#microservices">
+<span class="md-ellipsis">
+      
+        Microservices
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#self-contained-systems">
+<span class="md-ellipsis">
+      
+        Self-Contained Systems
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#architecture-principles">
+<span class="md-ellipsis">
+      
+        Architecture Principles
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../06-modularization/">
+<span class="md-ellipsis">
+    
+  
+    Modularization
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../07-cross-cutting-concerns/">
+<span class="md-ellipsis">
+    
+  
+    Cross Cutting Concerns
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../08-concrecte-technical-aspects/">
+<span class="md-ellipsis">
+    
+  
+    Concrete Technical Aspects
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../09-architecture-documentation/">
+<span class="md-ellipsis">
+    
+  
+    Architecture Documentation
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../10-architecture-rating/">
+<span class="md-ellipsis">
+    
+  
+    Architecture Rating
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Saas ops
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Saas ops
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../saas-ops/authentication/">
+<span class="md-ellipsis">
+    
+  
+    Authentication/Authorization
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../saas-ops/communication/">
+<span class="md-ellipsis">
+    
+  
+    Client Communication
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#architecutre-patterns">
+<span class="md-ellipsis">
+      
+        Architecutre Patterns
+      
+    </span>
+</a>
+<nav aria-label="Architecutre Patterns" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#layered-architecture">
+<span class="md-ellipsis">
+      
+        Layered Architecture
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#pipes-filters">
+<span class="md-ellipsis">
+      
+        Pipes &amp; Filters
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#shared-repository">
+<span class="md-ellipsis">
+      
+        Shared Repository
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#microcore-architecture">
+<span class="md-ellipsis">
+      
+        Microcore Architecture
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#model-view-controller">
+<span class="md-ellipsis">
+      
+        Model-View-Controller
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#deployment-monolith">
+<span class="md-ellipsis">
+      
+        Deployment Monolith
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#microservices">
+<span class="md-ellipsis">
+      
+        Microservices
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#self-contained-systems">
+<span class="md-ellipsis">
+      
+        Self-Contained Systems
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#architecture-principles">
+<span class="md-ellipsis">
+      
+        Architecture Principles
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="meta-architecture">Meta Architecture</h1>
+<p>Meta Architecture is the set of high level decisions, which influence the system structure without being the strucutre themselves. Styles, Patterns or principles form the design.
+The consistent application of the meta archtiecture ensure coneptional integrity</p>
+<h2 id="architecutre-patterns">Architecutre Patterns</h2>
+<p>Relevant architecture patterns are the following</p>
+<h3 id="layered-architecture">Layered Architecture</h3>
+<p>Hierarchical structure of a system. Layers a*re seperated by interfaces.</p>
+<pre class="mermaid"><code>graph TD
+    A[Presentation Layer] --&gt; B[Application Layer]
+    B --&gt; C[Domain / Business Logic Layer]
+    C --&gt; D[Infrastructure / Data Access Layer]
+    D --&gt; E[(Database)]
+
+    style A fill:#4A90D9,color:#fff
+    style B fill:#5BA85A,color:#fff
+    style C fill:#E8A838,color:#fff
+    style D fill:#C0392B,color:#fff
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Pro</th>
+<th>Contra</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Reusability and Replaceability</td>
+<td>Efficiency</td>
+</tr>
+<tr>
+<td>Standardization</td>
+<td></td>
+</tr>
+<tr>
+<td>Maintenance</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="pipes-filters">Pipes &amp; Filters</h3>
+<p>Data flows through a sequence of independent processing steps (filters) connected by channels (pipes). Each filter transforms the data and passes it on, without knowledge of other filters.</p>
+<pre class="mermaid"><code>graph LR
+    I[Input] --&gt; F1[Filter 1]
+    F1 --&gt;|Pipe| F2[Filter 2]
+    F2 --&gt;|Pipe| F3[Filter 3]
+    F3 --&gt; O[Output]
+
+    style I fill:#7F8C8D,color:#fff
+    style F1 fill:#2980B9,color:#fff
+    style F2 fill:#2980B9,color:#fff
+    style F3 fill:#2980B9,color:#fff
+    style O fill:#7F8C8D,color:#fff
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Pro</th>
+<th>Contra</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Filters are independent and reusable</td>
+<td>Stateful processing is difficult</td>
+</tr>
+<tr>
+<td>Easy to add, remove or reorder processing steps</td>
+<td>Error handling across filters is complex</td>
+</tr>
+<tr>
+<td>Supports parallel processing</td>
+<td>Overhead from data transformation between steps</td>
+</tr>
+</tbody>
+</table>
+<h3 id="shared-repository">Shared Repository</h3>
+<p>Multiple components communicate exclusively through a central, shared data store. Components read and write data without direct dependencies on each other.</p>
+<pre class="mermaid"><code>graph TD
+    R[(Shared Repository)]
+    C1[Component A] &lt;--&gt; R
+    C2[Component B] &lt;--&gt; R
+    C3[Component C] &lt;--&gt; R
+    C4[Component D] &lt;--&gt; R
+
+    style R fill:#8E44AD,color:#fff
+    style C1 fill:#2980B9,color:#fff
+    style C2 fill:#2980B9,color:#fff
+    style C3 fill:#2980B9,color:#fff
+    style C4 fill:#2980B9,color:#fff
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Pro</th>
+<th>Contra</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Components are decoupled from each other</td>
+<td>Repository becomes a single point of failure</td>
+</tr>
+<tr>
+<td>Centralized data management and consistency</td>
+<td>Potential bottleneck under high load</td>
+</tr>
+<tr>
+<td>Easy to add new components</td>
+<td>Schema changes impact all components</td>
+</tr>
+</tbody>
+</table>
+<h3 id="microcore-architecture">Microcore Architecture</h3>
+<p>A minimal, stable core (kernel) provides basic services. All additional functionality is added via plugins that extend the core without modifying it.</p>
+<pre class="mermaid"><code>graph TD
+    Core[Microcore / Kernel]
+    P1[Plugin 1] --&gt; Core
+    P2[Plugin 2] --&gt; Core
+    P3[Plugin 3] --&gt; Core
+    P4[Plugin 4] --&gt; Core
+    Core --&gt; S[Core Services]
+
+    style Core fill:#C0392B,color:#fff
+    style P1 fill:#2980B9,color:#fff
+    style P2 fill:#2980B9,color:#fff
+    style P3 fill:#2980B9,color:#fff
+    style P4 fill:#2980B9,color:#fff
+    style S fill:#27AE60,color:#fff
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Pro</th>
+<th>Contra</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Highly extensible without touching the core</td>
+<td>Plugin interfaces must be designed carefully upfront</td>
+</tr>
+<tr>
+<td>Core remains small, stable and well-tested</td>
+<td>Inter-plugin dependencies can be hard to manage</td>
+</tr>
+<tr>
+<td>Plugins can be developed and deployed independently</td>
+<td>Discovering and loading plugins adds complexity</td>
+</tr>
+</tbody>
+</table>
+<h3 id="model-view-controller">Model-View-Controller</h3>
+<p>Separates an application into three components: Model (data and business logic), View (presentation), and Controller (input handling). The controller mediates between user input and the model.</p>
+<pre class="mermaid"><code>graph LR
+    U([User]) --&gt;|interacts| V[View]
+    V --&gt;|user action| C[Controller]
+    C --&gt;|updates| M[Model]
+    M --&gt;|notifies| V
+
+    style U fill:#7F8C8D,color:#fff
+    style V fill:#2980B9,color:#fff
+    style C fill:#E8A838,color:#fff
+    style M fill:#27AE60,color:#fff
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Pro</th>
+<th>Contra</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Clear separation of concerns</td>
+<td>Can lead to bloated controllers</td>
+</tr>
+<tr>
+<td>Views and models can evolve independently</td>
+<td>Overkill for simple UIs</td>
+</tr>
+<tr>
+<td>Supports multiple views for the same model</td>
+<td>Tight coupling between View and Model through notifications</td>
+</tr>
+</tbody>
+</table>
+<h3 id="deployment-monolith">Deployment Monolith</h3>
+<p>All components of the system are packaged and deployed as a single unit. The entire application runs in one process and is released together.</p>
+<pre class="mermaid"><code>graph TD
+    subgraph Monolith[Single Deployable Unit]
+        UI[UI Layer]
+        BL[Business Logic]
+        DA[Data Access]
+    end
+    UI --&gt; BL
+    BL --&gt; DA
+    DA --&gt; DB[(Database)]
+
+    style UI fill:#4A90D9,color:#fff
+    style BL fill:#5BA85A,color:#fff
+    style DA fill:#E8A838,color:#fff
+    style DB fill:#7F8C8D,color:#fff
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Pro</th>
+<th>Contra</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Simple to develop and deploy initially</td>
+<td>Scales only as a whole, not per component</td>
+</tr>
+<tr>
+<td>No network overhead between components</td>
+<td>Long build and release cycles as the system grows</td>
+</tr>
+<tr>
+<td>Easy to test end-to-end</td>
+<td>A single bug can bring down the entire system</td>
+</tr>
+<tr>
+<td>Straightforward debugging and tracing</td>
+<td>Technology stack is shared across all components</td>
+</tr>
+</tbody>
+</table>
+<h3 id="microservices">Microservices</h3>
+<p>The system is split into small, independently deployable services. Each service owns its own data and communicates with others via APIs or messaging.</p>
+<pre class="mermaid"><code>graph LR
+    GW[API Gateway] --&gt; S1[Service A]
+    GW --&gt; S2[Service B]
+    GW --&gt; S3[Service C]
+    S1 --&gt; DB1[(DB A)]
+    S2 --&gt; DB2[(DB B)]
+    S3 --&gt; DB3[(DB C)]
+    S1 --&gt;|event| S2
+
+    style GW fill:#8E44AD,color:#fff
+    style S1 fill:#2980B9,color:#fff
+    style S2 fill:#2980B9,color:#fff
+    style S3 fill:#2980B9,color:#fff
+    style DB1 fill:#7F8C8D,color:#fff
+    style DB2 fill:#7F8C8D,color:#fff
+    style DB3 fill:#7F8C8D,color:#fff
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Pro</th>
+<th>Contra</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Services scale independently</td>
+<td>Distributed system complexity</td>
+</tr>
+<tr>
+<td>Teams can develop and deploy services autonomously</td>
+<td>Network latency and failure between services</td>
+</tr>
+<tr>
+<td>Technology stack can differ per service</td>
+<td>Harder to test and debug end-to-end</td>
+</tr>
+<tr>
+<td>Fault isolation: one service failure does not crash others</td>
+<td>Operational overhead: many services to monitor and deploy</td>
+</tr>
+</tbody>
+</table>
+<h3 id="self-contained-systems">Self-Contained Systems</h3>
+<p>The system is decomposed into a set of largely autonomous applications. Each Self-Contained System (SCS) includes its own UI, business logic, and data store, and is owned by one team. SCS sit between a monolith and microservices in granularity.</p>
+<pre class="mermaid"><code>graph TD
+    subgraph SCS1[SCS: Orders]
+        UI1[UI] --&gt; BL1[Logic]
+        BL1 --&gt; DB1[(DB)]
+    end
+    subgraph SCS2[SCS: Catalog]
+        UI2[UI] --&gt; BL2[Logic]
+        BL2 --&gt; DB2[(DB)]
+    end
+    subgraph SCS3[SCS: Accounts]
+        UI3[UI] --&gt; BL3[Logic]
+        BL3 --&gt; DB3[(DB)]
+    end
+    SCS1 --&gt;|optional API| SCS2
+
+    style UI1 fill:#4A90D9,color:#fff
+    style BL1 fill:#5BA85A,color:#fff
+    style DB1 fill:#7F8C8D,color:#fff
+    style UI2 fill:#4A90D9,color:#fff
+    style BL2 fill:#5BA85A,color:#fff
+    style DB2 fill:#7F8C8D,color:#fff
+    style UI3 fill:#4A90D9,color:#fff
+    style BL3 fill:#5BA85A,color:#fff
+    style DB3 fill:#7F8C8D,color:#fff
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Pro</th>
+<th>Contra</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Each system is independently deployable and testable</td>
+<td>Cross-system features require coordination between teams</td>
+</tr>
+<tr>
+<td>Teams have full ownership including UI and data</td>
+<td>UI consistency across systems requires extra effort</td>
+</tr>
+<tr>
+<td>Less operational complexity than microservices</td>
+<td>Coarser granularity may still lead to some coupling</td>
+</tr>
+<tr>
+<td>Failures are isolated to one system</td>
+<td>Shared data between systems must be handled via APIs</td>
+</tr>
+</tbody>
+</table>
+<h2 id="architecture-principles">Architecture Principles</h2>
+<ul>
+<li>not concrete decisions or solutions</li>
+<li>Shared understanding</li>
+<li>Shared mindeset</li>
+<li>Can be applied to problems</li>
+<li>long living</li>
+</ul>
+<p>Types of principles:</p>
+<ul>
+<li>Defining a goal</li>
+<li>showing a preference</li>
+<li>avoid a technical problem</li>
+<li>Support a work style</li>
+<li>Remind useful observations</li>
+</ul>
+<p>Criteria for good principles:</p>
+<ul>
+<li><strong>Understandable</strong> — every team member can grasp the principle without specialist knowledge</li>
+<li><strong>Constructive</strong> — the principle gives direction and helps make decisions, not just prohibit them</li>
+<li><strong>Justifiable</strong> — there is a clear reason why the principle exists; the motivation is transparent</li>
+<li><strong>Applicable</strong> — the principle can be applied to concrete design decisions</li>
+<li><strong>Verifiable</strong> — it is possible to check whether a decision follows the principle or violates it</li>
+<li><strong>Non-trivial</strong> — the principle captures something that would not be obvious without stating it</li>
+<li><strong>Consistent</strong> — the principle does not contradict other principles in the set</li>
+<li><strong>Long-lived</strong> — the principle remains valid across multiple projects or system generations</li>
+</ul>
+</article>
+</div>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+<script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+<script type="module">import mermaid from "https://unpkg.com/mermaid@10.4.0/dist/mermaid.esm.min.mjs";
+window.mermaidConfig = {default: {
+    startOnLoad: false
+}};</script></body>
+</html>

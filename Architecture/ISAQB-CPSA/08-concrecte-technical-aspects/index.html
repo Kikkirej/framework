@@ -1,0 +1,1123 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="Fabian Lemke" name="author"/>
+<link href="https://kikkirej.github.io/framework/Architecture/ISAQB-CPSA/08-concrecte-technical-aspects/" rel="canonical"/>
+<link href="../07-cross-cutting-concerns/" rel="prev"/>
+<link href="../09-architecture-documentation/" rel="next"/>
+<link href="../../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.7.6" name="generator"/>
+<title>Concrete Technical Aspects - Fabian's Framework</title>
+<link href="../../../assets/stylesheets/main.484c7ddc.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#concrete-technical-aspects">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header md-header--shadow" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="Fabian's Framework" class="md-header__button md-logo" data-md-component="logo" href="../../.." title="Fabian's Framework">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            Fabian's Framework
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Concrete Technical Aspects
+            
+          </span>
+</div>
+</div>
+</div>
+<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="Fabian's Framework" class="md-nav__button md-logo" data-md-component="logo" href="../../.." title="Fabian's Framework">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+    Fabian's Framework
+  </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../..">
+<span class="md-ellipsis">
+    
+  
+    Welcome
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../mermaid-example/">
+<span class="md-ellipsis">
+    
+  
+    Example for Mermaid
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Architecture
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../capability-building/">
+<span class="md-ellipsis">
+    
+  
+    Building EA Capability
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Content Framework
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_2_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_2">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Content Framework
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Content-Framework/">
+<span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_2_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_2_2" id="__nav_3_2_2_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Documents
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_2_2_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_3_2_2">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Documents
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Content-Framework/Documents/arch-contract/">
+<span class="md-ellipsis">
+    
+  
+    Architecture Contract
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Content-Framework/Documents/arch-definition-document/">
+<span class="md-ellipsis">
+    
+  
+    Architecture Definition Document (ADD)
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Content-Framework/Documents/arch-principles/">
+<span class="md-ellipsis">
+    
+  
+    Architecture Principles
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Content-Framework/Documents/arch-repository/">
+<span class="md-ellipsis">
+    
+  
+    Architecture Repository
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Content-Framework/Documents/arch-requirements-specification/">
+<span class="md-ellipsis">
+    
+  
+    Architecture Requirement Specification
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Content-Framework/Documents/arch-vision/">
+<span class="md-ellipsis">
+    
+  
+    Architecture Vision
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Content-Framework/Documents/arch-work-request/">
+<span class="md-ellipsis">
+    
+  
+    Request for Architecture Work
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Content-Framework/Documents/building-block/">
+<span class="md-ellipsis">
+    
+  
+    Building block
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Content-Framework/Documents/change-request/">
+<span class="md-ellipsis">
+    
+  
+    Change Request
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Content-Framework/Documents/compliance-assessment/">
+<span class="md-ellipsis">
+    
+  
+    Compliance Assessment
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Content-Framework/Documents/infrastructure-definition/">
+<span class="md-ellipsis">
+    
+  
+    Infrastructure Definition and Sizing
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Content-Framework/Documents/portfolio-documentation/">
+<span class="md-ellipsis">
+    
+  
+    Portfolio documentation
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Content-Framework/Documents/product-project-documentation/">
+<span class="md-ellipsis">
+    
+  
+    Product / Project Documentation
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_3_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    ISAQB CPSA
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_3_3_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_3">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    ISAQB CPSA
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../">
+<span class="md-ellipsis">
+    
+  
+    Intro
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../01-what-is-architecture/">
+<span class="md-ellipsis">
+    
+  
+    What is architecture?
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../02-correct-procedure/">
+<span class="md-ellipsis">
+    
+  
+    Correct Procedure...
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../03-context-and-influences/">
+<span class="md-ellipsis">
+    
+  
+    Context and Influences
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../04-architecture-development/">
+<span class="md-ellipsis">
+    
+  
+    Architecture Development
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../05-meta-architecture/">
+<span class="md-ellipsis">
+    
+  
+    Meta Architecture
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../06-modularization/">
+<span class="md-ellipsis">
+    
+  
+    Modularization
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../07-cross-cutting-concerns/">
+<span class="md-ellipsis">
+    
+  
+    Cross Cutting Concerns
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    
+  
+    Concrete Technical Aspects
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+<span class="md-ellipsis">
+    
+  
+    Concrete Technical Aspects
+  
+
+    
+  </span>
+</a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#distribution">
+<span class="md-ellipsis">
+      
+        Distribution
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#cap-theorem">
+<span class="md-ellipsis">
+      
+        CAP Theorem
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#eventual-consistency">
+<span class="md-ellipsis">
+      
+        Eventual Consistency
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#distribution-is-expensive">
+<span class="md-ellipsis">
+      
+        Distribution is expensive
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#distribution-pattern">
+<span class="md-ellipsis">
+      
+        Distribution Pattern
+      
+    </span>
+</a>
+<nav aria-label="Distribution Pattern" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#n-tier-architecture">
+<span class="md-ellipsis">
+      
+        n-Tier Architecture
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#communication-between-tiers-broker">
+<span class="md-ellipsis">
+      
+        Communication between Tiers - Broker
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#communication-between-tiers-remote-facade">
+<span class="md-ellipsis">
+      
+        Communication between Tiers - Remote Facade
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#circuit-breaker">
+<span class="md-ellipsis">
+      
+        Circuit Breaker
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#test-harness">
+<span class="md-ellipsis">
+      
+        Test Harness
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#distribution-diagram">
+<span class="md-ellipsis">
+      
+        Distribution Diagram
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../09-architecture-documentation/">
+<span class="md-ellipsis">
+    
+  
+    Architecture Documentation
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../10-architecture-rating/">
+<span class="md-ellipsis">
+    
+  
+    Architecture Rating
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Saas ops
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Saas ops
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../saas-ops/authentication/">
+<span class="md-ellipsis">
+    
+  
+    Authentication/Authorization
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../saas-ops/communication/">
+<span class="md-ellipsis">
+    
+  
+    Client Communication
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#distribution">
+<span class="md-ellipsis">
+      
+        Distribution
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#cap-theorem">
+<span class="md-ellipsis">
+      
+        CAP Theorem
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#eventual-consistency">
+<span class="md-ellipsis">
+      
+        Eventual Consistency
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#distribution-is-expensive">
+<span class="md-ellipsis">
+      
+        Distribution is expensive
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#distribution-pattern">
+<span class="md-ellipsis">
+      
+        Distribution Pattern
+      
+    </span>
+</a>
+<nav aria-label="Distribution Pattern" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#n-tier-architecture">
+<span class="md-ellipsis">
+      
+        n-Tier Architecture
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#communication-between-tiers-broker">
+<span class="md-ellipsis">
+      
+        Communication between Tiers - Broker
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#communication-between-tiers-remote-facade">
+<span class="md-ellipsis">
+      
+        Communication between Tiers - Remote Facade
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#circuit-breaker">
+<span class="md-ellipsis">
+      
+        Circuit Breaker
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#test-harness">
+<span class="md-ellipsis">
+      
+        Test Harness
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#distribution-diagram">
+<span class="md-ellipsis">
+      
+        Distribution Diagram
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="concrete-technical-aspects">Concrete Technical Aspects</h1>
+<h2 id="distribution">Distribution</h2>
+<blockquote>
+<p>In a distributed system, components cooperate over a network. </p>
+</blockquote>
+<p>Reasons for distribution are:</p>
+<ul>
+<li>Interaction between Users</li>
+<li>Connection to old or 3rd party systems</li>
+<li>Shared use of resources</li>
+<li>higher Availability, reliability and fault tolerance (redudancy) </li>
+<li>better performance</li>
+<li>better administration.</li>
+</ul>
+<p>Generally systems should only be distributed when there is a concrete observable reason to. </p>
+<p>Potential assumptions which lead to problems with distributed systems:</p>
+<ul>
+<li>The network is failsafe</li>
+<li>The topology will never change</li>
+<li>The latency is zero</li>
+<li>The bandwith is infinte.</li>
+<li>The network is secure</li>
+<li>There is only one admin</li>
+<li>Data transport is free</li>
+<li>The network is homogen</li>
+</ul>
+<h2 id="cap-theorem">CAP Theorem</h2>
+<p>Only two at maximum can exist at the same time. </p>
+<table>
+<thead>
+<tr>
+<th>Letter</th>
+<th>Term</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C</td>
+<td>Consistency</td>
+</tr>
+<tr>
+<td>A</td>
+<td>Availability</td>
+</tr>
+<tr>
+<td>P</td>
+<td>Partition Tolerance</td>
+</tr>
+</tbody>
+</table>
+<pre class="mermaid"><code>graph TD
+    C((C\nConsistency))
+    A((A\nAvailability))
+    P((P\nPartition Tolerance))
+    C --- A
+    A --- P
+    P --- C
+</code></pre>
+<h2 id="eventual-consistency">Eventual Consistency</h2>
+<ul>
+<li><em>Causal consistency</em> - a process sees all dependencies </li>
+<li><em>Read-your-writes consistency</em> - A process sees its own updates</li>
+<li><em>Session Consistency</em> - Read-your writes in context of  a session</li>
+<li><em>Monotonic read consistency</em> - When a process saw an update, it cannot see older values</li>
+<li><em>Monotonic write consistency</em> - writes are done in the correct order.</li>
+</ul>
+<h2 id="distribution-is-expensive">Distribution is expensive</h2>
+<ul>
+<li>minimize the distribution boundaries in a system</li>
+<li>define bigger interfaces to avoid lots of small calls</li>
+<li>Only distribute independent and complete system parts</li>
+</ul>
+<h2 id="distribution-pattern">Distribution Pattern</h2>
+<h3 id="n-tier-architecture">n-Tier Architecture</h3>
+<p>The system is divided into horizontal tiers (e.g. Presentation, Business Logic, Data), each deployed separately and communicating only with adjacent tiers over the network. Strict layer boundaries enforce separation of concerns across process boundaries.</p>
+<pre class="mermaid"><code>graph TD
+    Client[Client / Browser] --&gt;|HTTP| P[Presentation Tier]
+    P --&gt;|RPC / REST| B[Business Logic Tier]
+    B --&gt;|SQL / ORM| D[Data Tier]
+    D --&gt; DB[(Database)]
+
+    style Client fill:#7F8C8D,color:#fff
+    style P fill:#4A90D9,color:#fff
+    style B fill:#5BA85A,color:#fff
+    style D fill:#E8A838,color:#fff
+    style DB fill:#7F8C8D,color:#fff
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Pro</th>
+<th>Contra</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Clear separation of concerns per tier</td>
+<td>Network latency between every tier</td>
+</tr>
+<tr>
+<td>Each tier can be scaled independently</td>
+<td>Rigid structure makes cross-tier changes expensive</td>
+</tr>
+<tr>
+<td>Standard, well-understood pattern</td>
+<td>Chattiness between tiers can become a bottleneck</td>
+</tr>
+</tbody>
+</table>
+<h3 id="communication-between-tiers-broker">Communication between Tiers - Broker</h3>
+<p>A central broker mediates all communication between components. Senders and receivers are decoupled — they only know the broker, not each other. The broker routes, transforms, or queues messages.</p>
+<pre class="mermaid"><code>graph TD
+    C1[Component A] --&gt;|publish| BR[Broker]
+    C2[Component B] --&gt;|publish| BR
+    BR --&gt;|route| C3[Component C]
+    BR --&gt;|route| C4[Component D]
+
+    style BR fill:#8E44AD,color:#fff
+    style C1 fill:#2980B9,color:#fff
+    style C2 fill:#2980B9,color:#fff
+    style C3 fill:#27AE60,color:#fff
+    style C4 fill:#27AE60,color:#fff
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Pro</th>
+<th>Contra</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Senders and receivers are fully decoupled</td>
+<td>Broker is a single point of failure</td>
+</tr>
+<tr>
+<td>Easy to add new consumers without changing producers</td>
+<td>Adds latency and operational complexity</td>
+</tr>
+<tr>
+<td>Supports async communication and load leveling</td>
+<td>Debugging message flows is harder than direct calls</td>
+</tr>
+</tbody>
+</table>
+<h3 id="communication-between-tiers-remote-facade">Communication between Tiers - Remote Facade</h3>
+<p>A coarse-grained facade is placed at the boundary between tiers. It bundles multiple fine-grained operations into fewer, larger remote calls to reduce network round-trips and hide internal complexity from callers.</p>
+<pre class="mermaid"><code>graph LR
+    Client[Client Tier] --&gt;|few coarse calls| RF[Remote Facade]
+    RF --&gt;|many fine-grained calls| S1[Service A]
+    RF --&gt; S2[Service B]
+    RF --&gt; S3[Service C]
+
+    style Client fill:#7F8C8D,color:#fff
+    style RF fill:#C0392B,color:#fff
+    style S1 fill:#2980B9,color:#fff
+    style S2 fill:#2980B9,color:#fff
+    style S3 fill:#2980B9,color:#fff
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Pro</th>
+<th>Contra</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Reduces number of remote calls and network overhead</td>
+<td>Facade can become a large, complex catch-all</td>
+</tr>
+<tr>
+<td>Hides internal structure from remote clients</td>
+<td>Changes to internal services may force facade updates</td>
+</tr>
+<tr>
+<td>Simplifies the client-side interface</td>
+<td>Can reduce flexibility for clients needing fine-grained control</td>
+</tr>
+</tbody>
+</table>
+<h3 id="circuit-breaker">Circuit Breaker</h3>
+<p>Wraps remote calls with a state machine that monitors failures. After a threshold is exceeded the circuit "opens" and calls fail fast without hitting the remote system, allowing it time to recover. After a timeout the circuit moves to "half-open" to probe for recovery.</p>
+<pre class="mermaid"><code>stateDiagram-v2
+    [*] --&gt; Closed
+    Closed --&gt; Open : failure threshold exceeded
+    Open --&gt; HalfOpen : timeout elapsed
+    HalfOpen --&gt; Closed : probe call succeeds
+    HalfOpen --&gt; Open : probe call fails
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Pro</th>
+<th>Contra</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Prevents cascading failures across services</td>
+<td>Threshold and timeout values must be tuned carefully</td>
+</tr>
+<tr>
+<td>Fails fast instead of waiting for timeouts</td>
+<td>Adds complexity to the call path</td>
+</tr>
+<tr>
+<td>Gives the failing service time to recover</td>
+<td>Half-open state requires fallback or retry logic on the caller</td>
+</tr>
+</tbody>
+</table>
+<h3 id="test-harness">Test Harness</h3>
+<p>A controllable replacement for a real remote system used during testing. The harness simulates the interface of the production dependency (including errors, delays, and edge cases) without involving the actual system.</p>
+<pre class="mermaid"><code>graph LR
+    SUT[System under Test] --&gt;|calls| TH[Test Harness]
+    TH --&gt;|simulates| R[Real Remote System]
+    TC[Test Case] --&gt;|controls| TH
+
+    style SUT fill:#2980B9,color:#fff
+    style TH fill:#C0392B,color:#fff
+    style R fill:#7F8C8D,color:#fff
+    style TC fill:#27AE60,color:#fff
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Pro</th>
+<th>Contra</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tests run without a real network dependency</td>
+<td>Harness must accurately reflect real system behavior</td>
+</tr>
+<tr>
+<td>Can simulate errors, timeouts, and edge cases on demand</td>
+<td>Drift between harness and real system can hide bugs</td>
+</tr>
+<tr>
+<td>Enables fast, deterministic, repeatable tests</td>
+<td>Additional code to write and maintain</td>
+</tr>
+</tbody>
+</table>
+<h2 id="distribution-diagram">Distribution Diagram</h2>
+<p>Different aspects need to be visualized/documented</p>
+<ul>
+<li>How many processes?</li>
+<li>Which artifacts?</li>
+<li>Which platform (Proxy, Cache, Monitoring...)</li>
+</ul>
+<p>The building blocks can be nicely visualized with a UML Deployment diagram.</p>
+</article>
+</div>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+<script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+<script type="module">import mermaid from "https://unpkg.com/mermaid@10.4.0/dist/mermaid.esm.min.mjs";
+window.mermaidConfig = {default: {
+    startOnLoad: false
+}};</script></body>
+</html>

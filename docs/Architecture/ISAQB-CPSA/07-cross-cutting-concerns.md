@@ -41,11 +41,11 @@ This can be merged with an Aspect Weaver.
 There are also some frameworks for different programming languages
 
 * Java
-** AspectJ
+    * AspectJ
 * .NET
-** PostSharp
-** Aspect#
+    * PostSharp
+    * Aspect#
 * C++
-** AspectC++
+    * AspectC++
 * Spring
-** Spring AOP
+    * Spring AOP

@@ -25,7 +25,7 @@ graph TD
     camunda7["Camunda 7<br/>(2013, EOL 2025)"]
     camunda8["Camunda 8<br/>(Zeebe)"]
     operaton["Operaton<br/>(2024)"]
-    cibseven["CIB seven<br/>(2025)"]
+    cibseven["CIB seven<br/>(2024)"]
     eximee["EximeeBPMS<br/>(2025)"]
 
     jbpmOld -. "founders left JBoss,<br/>built new engine" .-> activiti5
@@ -49,7 +49,7 @@ graph TD
 
 ### Camunda 7
 
-The classic embeddable Java BPMN/DMN engine that dominated the open source BPM space for a decade. The community edition reached **end of life in October 2025** (enterprise customers get extended security patches until 2030). Its lineage lives on in several forks — [Operaton](https://operaton.org) (community-driven), [CIB seven](https://cibseven.org/en/) (vendor-backed) and [EximeeBPMS](https://eximeebpms.org/) — and historically in Flowable and Activiti, which share the same ancestry.
+The classic embeddable Java BPMN/DMN engine that dominated the open source BPM space for a decade. The community edition reached **end of life in October 2025** (final release 7.24; enterprise customers get support until April 2030, with a paid extended-support option until April 2032). Its lineage lives on in several forks — [Operaton](https://operaton.org) (community-driven), [CIB seven](https://cibseven.org/en/) (vendor-backed) and [EximeeBPMS](https://eximeebpms.org/) — and historically in Flowable and Activiti, which share the same ancestry.
 
 * Website: <https://camunda.com/platform-7/>
 * Documentation: <https://docs.camunda.org>
@@ -57,7 +57,7 @@ The classic embeddable Java BPMN/DMN engine that dominated the open source BPM s
 
 ### Camunda 8
 
-Cloud-native process orchestration platform built around the Zeebe engine. A complete re-architecture compared to Camunda 7, designed for horizontal scaling and SaaS-first operation. Since version 8.6 the source code is no longer under an OSI-approved open source license, but under the source-available *Camunda License 1.0* (free for non-production use).
+Cloud-native process orchestration platform built around the Zeebe engine. A complete re-architecture compared to Camunda 7, designed for horizontal scaling and SaaS-first operation. Camunda 8 was never fully open source in the OSI sense (Zeebe had been under the source-available Zeebe Community License, the web apps proprietary); since version 8.6 all core components are unified under the source-available *Camunda License 1.0*, and — the practical change — production use of Self-Managed now requires a commercial license (free for development/non-production use).
 
 * Website: <https://camunda.com>
 * Documentation: <https://docs.camunda.io>
@@ -95,7 +95,7 @@ The current generation of jBPM, released as part of the unified [Apache KIE (inc
 The cloud-native successor of jBPM 7/Drools, also part of Apache KIE (incubating) — and since the KIE 10 unification, the runtime underneath jBPM 10. Follows a "workflow to code" approach: BPMN/DMN models are compiled into Quarkus or Spring Boot applications at build time — the process definition becomes part of the deployable artifact rather than being deployed into a central engine.
 
 * Website: <https://kogito.kie.org>
-* Apache KIE: <https://kie.apache.org/docs/components/kogito/>
+* Apache KIE: <https://kie.apache.org/components/kogito/>
 * Source: <https://github.com/apache/incubator-kie-kogito-runtimes>
 
 ### IBM BAMOE
@@ -169,7 +169,7 @@ One of the original open source BPMN 2.0 engines (and the common ancestor of Cam
 | Tool | Rating | Rationale |
 |---|:---:|---|
 | Camunda 7 | 2 | Extremely flexible: embeddable library, Spring Boot starter, or standalone server — runs anywhere Java runs, with a single relational database as the only dependency. Runs fine in Kubernetes as a stateless app, but scaling is limited by the shared-database architecture (no cloud-native partitioning). |
-| Camunda 8 | 2 | Kubernetes-first: official Helm charts, designed for horizontal scaling. However, self-managed setups require several components (Zeebe, Operate, Tasklist, Elasticsearch/OpenSearch), which makes small Linux/Windows installations heavy. `Camunda 8 Run` eases local development, but a lightweight single-server production deployment is not the target architecture. |
+| Camunda 8 | 2 | Kubernetes-first: official Helm charts, designed for horizontal scaling. Since 8.8, Zeebe, Operate, Tasklist and Identity ship as a single "Orchestration Cluster" artifact, which simplifies deployment considerably — but Elasticsearch/OpenSearch remains a required dependency, keeping small Linux/Windows installations heavy. `Camunda 8 Run` eases local development, but a lightweight single-server production deployment is not the target architecture. |
 | jBPM 7 | 2 | Pure Java — runs on Windows and Linux (embedded, Spring Boot, or WildFly/KIE Server). Kubernetes deployment works as containerized Java apps, but the architecture (Business Central, KIE Server) predates cloud-native design; no first-class operator/scaling story. |
 | jBPM 10 | 3 | Processes compile into plain Quarkus/Spring Boot services (optionally GraalVM native images) — container- and Kubernetes-native by design, with operators and add-ons for the cloud. Being ordinary Java applications, they run equally well on Windows and Linux. No heavyweight server components (Business Central/KIE Server were dropped). |
 | Kogito | 3 | Identical to jBPM 10 — same Kogito runtime: cloud-native Quarkus/Spring Boot services, unproblematic on Windows and Linux. |
@@ -266,21 +266,21 @@ One of the original open source BPMN 2.0 engines (and the common ancestor of Cam
 
 | Tool | Rating | Rationale |
 |---|:---:|---|
-| Camunda 7 | 2 | Built-in DMN engine: decision tables and literal expressions work fluently, but only a subset of the DMN standard is implemented (no full FEEL, no boxed expressions / conformance level 3). |
+| Camunda 7 | 2 | Built-in DMN engine with full FEEL 1.2 support (the FEEL Scala engine is the default since 7.13): decision tables, literal expressions and DRDs work fluently, but only a subset of the DMN standard is implemented (no boxed expressions / conformance level 3). |
 | Camunda 8 | 3 | Full DMN decision tables and DRDs with a first-class FEEL engine, integrated modeling and evaluation tracing in Operate. |
 | jBPM 7 | 3 | Includes the Drools DMN engine — among the highest DMN conformance levels available (full FEEL, boxed expressions, DRDs). |
 | jBPM 10 | 3 | Ships the Drools DMN engine — among the highest DMN conformance levels available (full FEEL, boxed expressions, DRDs); decisions can also be deployed as standalone decision services. |
 | Kogito | 3 | Uses the same Drools DMN engine with full conformance; decisions can even be deployed as standalone decision services. |
-| Operaton | 2 | Inherits Camunda 7's DMN engine: decision tables and literal expressions work fluently, but it implements only a subset of the DMN standard (no full FEEL, no boxed expressions / conformance level 3). |
+| Operaton | 2 | Inherits Camunda 7's DMN engine incl. the full-FEEL Scala engine: decision tables, literal expressions and DRDs work fluently, but it implements only a subset of the DMN standard (no boxed expressions / conformance level 3). |
 | CIB seven | 2 | Same inherited Camunda 7 DMN engine: fluent decision tables, subset of the standard. |
-| Flowable | 2 | Own open source DMN engine supporting decision tables and decision services — practical and integrated, but like the Camunda 7 lineage it covers only part of the DMN standard (no full FEEL conformance). |
+| Flowable | 2 | Own open source DMN engine supporting decision tables and decision services — practical and integrated, but it covers only part of the DMN standard (expressions are JUEL-based, no FEEL conformance). |
 | Activiti | 0 | The open source Activiti engine has no DMN support — DMN is only available in the commercial Alfresco Process Services product (the Flowable fork added its own DMN engine, the Activiti community did not). |
 
 ### Commercial Support Option
 
 | Tool | Rating | Rationale |
 |---|:---:|---|
-| Camunda 7 | 2 | Camunda still sells enterprise extended support (security patches until 2030), and forks like CIB seven offer commercial continuity — but all offerings are maintenance-oriented; nobody sells a feature future for Camunda 7. |
+| Camunda 7 | 2 | Camunda still sells enterprise support (until April 2030, paid extension to April 2032 available), and forks like CIB seven offer commercial continuity — but all offerings are maintenance-oriented; nobody sells a feature future for Camunda 7. |
 | Camunda 8 | 3 | Strong single-vendor commercial offering: SaaS and self-managed enterprise subscriptions, professional services, partner network and predictable SLAs — commercial support is the business model. |
 | jBPM 7 | 2 | Commercial support exists via IBM BAMOE (successor of Red Hat Process Automation Manager), but jBPM 7 is the legacy line — support pushes you toward the newer BAMOE/KIE stack. |
 | jBPM 10 | 2 | [IBM BAMOE](https://kie.apache.org/docs/community/commercial-support/) (successor of Red Hat Process Automation Manager/Decision Manager) provides developer and production support for this stack — solid, but only for the IBM-curated subset of components and versions, and a smaller vendor commitment than Camunda's single-product focus. |
@@ -294,7 +294,7 @@ One of the original open source BPMN 2.0 engines (and the common ancestor of Cam
 
 | Tool | Rating | Rationale |
 |---|:---:|---|
-| Camunda 7 | 0 | End of life: the community edition receives no updates at all, enterprise customers get security patches only until 2030, and the vendor's answer is a migration to the architecturally different Camunda 8. A future exists only via the forks. |
+| Camunda 7 | 0 | End of life: the community edition receives no updates at all, enterprise support runs only until April 2030 (paid extension to 2032), and the vendor's answer is a migration to the architecturally different Camunda 8. A future exists only via the forks. |
 | Camunda 8 | 2 | Well-funded vendor, aggressive roadmap and predictable release train — the product will certainly evolve. Deduction: the unilateral license change in 8.6 and the Camunda 7 EOL demonstrate that strategy shifts are borne by users; no community fallback exists for Camunda 8. |
 | jBPM 7 | 1 | Effectively end-of-line: community focus moved to the Kogito-based Apache KIE 10 stack, and the Red Hat product line was transitioned to IBM BAMOE. Expect maintenance only, no feature future. |
 | jBPM 10 | 2 | This is the actively developed main line of Apache KIE (regular 10.x releases, IBM BAMOE product backing, ASF governance). Deduction: the project is still ASF *incubating*, has been through turbulent Red Hat→IBM/Apache transitions, and the hard 7→10 break shows that major migrations can be forced on users. |

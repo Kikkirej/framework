@@ -20,6 +20,7 @@ plugins:
   - mermaid2 
 site_author: Fabian Lemke
 markdown_extensions:
+  - admonition
   - pymdownx.superfences:
         # make exceptions to highlighting of code:
       custom_fences:

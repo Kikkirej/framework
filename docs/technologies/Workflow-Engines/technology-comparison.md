@@ -2,9 +2,10 @@
 
 Comparison of BPMN-based workflow engines, assessed as of **July 2026**.
 
-**Rating scale:** 0 = not supported · 1 = basic/partial support · 2 = good support with gaps · 3 = completely and fluently supported
+!!! tip "TL;DR"
+    For new projects it boils down to three realistic options — **Camunda 8** (cloud-scale orchestration, strongest overall product), **CIB seven** (embeddable Camunda-7-class engine with vendor support) or **jBPM 10** (deep rules/DMN integration, truly FOSS). Details in the [conclusion](#conclusion).
 
-> **No total score is given deliberately.** The categories are not equally important — weight them according to the concrete use case (e.g. for client-specific product installations, configurability, migration of running processes, testability and OIDC support usually matter far more than raw scalability).
+**Rating scale:** 0 = not supported · 1 = basic/partial support · 2 = good support with gaps · 3 = completely and fluently supported
 
 ## Engine Lineage
 

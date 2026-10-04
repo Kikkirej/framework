@@ -4,7 +4,7 @@
     This chapter is a planning document. It proposes processes, it does not yet describe an established practice.
 
 !!! info "Made with Claude"
-    This chapter was drafted with the help of Claude (AI assistant by Anthropic) and then reviewed and decided on by the author. Sources were checked as far as stated in the verification note below; verify citations before relying on them.
+    This chapter was drafted with the help of Claude (AI assistant by Anthropic) and then reviewed and decided on by the author. Sources were checked as far as stated in the [source list](#sources); verify citations before relying on them.
 
 ## Goal
 
@@ -90,11 +90,17 @@ The set of categories is **open-ended and configured per use case**. There is no
 | Superior approval | Status of the approval by the superior organisation, and for legal/security checks who performed them, the scope and the date (see [Embedding](#embedding-in-the-technology-approval-process-of-the-superior-organisation)) |
 | Replaceability | How deeply is it embedded (library vs. data model vs. platform)? |
 
+### Catalog
+
+The inventory records and the confirmed ratings together form the technology catalog (in TOGAF® terms the Technology Portfolio and Technology Standards catalogs, see above). The catalog is stored **in the tool the organisation already uses** (for example Confluence, Git or SharePoint). The process is tool-agnostic and does not require a new tool. For the options and their trade-offs see [Architecture Repository](Content-Framework/Documents/arch-repository.md).
+
 ### Rating scale
 
-Ratings are **binding for all products**. The scale, with a precise definition so that ratings stay comparable:
+A rating is a **decision aid, not a decision**. The technology steward proposes a rating based on the assessment, and it helps the architecture board to decide. The **final decision is always made by the board**. Once the board has confirmed a rating, it is **binding for all products**: the consequences in the table below apply, and deviations are only possible through the exception process, which the board decides as well.
 
-| Rating | Meaning | New products | Existing products |
+The scale, with a precise definition so that ratings stay comparable:
+
+| Rating (proposal, then confirmed by the board) | Meaning | New products | Existing products |
 |---|---|---|---|
 | **Preferred** | Default choice. Passes generic requirements, supported, skills available, fits principles | Use by default | Keep |
 | **Acceptable** | Good in a defined context, but not the default (conditions below) | Allowed only if a documented condition holds | Keep |
@@ -282,12 +288,14 @@ No up-front cycle. Technology choices are checked **when a project or product ne
 ```mermaid
 flowchart LR
     A[Project needs a technology] --> B{In Technology<br/>Standards Catalog?}
-    B -->|Preferred| C[Use it]
+    B -->|Preferred, confirmed by board| C[Use it]
     B -->|Not listed / not Preferred| D[Lightweight assessment<br/>in project Phase D]
-    D --> E[Board / steward decision]
+    D --> E[Board decision<br/>delegation to steward possible]
     E --> F[Update catalog]
     E --> G[Exception or new standard]
 ```
+
+In the fast lane "Preferred, use it" is not a decision of the rating itself. It applies because the board has already confirmed that rating and thereby decided the standard case in advance. Everything else needs a board decision.
 
 **Roles:** only a few roles are needed. The fast lane skips DEL, PRO and LEG unless the request touches them.
 
@@ -527,6 +535,51 @@ Interface RACI (only the activities that cross the boundary):
 
 If architecture capacity is very small, use Flow A plus Flow D and add horizon scanning only when a Legacy/Discouraged rating needs a successor.
 
+## Roles at the interface
+
+| Abbr. | External role | Task |
+|---|---|---|
+| **SUP-AB** | Superior approval body (global architecture board or equivalent) | Approves technologies organisation-wide, defines or grants delegations |
+| **SUP-LEG** | Superior legal / compliance | Performs or delegates legal checks, defines criteria |
+| **SUP-SEC** | Superior security | Performs or delegates security checks, defines criteria |
+
+Interface RACI (only the activities that cross the boundary):
+
+| Activity | OWN | TS | AB | LEG | SEC | SUP-AB | SUP-LEG | SUP-SEC |
+|---|---|---|---|---|---|---|---|---|
+| Agree the embedding variant and delegation | R | C | A | C | C | A/R* | C | C |
+| Request superior approval for a technology | R | A | I | C | C | I | | |
+| Decide superior approval | | I | I | | | A/R | C | C |
+| Perform delegated legal check | I | C | I | A/R | | I | C | |
+| Perform delegated security check | I | C | I | | A/R | I | | C |
+| Report on delegated checks | R | C | A | R | R | I | I | I |
+| Revoke or narrow a delegation | | | C | | | A/R | C | C |
+
+\* The delegation is agreed between both boards. The superior body is accountable for granting it, the local board for accepting and complying with it.
+
+## Comparison of flows
+
+| Criterion | A: Category cycle | B: + Horizon scan | C: All at once | D: Demand-led | E: Hybrid |
+|---|---|---|---|---|---|
+| Time to first result | Medium | Medium to long | Long | Short | Short |
+| Depth of assessment | High | High | Low to medium | Varies | High where it matters |
+| Considers technologies not yet in use | No | Yes | Rarely | Only ad hoc | Yes |
+| Scope-creep risk | Low | Medium (guarded) | High | Low | Medium |
+| Effort on product teams | Medium | Medium | High (burst) | Low | Medium, spread out |
+| Cleans up existing sprawl | Yes, step by step | Yes | Yes, via roadmap | No | Yes |
+| Cross-category view | Weak | Weak | Strong | None | Medium (baseline) |
+| Governance complexity | Low | Medium | Medium | Low | Higher |
+| Fits small architecture team | Yes | Partly | No | Yes | Partly |
+
+## Recommendation
+
+1. Start with **Flow E**, but keep the baseline shallow (inventory and obvious risks only).
+2. Run the first deep dive as **Flow B** on one category with high pain and few candidates, as a pilot, to calibrate effort, criteria and the rating scale.
+3. Run **Flow D** from the start for new projects, fed by the first catalog version.
+4. Review the process itself after two cycles.
+
+If architecture capacity is very small, use Flow A plus Flow D and add horizon scanning only when a Legacy/Discouraged rating needs a successor.
+
 ## Decisions taken
 
 Decided:
@@ -612,7 +665,7 @@ R = responsible (does the work), A = accountable (one per row, owns the result),
 
 Notes:
 
-* The board stays small. Decisions in the fast lane may be **delegated** to the steward for low-impact cases (for example a library inside a Preferred framework). The delegation rule is set by the board.
+* The board stays small. Decisions in the fast lane may be **delegated** by the board to the steward for low-impact cases (for example a library inside a Preferred framework). The delegation rule is set by the board, the decision remains a board decision taken on its behalf and is recorded as such.
 * PM is accountable for migrations and exceptions because they own the product's priorities and budget. Delivering the change is DEV and DEL.
 
 ## Sources

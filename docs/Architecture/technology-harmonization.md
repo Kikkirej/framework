@@ -124,7 +124,7 @@ In addition, these **states** are not ratings but are recorded in the catalog:
 
 | State | Meaning | New usage | Existing usage |
 |---|---|---|---|
-| **Under evaluation** | Not yet assessed, or assessment or superior approval pending | Request assessment first (fast lane, Flow D) | Keep, schedule assessment |
+| **Under evaluation** | Not yet assessed, or assessment or superior approval pending | Request assessment first (fast lane, Flow D); not allowed while superior approval is pending | Keep, schedule assessment (and submit to superior approval if not yet approved) |
 | **Rejected** | Assessed and not adopted (candidate, or failed generic requirements before any use) | Not allowed; a new request needs new facts | not applicable |
 | **Retired** | Last usage removed from all products | Not allowed | not applicable |
 
@@ -380,7 +380,7 @@ flowchart TD
 
 Priorities for the deep dives can be driven by a simple score: **number of products affected × risk × cost**. Start where the pain is largest, not where the category list begins.
 
-**Initial catalog.** After the baseline almost everything is *Under evaluation*, so the fast lane would send every request to an assessment. To avoid this, the board confirms the baseline result in **one batch decision**: obvious *High risk* and *Legacy* marks are confirmed, and technologies that are in use without findings stay *Under evaluation* with existing usage allowed. Repeated fast-lane requests in a category raise its priority for a deep dive.
+**Initial catalog.** After the baseline almost everything is *Under evaluation*, so the fast lane would send every request to an assessment. To avoid this, the board confirms the baseline result in **one batch decision**: obvious *High risk* and *Legacy* marks are confirmed, and technologies that are in use without findings stay *Under evaluation* with existing usage allowed. Technologies found in the baseline without superior approval are submitted to it; a *Legacy* mark is only confirmed once the superior organisation has approved it. Repeated fast-lane requests in a category raise its priority for a deep dive.
 
 **Roles per mechanism:**
 
@@ -498,12 +498,11 @@ TOGAF® describes architecture boards that operate at several levels, local (dom
 | Scope | Whole organisation | The product landscape |
 | Owner | Superior architecture, legal, security | Local architecture board |
 
-**Rule:** a technology can only be rated *Preferred* or *Acceptable* if the superior approval is *approved*. Conditions of the superior approval are taken over into the local rating. A local rating or exception never overrides a rejection by the superior organisation. A technology that is *not approved* is:
+**Rule:** every technology that is not yet approved by the superior organisation **must be submitted to the superior approval**, including technologies that are already in use. There is no local shortcut. A technology can only be rated *Preferred*, *Acceptable*, *Legacy* or *Discouraged* if the superior approval is *approved* (an approval may be limited, for example to existing use only, which fits *Legacy*). Conditions of the superior approval are taken over into the local rating. A local rating or exception never overrides a rejection by the superior organisation. A technology that is *not approved* is:
 
-* *Under evaluation* while the superior approval is pending,
+* *Under evaluation* while the superior approval is pending (existing usage continues, new usage is not allowed),
 * *High risk* (risk type compliance) if it is in use and was rejected, with an exit plan,
-* *Legacy* only if the superior organisation explicitly tolerates the existing use (grandfathering),
-* *Rejected* if it is not in use.
+* *Rejected* if it is not in use and was rejected.
 
 ### Embedding variants
 
@@ -530,7 +529,7 @@ flowchart TD
     E --> H
     F --> I{Approved?}
     I -->|Yes| H
-    I -->|No| J[Rating limited to<br/>High risk / Legacy if tolerated / Rejected<br/><i>AB</i>]
+    I -->|No| J[Rating limited to<br/>High risk if in use / Rejected<br/><i>AB</i>]
     H --> G
     G --> K[Board decision<br/><i>AB</i>]
     J --> K

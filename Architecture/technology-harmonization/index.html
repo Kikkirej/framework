@@ -1,0 +1,2842 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="Fabian Lemke" name="author"/>
+<link href="https://kikkirej.github.io/framework/Architecture/technology-harmonization/" rel="canonical"/>
+<link href="../capability-building/" rel="prev"/>
+<link href="../Content-Framework/" rel="next"/>
+<link href="../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.7.7" name="generator"/>
+<title>Technology Harmonization across Products - Fabian's Framework</title>
+<link href="../../assets/stylesheets/main.ec1eaa64.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#technology-harmonization-across-products">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header md-header--shadow" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="Fabian's Framework" class="md-header__button md-logo" data-md-component="logo" href="../.." title="Fabian's Framework">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            Fabian's Framework
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Technology Harmonization across Products
+            
+          </span>
+</div>
+</div>
+</div>
+<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="Fabian's Framework" class="md-nav__button md-logo" data-md-component="logo" href="../.." title="Fabian's Framework">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+    Fabian's Framework
+  </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../..">
+<span class="md-ellipsis">
+    
+  
+    Welcome
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../mermaid-example/">
+<span class="md-ellipsis">
+    
+  
+    Example for Mermaid
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Architecture
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../capability-building/">
+<span class="md-ellipsis">
+    
+  
+    Building EA Capability
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    
+  
+    Technology Harmonization across Products
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+<span class="md-ellipsis">
+    
+  
+    Technology Harmonization across Products
+  
+
+    
+  </span>
+</a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#goal">
+<span class="md-ellipsis">
+      
+        Goal
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#standards-this-builds-on">
+<span class="md-ellipsis">
+      
+        Standards this builds on
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#building-blocks-shared-by-all-flows">
+<span class="md-ellipsis">
+      
+        Building blocks shared by all flows
+      
+    </span>
+</a>
+<nav aria-label="Building blocks shared by all flows" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#generic-requirements-apply-to-every-technology">
+<span class="md-ellipsis">
+      
+        Generic requirements (apply to every technology)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#technology-categories-types">
+<span class="md-ellipsis">
+      
+        Technology categories ("types")
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#what-counts-as-a-technology-granularity">
+<span class="md-ellipsis">
+      
+        What counts as a technology (granularity)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#inventory-record-minimum-data-per-technology-and-product">
+<span class="md-ellipsis">
+      
+        Inventory record (minimum data per technology and product)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#catalog">
+<span class="md-ellipsis">
+      
+        Catalog
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#rating-scale">
+<span class="md-ellipsis">
+      
+        Rating scale
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#rating-criteria-for-the-requirements-and-needs-are-checked-step">
+<span class="md-ellipsis">
+      
+        Rating criteria (for the "requirements and needs are checked" step)
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#flow-a-category-by-category-cycle-inventory-assess-decide">
+<span class="md-ellipsis">
+      
+        Flow A: Category-by-category cycle (inventory → assess → decide)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#flow-b-category-cycle-with-horizon-scanning-existing-candidates">
+<span class="md-ellipsis">
+      
+        Flow B: Category cycle with horizon scanning (existing + candidates)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#flow-c-landscape-wide-assessment-all-technology-at-once">
+<span class="md-ellipsis">
+      
+        Flow C: Landscape-wide assessment ("all technology at once")
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#flow-d-product-driven-demand-led-assessment">
+<span class="md-ellipsis">
+      
+        Flow D: Product-driven (demand-led) assessment
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#flow-e-hybrid-recommended-starting-point">
+<span class="md-ellipsis">
+      
+        Flow E: Hybrid (recommended starting point)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#supporting-flow-review-and-re-rating-lifecycle">
+<span class="md-ellipsis">
+      
+        Supporting flow: Review and re-rating (lifecycle)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#supporting-flow-exception-handling">
+<span class="md-ellipsis">
+      
+        Supporting flow: Exception handling
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#supporting-flow-compliance-check">
+<span class="md-ellipsis">
+      
+        Supporting flow: Compliance check
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#embedding-in-the-technology-approval-process-of-the-superior-organisation">
+<span class="md-ellipsis">
+      
+        Embedding in the technology approval process of the superior organisation
+      
+    </span>
+</a>
+<nav aria-label="Embedding in the technology approval process of the superior organisation" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#embedding-variants">
+<span class="md-ellipsis">
+      
+        Embedding variants
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#delegating-the-legal-and-security-check">
+<span class="md-ellipsis">
+      
+        Delegating the legal and security check
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#roles-at-the-interface">
+<span class="md-ellipsis">
+      
+        Roles at the interface
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#comparison-of-flows">
+<span class="md-ellipsis">
+      
+        Comparison of flows
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#recommendation">
+<span class="md-ellipsis">
+      
+        Recommendation
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#roles">
+<span class="md-ellipsis">
+      
+        Roles
+      
+    </span>
+</a>
+<nav aria-label="Roles" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#contacts-per-role">
+<span class="md-ellipsis">
+      
+        Contacts per role
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#raci-generic">
+<span class="md-ellipsis">
+      
+        RACI (generic)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#sources">
+<span class="md-ellipsis">
+      
+        Sources
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Content Framework
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_3_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_3">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Content Framework
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Content-Framework/">
+<span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_3_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_3_2" id="__nav_3_3_2_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Documents
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_3_2_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_3_3_2">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Documents
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Content-Framework/Documents/arch-contract/">
+<span class="md-ellipsis">
+    
+  
+    Architecture Contract
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Content-Framework/Documents/arch-definition-document/">
+<span class="md-ellipsis">
+    
+  
+    Architecture Definition Document (ADD)
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Content-Framework/Documents/arch-principles/">
+<span class="md-ellipsis">
+    
+  
+    Architecture Principles
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Content-Framework/Documents/arch-repository/">
+<span class="md-ellipsis">
+    
+  
+    Architecture Repository
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Content-Framework/Documents/arch-requirements-specification/">
+<span class="md-ellipsis">
+    
+  
+    Architecture Requirement Specification
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Content-Framework/Documents/arch-vision/">
+<span class="md-ellipsis">
+    
+  
+    Architecture Vision
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Content-Framework/Documents/arch-work-request/">
+<span class="md-ellipsis">
+    
+  
+    Request for Architecture Work
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Content-Framework/Documents/building-block/">
+<span class="md-ellipsis">
+    
+  
+    Building block
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Content-Framework/Documents/change-request/">
+<span class="md-ellipsis">
+    
+  
+    Change Request
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Content-Framework/Documents/compliance-assessment/">
+<span class="md-ellipsis">
+    
+  
+    Compliance Assessment
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Content-Framework/Documents/infrastructure-definition/">
+<span class="md-ellipsis">
+    
+  
+    Infrastructure Definition and Sizing
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Content-Framework/Documents/portfolio-documentation/">
+<span class="md-ellipsis">
+    
+  
+    Portfolio documentation
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Content-Framework/Documents/product-project-documentation/">
+<span class="md-ellipsis">
+    
+  
+    Product / Project Documentation
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    ISAQB CPSA
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_4_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_4">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    ISAQB CPSA
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../ISAQB-CPSA/">
+<span class="md-ellipsis">
+    
+  
+    Intro
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../ISAQB-CPSA/01-what-is-architecture/">
+<span class="md-ellipsis">
+    
+  
+    What is architecture?
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../ISAQB-CPSA/02-correct-procedure/">
+<span class="md-ellipsis">
+    
+  
+    Correct Procedure...
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../ISAQB-CPSA/03-context-and-influences/">
+<span class="md-ellipsis">
+    
+  
+    Context and Influences
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../ISAQB-CPSA/04-architecture-development/">
+<span class="md-ellipsis">
+    
+  
+    Architecture Development
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../ISAQB-CPSA/05-meta-architecture/">
+<span class="md-ellipsis">
+    
+  
+    Meta Architecture
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../ISAQB-CPSA/06-modularization/">
+<span class="md-ellipsis">
+    
+  
+    Modularization
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../ISAQB-CPSA/07-cross-cutting-concerns/">
+<span class="md-ellipsis">
+    
+  
+    Cross Cutting Concerns
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../ISAQB-CPSA/08-concrecte-technical-aspects/">
+<span class="md-ellipsis">
+    
+  
+    Concrete Technical Aspects
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../ISAQB-CPSA/09-architecture-documentation/">
+<span class="md-ellipsis">
+    
+  
+    Architecture Documentation
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../ISAQB-CPSA/10-architecture-rating/">
+<span class="md-ellipsis">
+    
+  
+    Architecture Rating
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Saas ops
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Saas ops
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../saas-ops/authentication/">
+<span class="md-ellipsis">
+    
+  
+    Authentication/Authorization
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../saas-ops/communication/">
+<span class="md-ellipsis">
+    
+  
+    Client Communication
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Technologies
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_5_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_5">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Technologies
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Workflow Engines
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_5_1_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_1">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Workflow Engines
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../technologies/Workflow-Engines/">
+<span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../technologies/Workflow-Engines/technology-comparison/">
+<span class="md-ellipsis">
+    
+  
+    Workflow Engine - Technology comparison
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#goal">
+<span class="md-ellipsis">
+      
+        Goal
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#standards-this-builds-on">
+<span class="md-ellipsis">
+      
+        Standards this builds on
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#building-blocks-shared-by-all-flows">
+<span class="md-ellipsis">
+      
+        Building blocks shared by all flows
+      
+    </span>
+</a>
+<nav aria-label="Building blocks shared by all flows" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#generic-requirements-apply-to-every-technology">
+<span class="md-ellipsis">
+      
+        Generic requirements (apply to every technology)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#technology-categories-types">
+<span class="md-ellipsis">
+      
+        Technology categories ("types")
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#what-counts-as-a-technology-granularity">
+<span class="md-ellipsis">
+      
+        What counts as a technology (granularity)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#inventory-record-minimum-data-per-technology-and-product">
+<span class="md-ellipsis">
+      
+        Inventory record (minimum data per technology and product)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#catalog">
+<span class="md-ellipsis">
+      
+        Catalog
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#rating-scale">
+<span class="md-ellipsis">
+      
+        Rating scale
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#rating-criteria-for-the-requirements-and-needs-are-checked-step">
+<span class="md-ellipsis">
+      
+        Rating criteria (for the "requirements and needs are checked" step)
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#flow-a-category-by-category-cycle-inventory-assess-decide">
+<span class="md-ellipsis">
+      
+        Flow A: Category-by-category cycle (inventory → assess → decide)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#flow-b-category-cycle-with-horizon-scanning-existing-candidates">
+<span class="md-ellipsis">
+      
+        Flow B: Category cycle with horizon scanning (existing + candidates)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#flow-c-landscape-wide-assessment-all-technology-at-once">
+<span class="md-ellipsis">
+      
+        Flow C: Landscape-wide assessment ("all technology at once")
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#flow-d-product-driven-demand-led-assessment">
+<span class="md-ellipsis">
+      
+        Flow D: Product-driven (demand-led) assessment
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#flow-e-hybrid-recommended-starting-point">
+<span class="md-ellipsis">
+      
+        Flow E: Hybrid (recommended starting point)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#supporting-flow-review-and-re-rating-lifecycle">
+<span class="md-ellipsis">
+      
+        Supporting flow: Review and re-rating (lifecycle)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#supporting-flow-exception-handling">
+<span class="md-ellipsis">
+      
+        Supporting flow: Exception handling
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#supporting-flow-compliance-check">
+<span class="md-ellipsis">
+      
+        Supporting flow: Compliance check
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#embedding-in-the-technology-approval-process-of-the-superior-organisation">
+<span class="md-ellipsis">
+      
+        Embedding in the technology approval process of the superior organisation
+      
+    </span>
+</a>
+<nav aria-label="Embedding in the technology approval process of the superior organisation" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#embedding-variants">
+<span class="md-ellipsis">
+      
+        Embedding variants
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#delegating-the-legal-and-security-check">
+<span class="md-ellipsis">
+      
+        Delegating the legal and security check
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#roles-at-the-interface">
+<span class="md-ellipsis">
+      
+        Roles at the interface
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#comparison-of-flows">
+<span class="md-ellipsis">
+      
+        Comparison of flows
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#recommendation">
+<span class="md-ellipsis">
+      
+        Recommendation
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#roles">
+<span class="md-ellipsis">
+      
+        Roles
+      
+    </span>
+</a>
+<nav aria-label="Roles" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#contacts-per-role">
+<span class="md-ellipsis">
+      
+        Contacts per role
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#raci-generic">
+<span class="md-ellipsis">
+      
+        RACI (generic)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#sources">
+<span class="md-ellipsis">
+      
+        Sources
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="technology-harmonization-across-products">Technology Harmonization across Products</h1>
+<div class="admonition info">
+<p class="admonition-title">Made with Claude</p>
+<p>This chapter was drafted with the help of Claude (AI assistant by Anthropic) and then reviewed and decided on by the author. Sources were checked as far as stated in the <a href="#sources">source list</a>; verify citations before relying on them.</p>
+</div>
+<h2 id="goal">Goal</h2>
+<p>Several products grow over time and each team picks its own libraries, frameworks, databases, engines and platforms.
+Some of this diversity is useful, most of it is accidental and costs money: more skills to maintain, more licences, more security patching, and harder staffing across teams.</p>
+<p>The goal is to <strong>harmonize software components over products</strong> in a controlled, transparent way:</p>
+<ul>
+<li>Know which technologies are in use, where, and why.</li>
+<li>Make a deliberate, documented decision per technology.</li>
+<li>Give new projects a clear default ("paved road") without blocking justified exceptions.</li>
+<li>Keep the decisions alive, because technology and licences change.</li>
+</ul>
+<h2 id="standards-this-builds-on">Standards this builds on</h2>
+<p>Nothing here is new. The flows are assembled from established building blocks:</p>
+<table>
+<thead>
+<tr>
+<th>Standard</th>
+<th>What is reused</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TOGAF® 10 ADM Phase D (Technology Architecture)</td>
+<td>Baseline vs. target technology architecture, gap analysis. Technology Architecture outputs include the Technology Standards catalog and the Technology Portfolio catalog</td>
+<td>[1], [2]</td>
+</tr>
+<tr>
+<td>TOGAF® Technology Portfolio catalog</td>
+<td>List of <em>all technology in use</em> (hardware, infrastructure software, application software). Typically the start point of the Technology Architecture phase and the foundation for the other matrices and diagrams. This is the inventory of the flows below</td>
+<td>[2], [5]</td>
+</tr>
+<tr>
+<td>TOGAF® Technology Standards catalog</td>
+<td>Agreed technology standards with versions, lifecycles and refresh cycles. Also used to identify discrepancies across the enterprise. This is where the ratings below are recorded</td>
+<td>[2], [6]</td>
+</tr>
+<tr>
+<td>TOGAF® Architecture Board</td>
+<td>Cross-organisation decision body: basis for decisions on architectures, enforcing compliance, granting dispensations (= exceptions here), recommended four to five and no more than ten permanent members</td>
+<td>[3]</td>
+</tr>
+<tr>
+<td>TOGAF® Architecture Compliance</td>
+<td>Reviewing that projects conform to the agreed architecture and standards</td>
+<td>[4]</td>
+</tr>
+<tr>
+<td>TOGAF® Phase E/F and Phase G/H, Principles, Requirements Management</td>
+<td>Migration planning, governance, change management, criteria for rating</td>
+<td>[1] (names only, content not individually verified)</td>
+</tr>
+<tr>
+<td>Gartner TIME model: Tolerate, Invest, Migrate, Eliminate</td>
+<td>Inspiration only. TIME rates <strong>applications</strong> on <em>business value</em> × <em>technical fit</em>; it is not defined for technologies. The rating scale below is a technology-level analogue, not a mapping</td>
+<td>[7]</td>
+</tr>
+<tr>
+<td>Thoughtworks Technology Radar: Adopt, Trial, Assess, Hold</td>
+<td>Rings for communicating the result. <em>Hold</em> means "don't start anything new with this, no harm in existing projects", which corresponds closely to <em>Legacy</em>/<em>Discouraged</em> below. <em>Assess</em> corresponds to <em>Under evaluation</em>, <em>Adopt</em> to <em>Preferred</em>. <em>Trial</em> has no direct equivalent (closest: a proof of concept, or <em>Acceptable</em> with the <em>Transition</em> condition)</td>
+<td>[8]</td>
+</tr>
+<tr>
+<td>ISO/IEC 25010</td>
+<td>Product quality characteristics as a checklist for the quality criteria (see <a href="../ISAQB-CPSA/10-architecture-rating/">Architecture Rating</a>)</td>
+<td>[9]</td>
+</tr>
+<tr>
+<td>arc42 section 10 (Quality Requirements)</td>
+<td>Format for making quality requirements specific and measurable</td>
+<td>[10]</td>
+</tr>
+<tr>
+<td>SPDX</td>
+<td>Standardised licence identifiers for the <code>Licence</code> field of the inventory</td>
+<td>[11]</td>
+</tr>
+<tr>
+<td>SBOM formats (SPDX, CycloneDX)</td>
+<td>Machine-readable list of the components of a product, used to generate and check the inventory automatically</td>
+<td>[11], [13]</td>
+</tr>
+<tr>
+<td>ITIL 4 (continual improvement, change enablement)</td>
+<td>Idea for the review cycle. Not verified against the publication</td>
+<td>not verified</td>
+</tr>
+</tbody>
+</table>
+<h2 id="building-blocks-shared-by-all-flows">Building blocks shared by all flows</h2>
+<h3 id="generic-requirements-apply-to-every-technology">Generic requirements (apply to every technology)</h3>
+<p>Before any category-specific assessment, every technology must pass the <strong>generic requirements</strong>. They apply to all categories and are defined once by the architecture board, not per cycle. A technology failing a generic requirement cannot be rated <em>Preferred</em> or <em>Acceptable</em>: if it is in use it is rated <em>High risk</em> (with the failed requirement as risk type), a candidate not in use is <em>Rejected</em>.</p>
+<p>Examples of what belongs here (the concrete content is the organisation's decision):</p>
+<ul>
+<li>Permitted and forbidden open source licence families (for example "no strong copyleft in distributed products").</li>
+<li><strong>Deployment constraints</strong>, including on-premise: runs without internet access, no mandatory SaaS dependency, supported on customer-provided platforms.</li>
+<li>Minimum security and support expectations (maintained, security fixes available).</li>
+<li>Compliance obligations that hold for all products.</li>
+</ul>
+<p>Requirements of the superior organisation (see <a href="#embedding-in-the-technology-approval-process-of-the-superior-organisation">Embedding</a>) are inherited here. This chapter's generic requirements may be stricter than the superior ones, never weaker.</p>
+<p>Customer-mandated or on-premise constraints are part of this list, not a separate mechanism. The <em>licence assessment itself</em> (how a licence is analysed and classified) is <strong>not defined in this flow</strong>. The flow only consumes its result as a pass/fail input to the generic requirements.</p>
+<h3 id="technology-categories-types">Technology categories ("types")</h3>
+<p>Technologies are always assessed per <strong>category</strong>, never as one flat list. Comparing a message broker with a UI framework is meaningless.</p>
+<p>The set of categories is <strong>open-ended and configured per use case</strong>. There is no fixed or complete list. Typical examples:</p>
+<ul>
+<li>Databases (relational, document, search, time series)</li>
+<li>Key-value stores and caches</li>
+<li>Runtimes and programming languages</li>
+<li>UI frameworks</li>
+<li>Messaging and integration</li>
+<li>Workflow and process engines (see <a href="../../technologies/Workflow-Engines/">Workflow Engines</a>)</li>
+<li>Identity and access</li>
+<li>Observability</li>
+<li>Build, CI/CD and packaging</li>
+<li>Runtime platforms (containers, orchestration, cloud services)</li>
+</ul>
+<p><strong>Defining a category.</strong> A category is created when someone starts the process for it (a product architect or the board requests it). The definition is short: name, scope (what is in, what is out), and the steward. Overlapping categories are avoided by scope statements; a technology belongs to exactly one category, additional uses are noted in the inventory.</p>
+<p><strong>Order.</strong> The order is not fixed. It follows the priority score from Flow E (products affected × risk × cost) and is decided by the board when planning cycles. A category is also started on demand, for example when a project needs a decision in a category that has no ratings yet.</p>
+<h3 id="what-counts-as-a-technology-granularity">What counts as a technology (granularity)</h3>
+<p>Not every dependency is rated individually. A product easily has hundreds of (transitive) libraries; rating each one would stall the process. Rule of thumb:</p>
+<ul>
+<li><strong>Rated individually:</strong> technologies that shape the architecture or are expensive to replace: runtimes, frameworks, databases, engines, platforms, and libraries that are used directly and are hard to replace (see <em>Replaceability</em> below).</li>
+<li><strong>Covered by the generic requirements only:</strong> all other libraries, including transitive dependencies. They are not rated, but must pass the generic requirements (licence, security, maintenance). This check should be automated, for example with a software bill of materials (SBOM, in SPDX [11] or CycloneDX [13] format) and dependency scanning in the build.</li>
+<li><strong>Versions:</strong> a rating applies to a technology and, where it matters, a <strong>version range</strong> (for example "Java 21+ Preferred, Java 8 to 11 Legacy"). Major versions with different support status or licence are rated separately.</li>
+</ul>
+<p>Where exactly the line lies is decided per category by the board when the category is defined.</p>
+<h3 id="inventory-record-minimum-data-per-technology-and-product">Inventory record (minimum data per technology and product)</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Technology and version</td>
+<td>Name, version, vendor or community</td>
+</tr>
+<tr>
+<td>Category</td>
+<td>One of the configured categories</td>
+</tr>
+<tr>
+<td>Product(s) using it</td>
+<td>Link to the product</td>
+</tr>
+<tr>
+<td>Usage rationale</td>
+<td><em>Why</em> is it used? Which requirement or need does it serve?</td>
+</tr>
+<tr>
+<td>Licence</td>
+<td>SPDX identifier, commercial terms, cost</td>
+</tr>
+<tr>
+<td>Lifecycle</td>
+<td>Release date, end of support, community health</td>
+</tr>
+<tr>
+<td>Technical owner</td>
+<td>Person in the product who answers questions about this usage (usually from DEV). Ownership of the category and its ratings is with the steward (TS)</td>
+</tr>
+<tr>
+<td>Product contacts</td>
+<td>The PM, DEV, DEL and PA contact <strong>per product</strong> that uses the technology (see <a href="#contacts-per-role">Contacts per role</a>)</td>
+</tr>
+<tr>
+<td>Superior approval</td>
+<td>Status of the approval by the superior organisation, and for legal/security checks who performed them, the scope and the date (see <a href="#embedding-in-the-technology-approval-process-of-the-superior-organisation">Embedding</a>)</td>
+</tr>
+<tr>
+<td>Replaceability</td>
+<td>How deeply is it embedded (library vs. data model vs. platform)?</td>
+</tr>
+<tr>
+<td>Last confirmed</td>
+<td>Date on which the product confirmed the record. Records not confirmed within the review period are flagged as stale</td>
+</tr>
+</tbody>
+</table>
+<h3 id="catalog">Catalog</h3>
+<p>The inventory records and the confirmed ratings together form the technology catalog (in TOGAF® terms the Technology Portfolio and Technology Standards catalogs, see above). The catalog is stored <strong>in the tool the organisation already uses</strong> (for example Confluence, Git or SharePoint). The process is tool-agnostic and does not require a new tool. Manually maintained inventories go out of date quickly, so wherever possible the usage data is generated from the build (SBOM, dependency manifests) and only the rationale, contacts and ratings are maintained by hand. For the options and their trade-offs see <a href="../Content-Framework/Documents/arch-repository/">Architecture Repository</a>.</p>
+<h3 id="rating-scale">Rating scale</h3>
+<p>A rating is a <strong>decision aid, not a decision</strong>. The technology steward proposes a rating based on the assessment, and it helps the architecture board to decide. The <strong>final decision is always made by the board</strong>. Once the board has confirmed a rating, it is <strong>binding for all products</strong>: the consequences in the table below apply, and deviations are only possible through the exception process, which the board decides as well.</p>
+<p>The scale, with a precise definition so that ratings stay comparable:</p>
+<table>
+<thead>
+<tr>
+<th>Rating (proposal, then confirmed by the board)</th>
+<th>Meaning</th>
+<th>New usage (new products <strong>and</strong> new components in existing products)</th>
+<th>Existing usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Preferred</strong></td>
+<td>Default choice. Passes generic requirements, supported, skills available, fits principles</td>
+<td>Use by default</td>
+<td>Keep</td>
+</tr>
+<tr>
+<td><strong>Acceptable</strong></td>
+<td>Good in a defined context, but not the default (conditions below)</td>
+<td>Allowed only if a documented condition holds</td>
+<td>Keep while the condition holds</td>
+</tr>
+<tr>
+<td><strong>Legacy</strong></td>
+<td>Still supported, but no longer a target</td>
+<td>Not allowed without exception</td>
+<td>Keep, migrate at natural opportunity</td>
+</tr>
+<tr>
+<td><strong>Discouraged</strong></td>
+<td>Works, but better alternatives exist or it conflicts with principles</td>
+<td>Not allowed without exception</td>
+<td>Plan migration</td>
+</tr>
+<tr>
+<td><strong>High risk</strong></td>
+<td>Licence, security, vendor, end-of-life or compliance risk</td>
+<td>Forbidden. Exceptions only with a documented mitigation and with SEC/LEG consulted</td>
+<td>Mitigation or exit plan with deadline</td>
+</tr>
+</tbody>
+</table>
+<p>In addition, these <strong>states</strong> are not ratings but are recorded in the catalog:</p>
+<table>
+<thead>
+<tr>
+<th>State</th>
+<th>Meaning</th>
+<th>New usage</th>
+<th>Existing usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Under evaluation</strong></td>
+<td>Not yet assessed, or assessment or superior approval pending</td>
+<td>Request assessment first (fast lane, Flow D); not allowed while superior approval is pending</td>
+<td>Keep, schedule assessment (and submit to superior approval if not yet approved)</td>
+</tr>
+<tr>
+<td><strong>Rejected</strong></td>
+<td>Assessed and not adopted (candidate, or failed generic requirements before any use)</td>
+<td>Not allowed; a new request needs new facts</td>
+<td>not applicable</td>
+</tr>
+<tr>
+<td><strong>Retired</strong></td>
+<td>Last usage removed from all products</td>
+<td>Not allowed</td>
+<td>not applicable</td>
+</tr>
+</tbody>
+</table>
+<p>The column "New usage" deliberately covers existing products too: adding a <em>Discouraged</em> technology to a new component of an existing product is new usage, not existing usage.</p>
+<p><strong>One default per scope.</strong> Within a category (or a clearly scoped part of it, for example "relational databases") there is normally <strong>one</strong> <em>Preferred</em> technology. If two are needed, either the scope is split, or the second one is <em>Acceptable</em> with its condition.</p>
+<p><strong>When is a technology <em>Acceptable</em> (and not Preferred)?</strong> Every <em>Acceptable</em> rating must state its conditions in the catalog. A technology is only rated <em>Acceptable</em> if it passes the generic requirements <strong>and</strong> at least one of these applies. The conditions are written into the rating, for example:</p>
+<ul>
+<li><strong>Context-specific fit:</strong> it is the better choice for a clearly bounded use case (for example a search engine for full-text search while a relational database is Preferred for general data).</li>
+<li><strong>Preferred option does not cover a documented requirement:</strong> the Preferred technology fails a specific, recorded requirement of the product.</li>
+<li><strong>Transition:</strong> it is the planned target or a stepping stone for a migration and not yet fully rolled out.</li>
+<li><strong>Platform constraint:</strong> a platform, partner or customer environment prescribes it (and the generic requirements are still met).</li>
+</ul>
+<p>Not valid reasons: personal preference, team familiarity alone, or "we already started". Familiarity may be noted but does not justify <em>Acceptable</em> on its own. <em>Acceptable</em> is reviewed at the normal review date and drops to <em>Discouraged</em> or <em>Legacy</em> when its condition no longer holds.</p>
+<p>Notes:</p>
+<ul>
+<li><em>Legacy</em> and <em>Discouraged</em> are deliberately different. Legacy is a lifecycle statement ("was fine, is aging"), Discouraged is a judgement ("we would not choose it").</li>
+<li><em>High risk</em> must always name the <strong>risk type</strong> (licence, security, vendor lock-in, end of support, compliance) so mitigation can be targeted.</li>
+<li>Every rating carries a <strong>review date</strong>. A rating without expiry rots.</li>
+<li>An <strong>exception process</strong> is mandatory because ratings are binding (see the Architecture Contract and Change Request documents in the <a href="../Content-Framework/">Content Framework</a>). Exceptions are decided by the architecture board only, are limited in scope and time, and are recorded in the catalog. A local exception can never override a rejection or a requirement of the superior organisation (see <a href="#embedding-in-the-technology-approval-process-of-the-superior-organisation">Embedding</a>).</li>
+</ul>
+<h3 id="rating-criteria-for-the-requirements-and-needs-are-checked-step">Rating criteria (for the "requirements and needs are checked" step)</h3>
+<ol>
+<li><strong>Functional fit</strong>: covers the collected requirements and needs.</li>
+<li><strong>Quality attributes</strong>: performance, security, operability, scalability, maintainability.</li>
+<li><strong>Cost</strong>: total cost of ownership. Licence compliance is a generic requirement (a pre-condition), not weighed here.</li>
+<li><strong>Vendor and community health</strong>: release cadence, bus factor, roadmap, support options.</li>
+<li><strong>Skills</strong>: available in the organisation and on the labour market.</li>
+<li><strong>Integration</strong>: fit with the existing stack and with the architecture principles.</li>
+<li><strong>Exit cost</strong>: how hard is it to leave again?</li>
+</ol>
+<p>Weight the criteria per category. Document the weights once per category, <strong>before</strong> the first assessment (in step 3 of the cycle), not per assessment. Weights fixed after the scores are known invite tuning towards a favourite.</p>
+<p>The roles used in the flows (TS, PM, DEV, DEL, AB, ...) are defined in <a href="#roles">Roles</a> at the end of this chapter, together with a <a href="#raci-generic">RACI</a>.</p>
+<hr/>
+<h2 id="flow-a-category-by-category-cycle-inventory-assess-decide">Flow A: Category-by-category cycle (inventory → assess → decide)</h2>
+<p>The basic cycle. One category at a time is run through the full loop, and <strong>only technologies that are already in use</strong> are in scope.</p>
+<pre class="mermaid"><code>flowchart LR
+    A["1. Select category,<br/>name steward<br/><i>OWN, AB</i>"] --&gt; B["2. Collect technologies<br/>and usage rationale<br/><i>PA, DEV, DEL</i>"]
+    B --&gt; C["3. Consolidate requirements<br/>and needs<br/><i>TS, PA (all others consulted)</i>"]
+    C --&gt; D["4. Check generic requirements and<br/>superior approval, assess against criteria<br/><i>TS, SEC, LEG, PRO</i>"]
+    D --&gt; E["5. Rate (proposal):<br/>Preferred / Acceptable / Legacy /<br/>Discouraged / High risk<br/><i>TS</i>"]
+    E --&gt; F["6. Board decision<br/>and publish<br/><i>AB, OWN</i>"]
+    F --&gt; G["7. Derive migration backlog<br/>and exceptions<br/><i>PM, DEV, DEL</i>"]
+    G --&gt; A
+</code></pre>
+<p>Roles are shown in italics below each step (abbreviations: see <a href="#roles">Roles</a>). Only the roles named in a step are involved.</p>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Result</th>
+<th>A (accountable)</th>
+<th>R (responsible)</th>
+<th>C (consulted)</th>
+<th>TOGAF® reference</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. Select category</td>
+<td>Category definition, named steward, priority (by cost, risk or pain)</td>
+<td>AB</td>
+<td>OWN</td>
+<td>PM, PA</td>
+<td>Preliminary, Phase A</td>
+</tr>
+<tr>
+<td>2. Collect</td>
+<td>Inventory records for all products</td>
+<td>TS</td>
+<td>PA, DEV</td>
+<td>DEL, PM</td>
+<td>Phase D baseline</td>
+</tr>
+<tr>
+<td>3. Consolidate</td>
+<td>Requirement list per category, with product-specific needs flagged</td>
+<td>TS</td>
+<td>TS, PA</td>
+<td>all other roles (OWN, PM, DEV, DEL, AB, SEC, LEG, PRO)</td>
+<td>Requirements Management</td>
+</tr>
+<tr>
+<td>4. Assess</td>
+<td>Pass/fail of generic requirements and superior approval status, scoring per criterion, rationale documented</td>
+<td>TS</td>
+<td>TS</td>
+<td>PM, DEV, DEL, PA, SEC, LEG, PRO</td>
+<td>Phase D gap analysis</td>
+</tr>
+<tr>
+<td>5. Rate</td>
+<td>Rating proposal per technology plus risk type</td>
+<td>TS</td>
+<td>TS</td>
+<td>PA, PM, DEV, DEL</td>
+<td>Technology Standards catalog</td>
+</tr>
+<tr>
+<td>6. Decide</td>
+<td>Decision record, published catalog</td>
+<td>AB</td>
+<td>AB, OWN (publish)</td>
+<td>TS, PM, SEC, LEG, PA</td>
+<td>Architecture Board</td>
+</tr>
+<tr>
+<td>7. Derive</td>
+<td>Migration candidates, exceptions, owners</td>
+<td>PM</td>
+<td>DEV, DEL</td>
+<td>TS, PA</td>
+<td>Phase E/F</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Pros</strong></p>
+<ul>
+<li>Small, finishable scope per cycle, visible results early.</li>
+<li>Requirements are known before anything is rated, so ratings are evidence based.</li>
+<li>Learning effect: the second category goes faster than the first.</li>
+<li>Fits a limited architecture capacity (one steward, one category).</li>
+</ul>
+<p><strong>Cons</strong></p>
+<ul>
+<li>Only existing technologies are judged. A better alternative nobody uses yet is never considered, so the result can cement the status quo.</li>
+<li>Can pick a "best of the bad" technology as Preferred.</li>
+<li>Cross-category dependencies (for example a framework that dictates the database driver) are seen late.</li>
+<li>Landscape-wide picture takes many cycles.</li>
+</ul>
+<p><strong>Mitigation:</strong> Add horizon scanning as step 2b, which is Flow B (see below).</p>
+<hr/>
+<h2 id="flow-b-category-cycle-with-horizon-scanning-existing-candidates">Flow B: Category cycle with horizon scanning (existing + candidates)</h2>
+<p>Same as Flow A, but each cycle also looks at <strong>technologies not yet in use</strong> which are relevant for the category.</p>
+<pre class="mermaid"><code>flowchart TD
+    A[1. Select category] --&gt; B[2a. Collect technologies in use<br/>with usage rationale]
+    A --&gt; S[2b. Scan candidates<br/>not yet in use]
+    S --&gt; F1{Relevance filter}
+    F1 --&gt;|Not relevant| X[Record as 'not considered'<br/>with reason]
+    F1 --&gt;|Relevant| C
+    B --&gt; C[3. Consolidate requirements<br/>and needs]
+    C --&gt; D[4. Assess existing and candidates<br/>against the same criteria]
+    D --&gt; E[5. Rate]
+    E --&gt; G[6. Board decision]
+    G --&gt; H[7. Migration backlog,<br/>PoC backlog, exceptions]
+    H -.-&gt;|PoC result| D
+</code></pre>
+<p><strong>Keeping scope under control (the scope-creep guard):</strong></p>
+<ul>
+<li><strong>Relevance filter</strong> with hard entry criteria. A candidate is only assessed if at least one holds:<ul>
+<li>it is requested by a product team for a concrete need,</li>
+<li>it is a recognised leader or successor in the category (radar, analyst reports, community standard),</li>
+<li>it solves a documented problem of a technology currently in use (cost, risk, end of life).</li>
+</ul>
+</li>
+<li><strong>Cap</strong> the number of candidates per cycle (for example max. 3 to 5).</li>
+<li><strong>Time-box</strong> the scan (for example 2 weeks) and the whole cycle (for example 6 to 8 weeks).</li>
+<li>Candidates get a lighter first assessment. Only candidates passing a go/no-go move to a <strong>proof of concept</strong>; the PoC is a separate, scheduled work item, not part of the cycle.</li>
+<li>New technologies start as <strong>Under evaluation</strong> (radar ring <em>Assess</em>), never directly as <em>Preferred</em>. A candidate that needs a PoC stays <em>Under evaluation</em> until the PoC result has been assessed in the next cycle (dotted line above). Candidates that are assessed and not adopted are recorded as <em>Rejected</em> with the reason, so the same discussion is not repeated.</li>
+</ul>
+<p><strong>Roles added compared to Flow A:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>A</th>
+<th>R</th>
+<th>C</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2b. Scan candidates</td>
+<td>TS</td>
+<td>TS</td>
+<td>DEV, PA, SEC, PRO</td>
+<td>Each candidate gets an advocate (usually DEV) and a critic (usually SEC or PA)</td>
+</tr>
+<tr>
+<td>Relevance filter</td>
+<td>TS</td>
+<td>TS</td>
+<td>PM, PA</td>
+<td>Entry criteria applied by the steward, borderline cases to the board</td>
+</tr>
+<tr>
+<td>Proof of concept (separate work item)</td>
+<td>TS</td>
+<td>DEV</td>
+<td>DEL, SEC, PA</td>
+<td>Scheduled by PM, not part of the cycle time-box</td>
+</tr>
+</tbody>
+</table>
+<p>All other steps as in Flow A.</p>
+<p><strong>Pros</strong></p>
+<ul>
+<li>Avoids cementing the status quo, finds better targets for the Legacy/Discouraged items.</li>
+<li>Rating of existing technology is calibrated against real alternatives.</li>
+<li>Supports a defensible decision ("we looked at alternatives X and Y").</li>
+</ul>
+<p><strong>Cons</strong></p>
+<ul>
+<li>More effort per cycle, higher risk of scope creep without the guard above.</li>
+<li>Needs people with market knowledge, not only product knowledge.</li>
+<li>Risk of "shiny object" bias; candidates need an advocate <em>and</em> a critic.</li>
+</ul>
+<hr/>
+<h2 id="flow-c-landscape-wide-assessment-all-technology-at-once">Flow C: Landscape-wide assessment ("all technology at once")</h2>
+<p>All categories are inventoried and rated in one program.</p>
+<pre class="mermaid"><code>flowchart LR
+    A[Full inventory<br/>all products, all categories] --&gt; B[Cluster by category]
+    B --&gt; C[Rate all]
+    C --&gt; D[Publish technology standards catalog]
+    D --&gt; E[Roadmap and migration plan]
+</code></pre>
+<p><strong>Roles:</strong> this is a programme, not a recurring cycle.</p>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>A</th>
+<th>R</th>
+<th>C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Programme set-up, categories clustered</td>
+<td>AB</td>
+<td>OWN</td>
+<td>TS (all appointed up front), PM</td>
+</tr>
+<tr>
+<td>Full inventory</td>
+<td>OWN</td>
+<td>PA, DEV</td>
+<td>DEL, PM</td>
+</tr>
+<tr>
+<td>Shallow rating and risk screen</td>
+<td>AB</td>
+<td>TS (per category)</td>
+<td>SEC, LEG, PRO</td>
+</tr>
+<tr>
+<td>Publish catalog and roadmap</td>
+<td>OWN</td>
+<td>OWN, TS</td>
+<td>PM, DEL, AB</td>
+</tr>
+</tbody>
+</table>
+<p>Because all stewards work in parallel, the board and the architecture office are the bottleneck.</p>
+<p><strong>Pros</strong></p>
+<ul>
+<li>Complete picture, cross-category dependencies visible.</li>
+<li>One consistent decision round, one communication moment.</li>
+<li>Good fit after a merger or acquisition, or before a platform strategy.</li>
+<li>Strong basis for a business case (total cost, licence exposure).</li>
+</ul>
+<p><strong>Cons</strong></p>
+<ul>
+<li>High scope-creep risk, long time to first result, value only at the end.</li>
+<li>Heavy load on product teams for data collection in one burst.</li>
+<li>Data quality drops with volume; ratings become shallow.</li>
+<li>Stakeholder fatigue and decision backlog at the board.</li>
+<li>Everything is a snapshot that is outdated when finished.</li>
+</ul>
+<p><strong>When it is justified:</strong> a one-off <em>baseline</em> for a cheap, shallow first pass (inventory and risk screening only), followed by Flow A/B for depth. See Flow E.</p>
+<hr/>
+<h2 id="flow-d-product-driven-demand-led-assessment">Flow D: Product-driven (demand-led) assessment</h2>
+<p>No up-front cycle. Technology choices are checked <strong>when a project or product needs one</strong> (new product, major release, new component). This is the classic TOGAF® project-level flow: Phase D of the project feeds the catalog.</p>
+<pre class="mermaid"><code>flowchart LR
+    A[Project needs a technology] --&gt; B{Rating in Technology<br/>Standards Catalog?}
+    B --&gt;|Preferred| C[Use it]
+    B --&gt;|Acceptable| H{Documented<br/>condition holds?}
+    H --&gt;|Yes| C
+    H --&gt;|No| X
+    B --&gt;|Legacy / Discouraged / High risk| X[Exception process]
+    B --&gt;|Not listed / Under evaluation| D[Lightweight assessment<br/>in project Phase D]
+    B --&gt;|Rejected| R[Not allowed,<br/>new request only with new facts]
+    D --&gt; E[Board decision<br/>delegation to steward possible]
+    E --&gt; F[Update catalog]
+    C --&gt; F
+</code></pre>
+<p>In the fast lane "Preferred, use it" is not a decision of the rating itself. It applies because the board has already confirmed that rating and thereby decided the standard case in advance. The same holds for <em>Acceptable</em> when the product architect (PA) confirms that the documented condition holds; the usage and the condition are recorded in the catalog. Legacy, Discouraged and High risk go to the <a href="#supporting-flow-exception-handling">exception process</a>, not to a new assessment. Everything else needs a board decision. If the technology is not yet approved by the superior organisation, its lead time applies as well (see <a href="#embedding-in-the-technology-approval-process-of-the-superior-organisation">Embedding</a>).</p>
+<p><strong>Roles:</strong> only a few roles are needed. The fast lane skips DEL, PRO and LEG unless the request touches them.</p>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>A</th>
+<th>R</th>
+<th>C</th>
+<th>I</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Project states the need</td>
+<td>PM</td>
+<td>DEV, PA</td>
+<td>TS</td>
+<td></td>
+</tr>
+<tr>
+<td>Lookup in catalog, Preferred (or Acceptable with condition): use it</td>
+<td>PM</td>
+<td>DEV, PA</td>
+<td></td>
+<td>TS</td>
+</tr>
+<tr>
+<td>Lightweight assessment</td>
+<td>TS</td>
+<td>TS</td>
+<td>PA, SEC, DEL (operability)</td>
+<td>PM, DEV</td>
+</tr>
+<tr>
+<td>Decision (or delegated to TS for low-impact cases)</td>
+<td>AB</td>
+<td>AB (TS if delegated)</td>
+<td>TS, PM</td>
+<td>DEV, OWN</td>
+</tr>
+<tr>
+<td>Update catalog</td>
+<td>OWN</td>
+<td>OWN, TS</td>
+<td></td>
+<td>AB</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Pros</strong></p>
+<ul>
+<li>Lowest overhead, effort is only spent where a decision is actually needed.</li>
+<li>Decisions are made with concrete requirements and context.</li>
+<li>Naturally keeps the catalog relevant to real demand.</li>
+</ul>
+<p><strong>Cons</strong></p>
+<ul>
+<li>Reactive: existing sprawl is never cleaned up on its own.</li>
+<li>Inconsistent depth, depends on the individual project architect.</li>
+<li>Risk of the "decision by whoever shouts first", local optimisation.</li>
+<li>Needs an initial catalog, otherwise there is no reference.</li>
+</ul>
+<hr/>
+<h2 id="flow-e-hybrid-recommended-starting-point">Flow E: Hybrid (recommended starting point)</h2>
+<p>Combine a shallow landscape-wide baseline with deep category cycles and a demand-led fast lane. Each flow covers the weakness of another.</p>
+<pre class="mermaid"><code>flowchart TD
+    subgraph Once["Once: baseline (Flow C, shallow)"]
+        B1[Inventory, rationale, licence, lifecycle] --&gt; B2[Quick risk screen:<br/>mark obvious High risk / Legacy]
+    end
+    subgraph Cycle["Recurring: deep dive (Flow B)"]
+        C1[Pick category by priority] --&gt; C2[Assess existing and candidates]
+        C2 --&gt; C3[Rate and decide]
+    end
+    subgraph Fast["Continuous: fast lane (Flow D)"]
+        D1[Project request] --&gt; D2{Catalog says?}
+        D2 --&gt;|Preferred / Acceptable<br/>with condition| D3[Use]
+        D2 --&gt;|Legacy / Discouraged /<br/>High risk| D5[Exception process]
+        D2 --&gt;|Not listed /<br/>Under evaluation| D4[Lightweight assessment]
+    end
+    B2 --&gt; C1
+    C3 --&gt; CAT[(Technology Standards Catalog)]
+    D4 --&gt; CAT
+    CAT --&gt; D2
+    CAT --&gt; R[Review: re-rate on trigger or expiry]
+    R --&gt; C1
+</code></pre>
+<p>Priorities for the deep dives can be driven by a simple score: <strong>number of products affected × risk × cost</strong>. Start where the pain is largest, not where the category list begins.</p>
+<p><strong>Initial catalog.</strong> After the baseline almost everything is <em>Under evaluation</em>, so the fast lane would send every request to an assessment. To avoid this, the board confirms the baseline result in <strong>one batch decision</strong>: obvious <em>High risk</em> and <em>Legacy</em> marks are confirmed, and technologies that are in use without findings stay <em>Under evaluation</em> with existing usage allowed. Technologies found in the baseline without superior approval are submitted to it; a <em>Legacy</em> mark is only confirmed once the superior organisation has approved it. Repeated fast-lane requests in a category raise its priority for a deep dive.</p>
+<p><strong>Roles per mechanism:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Mechanism</th>
+<th>A</th>
+<th>R</th>
+<th>C</th>
+<th>Roles <em>not</em> involved</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Baseline (Flow C, shallow)</td>
+<td>OWN</td>
+<td>PA, DEV</td>
+<td>TS, SEC, LEG, DEL</td>
+<td>PRO, PM (informed only)</td>
+</tr>
+<tr>
+<td>Deep dive (Flow B)</td>
+<td>AB</td>
+<td>TS</td>
+<td>PM, DEV, DEL, PA, SEC, LEG, PRO</td>
+<td>none, this is the full flow</td>
+</tr>
+<tr>
+<td>Fast lane (Flow D)</td>
+<td>AB</td>
+<td>TS</td>
+<td>PA, DEV</td>
+<td>LEG, PRO (only if relevant), DEL (only for operability)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Pros</strong></p>
+<ul>
+<li>Early value: the baseline surfaces the worst risks (for example licence issues) within weeks.</li>
+<li>Deep, evidence-based ratings where it matters, bounded scope per cycle.</li>
+<li>Projects are rarely blocked: the fast lane answers within days (unless a superior approval is needed, which has its own lead time).</li>
+<li>Self-correcting: fast lane decisions feed the catalog, expiry dates trigger re-rating.</li>
+</ul>
+<p><strong>Cons</strong></p>
+<ul>
+<li>Three mechanisms to run and explain; needs clear governance.</li>
+<li>Baseline data will be rough and must be improved in the cycles.</li>
+<li>Needs discipline that fast lane decisions really flow back into the catalog.</li>
+</ul>
+<hr/>
+<h2 id="supporting-flow-review-and-re-rating-lifecycle">Supporting flow: Review and re-rating (lifecycle)</h2>
+<p>Ratings must change when the world changes. Triggers:</p>
+<ul>
+<li>Review date expired (for example every 12 months, 6 months for <em>High risk</em>).</li>
+<li>Licence change of the vendor, acquisition, or end-of-support announcement.</li>
+<li>Critical vulnerability or repeated security incidents.</li>
+<li>New product requirement which the current rating did not consider.</li>
+<li>Superior approval revoked, narrowed or newly granted.</li>
+<li>Last usage removed (migrations completed in <strong>all</strong> products): state changes to <em>Retired</em>.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Trigger</th>
+<th>Detected by (R)</th>
+<th>Accountable</th>
+<th>Decides</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Review date expired</td>
+<td>OWN</td>
+<td>TS</td>
+<td>AB (on proposal)</td>
+</tr>
+<tr>
+<td>Licence change, acquisition, end of support</td>
+<td>LEG, PRO, TS</td>
+<td>TS</td>
+<td>AB</td>
+</tr>
+<tr>
+<td>Critical vulnerability or repeated incidents</td>
+<td>SEC, DEL</td>
+<td>TS</td>
+<td>AB</td>
+</tr>
+<tr>
+<td>Superior approval changed</td>
+<td>OWN, SUP-AB</td>
+<td>TS</td>
+<td>AB</td>
+</tr>
+<tr>
+<td>New product requirement not covered by the rating</td>
+<td>PM, DEV, PA</td>
+<td>TS</td>
+<td>AB</td>
+</tr>
+<tr>
+<td>Last usage removed (each product reports its completed migration)</td>
+<td>DEV, DEL, PA</td>
+<td>TS</td>
+<td>TS updates the state to <em>Retired</em>, AB informed</td>
+</tr>
+</tbody>
+</table>
+<pre class="mermaid"><code>stateDiagram-v2
+    [*] --&gt; UnderEvaluation
+    UnderEvaluation --&gt; Preferred: assessed, decided
+    UnderEvaluation --&gt; Acceptable: assessed, with condition
+    UnderEvaluation --&gt; Legacy: in use, no longer a target
+    UnderEvaluation --&gt; Discouraged: in use, better alternatives
+    UnderEvaluation --&gt; HighRisk: in use, risk found
+    UnderEvaluation --&gt; Rejected: candidate not adopted
+    Preferred --&gt; Acceptable: new default chosen, still fits a context
+    Preferred --&gt; Legacy: better target chosen
+    Preferred --&gt; Discouraged: principles / fit changed
+    Acceptable --&gt; Legacy: condition no longer holds
+    Acceptable --&gt; Discouraged: condition no longer holds
+    Preferred --&gt; HighRisk: licence / security / vendor event
+    Acceptable --&gt; HighRisk: licence / security / vendor event
+    Legacy --&gt; HighRisk: end of support / risk event
+    Discouraged --&gt; HighRisk: risk event
+    Discouraged --&gt; Legacy: no new usage, existing tolerated
+    Legacy --&gt; Retired: last usage removed
+    Discouraged --&gt; Retired: last usage removed
+    HighRisk --&gt; Preferred: risk resolved, re-assessed
+    HighRisk --&gt; Retired: exit executed
+    Rejected --&gt; [*]
+    Retired --&gt; [*]
+</code></pre>
+<p>The diagram shows the usual transitions, not every allowed one. Any change of rating is a board decision, except <em>Retired</em>, which is a fact recorded by the steward.</p>
+<h2 id="supporting-flow-exception-handling">Supporting flow: Exception handling</h2>
+<p>An exception (a <em>dispensation</em> in TOGAF® terms, granted by the Architecture Board [3]) is the only way to deviate from a binding rating.</p>
+<pre class="mermaid"><code>flowchart LR
+    A["1. Document need<br/>and why rated alternatives do not fit<br/><i>DEV, PA (A: PM)</i>"] --&gt; B["2. Check completeness,<br/>assess impact<br/><i>TS, SEC</i>"]
+    B --&gt; C["3. Decide within fixed time<br/><i>AB</i>"]
+    C --&gt; D["4. Record with owner, scope, expiry<br/><i>OWN</i>"]
+    D --&gt; E["5. Follow up at expiry<br/><i>PM, TS</i>"]
+</code></pre>
+<ol>
+<li>Team documents need and why the rated alternatives do not fit. PM is accountable that the need is real, DEV and PA prepare it.</li>
+<li>Steward checks completeness and impact (SEC is consulted when risk is involved, LEG for licence or compliance topics).</li>
+<li>The architecture board decides within a fixed time (for example 5 working days). If the time is exceeded, OWN escalates to the board chair; there is <strong>no implicit approval</strong>. A rejected request is recorded with its reason; the product uses a rated alternative.</li>
+<li>An approved exception is recorded with owner, scope, conditions and <strong>expiry date</strong> by the architecture office.</li>
+<li>At expiry the product either has migrated or requests a renewal. An expired exception without renewal is a compliance finding (see <a href="#supporting-flow-compliance-check">Compliance check</a>). Repeated exceptions for the same need are a signal to re-assess the category.</li>
+</ol>
+<p>Limits: an exception cannot grant what the superior organisation has rejected or what its inherited requirements forbid. Such cases go to the superior organisation.</p>
+<p>Roles not involved by default: DEL, PRO, LEG (consulted only when the exception touches their area).</p>
+<h2 id="supporting-flow-compliance-check">Supporting flow: Compliance check</h2>
+<p>Binding ratings only work if deviations are noticed. The compliance check (TOGAF® Architecture Compliance [4], documented as a <a href="../Content-Framework/Documents/compliance-assessment/">Compliance Assessment</a>) compares each product with the catalog.</p>
+<ul>
+<li><strong>When:</strong> continuously where automated (SBOM and dependency scan in the build against the catalog), otherwise at major releases and at least once per review period.</li>
+<li><strong>What:</strong> new usage of technologies that are not <em>Preferred</em> or <em>Acceptable</em> without an exception; <em>Acceptable</em> usage whose condition no longer holds; expired exceptions; overdue migration or exit plans for <em>High risk</em>.</li>
+<li><strong>Who:</strong> PA performs the check for their product (R), OWN is accountable that it happens and reports the results to the board.</li>
+<li><strong>Outcome:</strong> a finding is fixed by the product (migration, removal) or turned into an exception request. Unresolved findings are escalated by OWN to the board. Findings are input for the review of the category.</li>
+</ul>
+<h2 id="embedding-in-the-technology-approval-process-of-the-superior-organisation">Embedding in the technology approval process of the superior organisation</h2>
+<p>The process in this chapter works at the level of a <strong>product landscape</strong> (a set of products). The superior organisation (group, enterprise) usually has its own technology approval process, with its own legal, security and architecture checks. Both must fit together without doing the same work twice and without contradicting each other.</p>
+<p>TOGAF® describes architecture boards that operate at several levels, local (domain experts) and global (organisation-wide responsibility) [3]. The board of this chapter is the local one; the superior approval body is the global one. The rating and the approval answer different questions:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Superior approval</th>
+<th>Rating in this chapter</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Question</td>
+<td>"May this technology be used in the organisation at all?"</td>
+<td>"Which of the approved technologies do we use, and how?"</td>
+</tr>
+<tr>
+<td>Result</td>
+<td>Approved / not approved (possibly with conditions)</td>
+<td>Preferred / Acceptable / Legacy / Discouraged / High risk</td>
+</tr>
+<tr>
+<td>Scope</td>
+<td>Whole organisation</td>
+<td>The product landscape</td>
+</tr>
+<tr>
+<td>Owner</td>
+<td>Superior architecture, legal, security</td>
+<td>Local architecture board</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Rule:</strong> every technology that is not yet approved by the superior organisation <strong>must be submitted to the superior approval</strong>, including technologies that are already in use. There is no local shortcut. A technology can only be rated <em>Preferred</em>, <em>Acceptable</em>, <em>Legacy</em> or <em>Discouraged</em> if the superior approval is <em>approved</em> (an approval may be limited, for example to existing use only, which fits <em>Legacy</em>). Conditions of the superior approval are taken over into the local rating. A local rating or exception never overrides a rejection by the superior organisation. A technology that is <em>not approved</em> is:</p>
+<ul>
+<li><em>Under evaluation</em> while the superior approval is pending (existing usage continues, new usage is not allowed),</li>
+<li><em>High risk</em> (risk type compliance) if it is in use and was rejected, with an exit plan,</li>
+<li><em>Rejected</em> if it is not in use and was rejected.</li>
+</ul>
+<h3 id="embedding-variants">Embedding variants</h3>
+<p>The right variant depends on how the superior process is organised. The variant is chosen once and written into the generic requirements.</p>
+<table>
+<thead>
+<tr>
+<th>Variant</th>
+<th>How it works</th>
+<th>Pros</th>
+<th>Cons</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1. Superior list as input (pre-approved catalog)</strong></td>
+<td>The superior list of approved technologies is an input. The local process only chooses among approved technologies</td>
+<td>Clear, no double work</td>
+<td>Candidates not on the list need a request to the superior organisation first, which can be slow</td>
+</tr>
+<tr>
+<td><strong>2. Gate before rating (sequential)</strong></td>
+<td>The local assessment proposes a rating, then the superior approval is requested for technologies not yet approved. The board decides after the approval</td>
+<td>Superior sees a prepared, evidence-based request</td>
+<td>Longest lead time</td>
+</tr>
+<tr>
+<td><strong>3. In parallel</strong></td>
+<td>The superior check and the local assessment run at the same time, the board decides when both are ready</td>
+<td>Shortest lead time</td>
+<td>Wasted work if the superior organisation rejects; needs good coordination</td>
+</tr>
+<tr>
+<td><strong>4. Delegated checks</strong></td>
+<td>The superior organisation delegates the legal and/or security check to this process (see below). Approval remains with the superior organisation or is delegated as a whole for defined cases</td>
+<td>Fast, uses local knowledge</td>
+<td>Needs trust, clear scope and audit</td>
+</tr>
+</tbody>
+</table>
+<p>Variants can be combined, for example variant 1 for common technologies and variant 4 for the legal check of low-risk libraries.</p>
+<pre class="mermaid"><code>flowchart TD
+    A[Technology assessed in a category<br/><i>TS</i>] --&gt; B{Already approved by<br/>superior organisation?}
+    B --&gt;|Yes| G[Local rating proposal<br/><i>TS</i>]
+    B --&gt;|No| C{Check delegated<br/>to local process?}
+    C --&gt;|Fully| D[Local legal / security check<br/><i>LEG, SEC</i>]
+    C --&gt;|Partly| E[Local check where delegated,<br/>request rest from superior<br/><i>TS, LEG, SEC</i>]
+    C --&gt;|No| F[Request approval from superior org<br/><i>TS, OWN</i>]
+    D --&gt; H[Record result and evidence<br/><i>OWN</i>]
+    E --&gt; H
+    F --&gt; I{Approved?}
+    I --&gt;|Yes| H
+    I --&gt;|No| J[Rating limited to<br/>High risk if in use / Rejected<br/><i>AB</i>]
+    H --&gt; G
+    G --&gt; K[Board decision<br/><i>AB</i>]
+    J --&gt; K
+</code></pre>
+<h3 id="delegating-the-legal-and-security-check">Delegating the legal and security check</h3>
+<p>The superior organisation may delegate the legal (licence, compliance) and/or the security check of technologies to this local process. The delegation is not implicit; it is agreed in writing between the superior approval body and the local architecture board. The following should be part of the agreement:</p>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Scope</td>
+<td>Which checks (legal, security, or both), for which technology classes or risk levels (for example "libraries with a permissive licence", not "databases")</td>
+</tr>
+<tr>
+<td>Criteria</td>
+<td>Which checklist or method applies. The local process <strong>uses the superior criteria</strong>; this flow does not define the licence assessment method itself</td>
+</tr>
+<tr>
+<td>Who performs it</td>
+<td>The local LEG and SEC roles, or named delegates. If the local organisation has no such roles, the delegation is not possible for that check</td>
+</tr>
+<tr>
+<td>Evidence</td>
+<td>What is recorded per technology: result, method/checklist version, person, date, scope. Stored in the catalog (field <em>Superior approval</em>)</td>
+</tr>
+<tr>
+<td>Exclusions</td>
+<td>Cases that always go back to the superior organisation, for example copyleft or unclear licences, critical security findings, commercial contracts, personal data</td>
+</tr>
+<tr>
+<td>Escalation</td>
+<td>A check that cannot be concluded locally, or any doubt, is escalated to the superior body</td>
+</tr>
+<tr>
+<td>Oversight</td>
+<td>The superior organisation can sample the delegated checks, receives a regular report, and can narrow or revoke the delegation</td>
+</tr>
+<tr>
+<td>Accountability</td>
+<td>Remains with the delegating superior body for the organisation-wide approval; the local board is accountable for performing the delegated check correctly</td>
+</tr>
+<tr>
+<td>Review</td>
+<td>The delegation itself has a review date (for example yearly)</td>
+</tr>
+</tbody>
+</table>
+<p>Without a delegation, the legal and security checks are always requested from the superior organisation, and the local process waits for the result.</p>
+<h3 id="roles-at-the-interface">Roles at the interface</h3>
+<table>
+<thead>
+<tr>
+<th>Abbr.</th>
+<th>External role</th>
+<th>Task</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>SUP-AB</strong></td>
+<td>Superior approval body (global architecture board or equivalent)</td>
+<td>Approves technologies organisation-wide, defines or grants delegations</td>
+</tr>
+<tr>
+<td><strong>SUP-LEG</strong></td>
+<td>Superior legal / compliance</td>
+<td>Performs or delegates legal checks, defines criteria</td>
+</tr>
+<tr>
+<td><strong>SUP-SEC</strong></td>
+<td>Superior security</td>
+<td>Performs or delegates security checks, defines criteria</td>
+</tr>
+</tbody>
+</table>
+<p>Interface RACI (only the activities that cross the boundary):</p>
+<table>
+<thead>
+<tr>
+<th>Activity</th>
+<th>OWN</th>
+<th>TS</th>
+<th>AB</th>
+<th>LEG</th>
+<th>SEC</th>
+<th>SUP-AB</th>
+<th>SUP-LEG</th>
+<th>SUP-SEC</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Choose the embedding variant, accept a delegation</td>
+<td>R</td>
+<td>C</td>
+<td>A</td>
+<td>C</td>
+<td>C</td>
+<td>C</td>
+<td>C</td>
+<td>C</td>
+</tr>
+<tr>
+<td>Grant a delegation</td>
+<td>I</td>
+<td></td>
+<td>C</td>
+<td>C</td>
+<td>C</td>
+<td>A/R</td>
+<td>C</td>
+<td>C</td>
+</tr>
+<tr>
+<td>Request superior approval for a technology</td>
+<td>R</td>
+<td>A</td>
+<td>I</td>
+<td>C</td>
+<td>C</td>
+<td>I</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Decide superior approval</td>
+<td></td>
+<td>I</td>
+<td>I</td>
+<td></td>
+<td></td>
+<td>A/R</td>
+<td>C</td>
+<td>C</td>
+</tr>
+<tr>
+<td>Perform delegated legal check</td>
+<td>I</td>
+<td>C</td>
+<td>I</td>
+<td>A/R</td>
+<td></td>
+<td>I</td>
+<td>C</td>
+<td></td>
+</tr>
+<tr>
+<td>Perform delegated security check</td>
+<td>I</td>
+<td>C</td>
+<td>I</td>
+<td></td>
+<td>A/R</td>
+<td>I</td>
+<td></td>
+<td>C</td>
+</tr>
+<tr>
+<td>Report on delegated checks</td>
+<td>R</td>
+<td>C</td>
+<td>A</td>
+<td>R</td>
+<td>R</td>
+<td>I</td>
+<td>I</td>
+<td>I</td>
+</tr>
+<tr>
+<td>Revoke or narrow a delegation</td>
+<td></td>
+<td></td>
+<td>C</td>
+<td></td>
+<td></td>
+<td>A/R</td>
+<td>C</td>
+<td>C</td>
+</tr>
+</tbody>
+</table>
+<p>The delegation is agreed between both boards, split into two rows so that each row keeps a single accountable role: the superior body is accountable for granting it, the local board for accepting and complying with it.</p>
+<h2 id="comparison-of-flows">Comparison of flows</h2>
+<table>
+<thead>
+<tr>
+<th>Criterion</th>
+<th>A: Category cycle</th>
+<th>B: + Horizon scan</th>
+<th>C: All at once</th>
+<th>D: Demand-led</th>
+<th>E: Hybrid</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Time to first result</td>
+<td>Medium</td>
+<td>Medium to long</td>
+<td>Long</td>
+<td>Short</td>
+<td>Short</td>
+</tr>
+<tr>
+<td>Depth of assessment</td>
+<td>High</td>
+<td>High</td>
+<td>Low to medium</td>
+<td>Varies</td>
+<td>High where it matters</td>
+</tr>
+<tr>
+<td>Considers technologies not yet in use</td>
+<td>No</td>
+<td>Yes</td>
+<td>Rarely</td>
+<td>Only ad hoc</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Scope-creep risk</td>
+<td>Low</td>
+<td>Medium (guarded)</td>
+<td>High</td>
+<td>Low</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>Effort on product teams</td>
+<td>Medium</td>
+<td>Medium</td>
+<td>High (burst)</td>
+<td>Low</td>
+<td>Medium, spread out</td>
+</tr>
+<tr>
+<td>Cleans up existing sprawl</td>
+<td>Yes, step by step</td>
+<td>Yes</td>
+<td>Yes, via roadmap</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Cross-category view</td>
+<td>Weak</td>
+<td>Weak</td>
+<td>Strong</td>
+<td>None</td>
+<td>Medium (baseline)</td>
+</tr>
+<tr>
+<td>Governance complexity</td>
+<td>Low</td>
+<td>Medium</td>
+<td>Medium</td>
+<td>Low</td>
+<td>Higher</td>
+</tr>
+<tr>
+<td>Fits small architecture team</td>
+<td>Yes</td>
+<td>Partly</td>
+<td>No</td>
+<td>Yes</td>
+<td>Partly</td>
+</tr>
+</tbody>
+</table>
+<h2 id="recommendation">Recommendation</h2>
+<ol>
+<li>Start with <strong>Flow E</strong>, but keep the baseline shallow (inventory and obvious risks only).</li>
+<li>Run the first deep dive as <strong>Flow B</strong> on one category with high pain and few candidates, as a pilot, to calibrate effort, criteria and the rating scale.</li>
+<li>Run <strong>Flow D</strong> from the start for new projects, fed by the first catalog version.</li>
+<li>Review the process itself after two cycles.</li>
+</ol>
+<p>If architecture capacity is very small, use Flow A plus Flow D and add horizon scanning only when a Legacy/Discouraged rating needs a successor.</p>
+<h2 id="roles">Roles</h2>
+<p>Abbreviations are used in the flows and the RACI below. <strong>Not every role takes part in every process</strong>; the flow tables list only the roles that are involved, all others are not needed for that step.</p>
+<table>
+<thead>
+<tr>
+<th>Abbr.</th>
+<th>Role</th>
+<th>Task in this process</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>TS</strong></td>
+<td>Technology steward (per category)</td>
+<td>The one coordinating the assessment. Appointed <strong>when the process for the category is started</strong>. Owns inventory and ratings of the category, prepares assessments and the decision proposal</td>
+</tr>
+<tr>
+<td><strong>PM</strong></td>
+<td>Product management</td>
+<td>Brings business needs and priorities, owns the product roadmap and therefore the migration decisions of a product. Accountable for exception requests of their product</td>
+</tr>
+<tr>
+<td><strong>DEV</strong></td>
+<td>Product development</td>
+<td>Provides usage and rationale for the technologies in their product, evaluates candidates, runs proofs of concept, implements migrations</td>
+</tr>
+<tr>
+<td><strong>DEL</strong></td>
+<td>Delivery (operations, release, customer deployment)</td>
+<td>Brings operational facts: operability, incidents, patching effort, on-premise deployment constraints. Executes rollouts</td>
+</tr>
+<tr>
+<td><strong>AB</strong></td>
+<td>Architecture board</td>
+<td>TOGAF-style board. Takes the <strong>final decision</strong> on ratings, generic requirements and exceptions (dispensations). Small and time-boxed</td>
+</tr>
+<tr>
+<td><strong>PA</strong></td>
+<td>Product architect</td>
+<td>Links the product to the process: validates inventory data, brings architecture requirements, checks compliance of the product against the catalog</td>
+</tr>
+<tr>
+<td><strong>OWN</strong></td>
+<td>Process owner / architecture office</td>
+<td>Owns the process itself, plans cycles, prepares board meetings, maintains and publishes the catalog (catalog custodian)</td>
+</tr>
+<tr>
+<td><strong>SEC</strong></td>
+<td>Security</td>
+<td>Assesses security aspects of technologies, reports vulnerabilities and security incidents as re-rating triggers</td>
+</tr>
+<tr>
+<td><strong>LEG</strong></td>
+<td>Legal and compliance</td>
+<td>Owns the licence and compliance rules behind the generic requirements. (The licence assessment method itself is outside this flow)</td>
+</tr>
+<tr>
+<td><strong>PRO</strong></td>
+<td>Procurement / vendor management</td>
+<td>Brings contract, cost and vendor situation for commercial technologies</td>
+</tr>
+</tbody>
+</table>
+<p>Optional roles, added when needed: <strong>QA / test</strong> (test tooling categories), <strong>Support</strong> (customer-facing impact of technology changes), <strong>Data protection officer</strong> (categories that touch personal data), <strong>Customers or partners</strong> as source of external constraints (represented through PM, never directly decision making).</p>
+<p>The steward proposes, the board decides. The steward does not decide alone, and the board does not prepare assessments.</p>
+<h3 id="contacts-per-role">Contacts per role</h3>
+<p>Many different products take part, so the same role is typically held by <strong>different people for different products</strong>. The process must not assume one person per role.</p>
+<table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Cardinality</th>
+<th>Consequence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PM, DEV, DEL, PA</td>
+<td><strong>One or more contacts per product</strong></td>
+<td>Every product that uses a technology in the category names its own contacts. The steward collects the contacts together with the inventory (field <em>Product contacts</em>)</td>
+</tr>
+<tr>
+<td>TS</td>
+<td>One per category (may be several for a large category)</td>
+<td>Named when the category process is started</td>
+</tr>
+<tr>
+<td>SEC, LEG, PRO</td>
+<td>One central contact or team, possibly with product-specific delegates</td>
+<td>Central contact is the default</td>
+</tr>
+<tr>
+<td>OWN, AB</td>
+<td>Central</td>
+<td>One team / one board</td>
+</tr>
+</tbody>
+</table>
+<p>Rules for working with several contacts:</p>
+<ul>
+<li><strong>"Consulted" means all affected product contacts are asked</strong>, not just one. The steward defines the circle: all contacts of products that use a technology in the category, plus contacts of products which plan to.</li>
+<li><strong>Consolidate a product's view.</strong> Each product answers once (PM, DEV, DEL and PA of one product align internally), so answers are not contradictory within a product. The product architect (PA) is the default single voice of a product in the process, unless the product has agreed otherwise.</li>
+<li><strong>Time-box the consultation</strong> (for example 2 weeks) and state in the invitation what happens without an answer. Proposal: no answer within the period means no objection, but it is recorded and the contact is informed of the result.</li>
+<li><strong>Responsible with several contacts</strong> (for example PA in the RACI row for the inventory): every product's PA is responsible for <em>their</em> product's data. The steward is accountable for completeness.</li>
+<li><strong>Accountable stays single.</strong> In each RACI row exactly one role is accountable for the result, as before; several contacts may only be responsible or consulted. If a product-level accountability exists (PM for migration), it is accountable for <em>its own product</em> only.</li>
+<li><strong>Contact data lives in the catalog</strong> (or is linked from it) and is reviewed with the normal review date, because people change roles.</li>
+<li><strong>Conflicts between products</strong> (one product needs a technology, another wants it phased out) are not solved by the steward but brought to the board by the steward with the facts of both sides.</li>
+</ul>
+<h2 id="raci-generic">RACI (generic)</h2>
+<p>R = responsible (does the work), A = accountable (one per row, owns the result), C = consulted, I = informed, blank = not involved. This is the default; the board may adapt it to the organisation.</p>
+<table>
+<thead>
+<tr>
+<th>Activity</th>
+<th>OWN</th>
+<th>TS</th>
+<th>PM</th>
+<th>DEV</th>
+<th>DEL</th>
+<th>PA</th>
+<th>AB</th>
+<th>SEC</th>
+<th>LEG</th>
+<th>PRO</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Maintain the process itself</td>
+<td>A/R</td>
+<td>C</td>
+<td>C</td>
+<td></td>
+<td>C</td>
+<td>C</td>
+<td>C</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Draft and maintain generic requirements</td>
+<td>R</td>
+<td>C</td>
+<td>C</td>
+<td></td>
+<td>C</td>
+<td>C</td>
+<td>A</td>
+<td>R</td>
+<td>R</td>
+<td>C</td>
+</tr>
+<tr>
+<td>Prioritise categories, define category, appoint steward</td>
+<td>R</td>
+<td>I</td>
+<td>C</td>
+<td></td>
+<td></td>
+<td>C</td>
+<td>A</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Provide inventory data per product</td>
+<td>I</td>
+<td>A</td>
+<td>C</td>
+<td>R</td>
+<td>C</td>
+<td>R</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Consolidate requirements and needs</td>
+<td>C</td>
+<td>A/R</td>
+<td>C</td>
+<td>C</td>
+<td>C</td>
+<td>R</td>
+<td>C</td>
+<td>C</td>
+<td>C</td>
+<td>C</td>
+</tr>
+<tr>
+<td>Scan candidates not yet in use (Flow B)</td>
+<td></td>
+<td>A/R</td>
+<td>I</td>
+<td>C</td>
+<td></td>
+<td>C</td>
+<td></td>
+<td>C</td>
+<td>C</td>
+<td>C</td>
+</tr>
+<tr>
+<td>Assess against generic requirements and criteria</td>
+<td></td>
+<td>A/R</td>
+<td>C</td>
+<td>C</td>
+<td>C</td>
+<td>C</td>
+<td>I</td>
+<td>C</td>
+<td>C</td>
+<td>C</td>
+</tr>
+<tr>
+<td>Proof of concept</td>
+<td></td>
+<td>A</td>
+<td>I</td>
+<td>R</td>
+<td>C</td>
+<td>C</td>
+<td></td>
+<td>C</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Prepare rating proposal</td>
+<td></td>
+<td>A/R</td>
+<td>C</td>
+<td>C</td>
+<td>C</td>
+<td>C</td>
+<td>I</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Decide rating</strong></td>
+<td>I</td>
+<td>C</td>
+<td>C</td>
+<td>I</td>
+<td>I</td>
+<td>C</td>
+<td>A/R</td>
+<td>C</td>
+<td>C</td>
+<td></td>
+</tr>
+<tr>
+<td>Publish catalog</td>
+<td>A/R</td>
+<td>R</td>
+<td>I</td>
+<td>I</td>
+<td>I</td>
+<td>I</td>
+<td>I</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Plan migration or exit</td>
+<td></td>
+<td>C</td>
+<td>A</td>
+<td>R</td>
+<td>R</td>
+<td>C</td>
+<td>I</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Fast lane: request a technology decision (Flow D)</td>
+<td></td>
+<td>C</td>
+<td>A</td>
+<td>R</td>
+<td>C</td>
+<td>R</td>
+<td>I</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Fast lane: decide on request</td>
+<td>I</td>
+<td>C (R if delegated)</td>
+<td>I</td>
+<td>I</td>
+<td></td>
+<td>C</td>
+<td>A/R</td>
+<td>C</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Request an exception</td>
+<td></td>
+<td>C</td>
+<td>A</td>
+<td>R</td>
+<td></td>
+<td>C</td>
+<td>I</td>
+<td>C</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Decide an exception</strong></td>
+<td>I</td>
+<td>C</td>
+<td>C</td>
+<td>I</td>
+<td>I</td>
+<td>C</td>
+<td>A/R</td>
+<td>C</td>
+<td>C</td>
+<td></td>
+</tr>
+<tr>
+<td>Check product compliance against the catalog</td>
+<td>A</td>
+<td>C</td>
+<td>I</td>
+<td>C</td>
+<td>C</td>
+<td>R</td>
+<td>I</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Confirm <em>Acceptable</em> condition for new usage (fast lane)</td>
+<td></td>
+<td>I</td>
+<td>A</td>
+<td>C</td>
+<td></td>
+<td>R</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Trigger re-rating (expiry, vulnerability, licence event, new requirement)</td>
+<td>R</td>
+<td>A/R</td>
+<td>R</td>
+<td>R</td>
+<td>R</td>
+<td>R</td>
+<td>I</td>
+<td>R</td>
+<td>R</td>
+<td>R</td>
+</tr>
+</tbody>
+</table>
+<p>Notes:</p>
+<ul>
+<li>The board stays small. Decisions in the fast lane may be <strong>delegated</strong> by the board to the steward for low-impact cases (for example a library inside a Preferred framework). The delegation rule is set by the board, the decision remains a board decision taken on its behalf and is recorded as such.</li>
+<li>PM is accountable for migrations and exceptions because they own the product's priorities and budget. Delivering the change is DEV and DEL.</li>
+</ul>
+<h2 id="sources">Sources</h2>
+<ol>
+<li>The Open Group: <a href="https://pubs.opengroup.org/togaf-standard/adm/chap08.html">TOGAF® Standard (10th Edition), ADM – Phase D: Technology Architecture</a></li>
+<li>The Open Group: <a href="https://pubs.opengroup.org/togaf-standard/architecture-content/index.html">TOGAF® Standard (10th Edition), Architecture Content</a></li>
+<li>The Open Group: <a href="https://pubs.opengroup.org/togaf-standard/ea-capability-and-governance/chap04.html">TOGAF® Standard (10th Edition), EA Capability and Governance – Architecture Board</a></li>
+<li>The Open Group: <a href="https://pubs.opengroup.org/togaf-standard/ea-capability-and-governance/chap06.html">TOGAF® Standard (10th Edition), EA Capability and Governance – Architecture Compliance</a></li>
+<li>The Open Group: <a href="https://pubs.opengroup.org/architecture/togaf90-doc/epf/TOGAF9/workproducts/Technology%20Portfolio%20Catalog_1B13325D.html">Artifact: Technology Portfolio Catalog</a> (TOGAF 9.0 work product, quoted for wording only)</li>
+<li>The Open Group: <a href="https://pubs.opengroup.org/architecture/togaf90-doc/epf/TOGAF9/workproducts/Technology%20Standards%20Catalog_D8B8157.html">Artifact: Technology Standards Catalog</a> (TOGAF 9.0 work product, quoted for wording only)</li>
+<li>LeanIX: <a href="https://www.leanix.net/en/wiki/ea/gartner-time-model">Gartner TIME model</a> (secondary source for Gartner's TIME framework)</li>
+<li>Thoughtworks: <a href="https://www.thoughtworks.com/en-de/insights/blog/build-your-own-technology-radar">Build your own Technology Radar</a></li>
+<li>arc42 Quality Model: <a href="https://quality.arc42.org/standards/iso-25010">ISO/IEC 25010</a>; standard itself: ISO/IEC 25010:2023</li>
+<li>arc42: <a href="https://docs.arc42.org/section-10/">Section 10 – Quality Requirements</a></li>
+<li>SPDX: <a href="https://spdx.dev/learn/handling-license-info/">Handling licence information / SPDX licence identifiers</a></li>
+<li>The Open Group: <a href="https://pubs.opengroup.org/togaf-standard/architecture-skills-framework/">TOGAF® Series Guide: Architecture Skills Framework</a> (title only checked; the roles in this chapter are adapted to product organisations and not taken from it)</li>
+<li>OWASP CycloneDX: <a href="https://cyclonedx.org/">CycloneDX Bill of Materials Standard</a> (SBOM format for the automated inventory and the generic-requirements check of libraries)</li>
+</ol>
+</article>
+</div>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+<script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+<script type="module">import mermaid from "https://unpkg.com/mermaid@10.4.0/dist/mermaid.esm.min.mjs";
+window.mermaidConfig = {default: {
+    startOnLoad: false
+}};</script></body>
+</html>

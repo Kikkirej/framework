@@ -37,10 +37,6 @@ Nothing here is new. The flows are assembled from established building blocks:
 | SPDX | Standardised licence identifiers for the `Licence` field of the inventory | [11] |
 | ITIL 4 (continual improvement, change enablement) | Idea for the review cycle. Not verified against the publication | not verified |
 
-!!! warning "Verification status"
-    Primary sources are the **TOGAF® Standard, 10th Edition** ([1] to [4]). That the Technology Standards catalog and the Technology Portfolio catalog are Technology Architecture outputs of the 10th edition was confirmed through search results for [1] and [2]; the pages themselves could not be opened here (network proxy). The detailed wording of both catalog definitions in the table is quoted from the TOGAF 9.0 work product pages [5], [6], because only those were readable. Check the wording against [2] before quoting it as TOGAF 10.
-    Sources [7] and [8] are secondary or vendor texts; the primary Gartner definition is paywalled.
-
 ## Building blocks shared by all flows
 
 ### Generic requirements (apply to every technology)

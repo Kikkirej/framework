@@ -24,21 +24,22 @@ Nothing here is new. The flows are assembled from established building blocks:
 
 | Standard | What is reused | Source |
 |---|---|---|
-| TOGAF® ADM Phase D (Technology Architecture) | Baseline vs. target technology architecture, gap analysis | [1], [2] |
-| TOGAF® Technology Portfolio Catalog | List of *all technology in use* (hardware, infrastructure software, application software). Typically the start point of Phase D and the basis for defining technology standards. This is the inventory of the flows below | [3], [5] |
-| TOGAF® Technology Standards Catalog | Agreed technology standards with versions, lifecycles and refresh cycles. Also used to identify discrepancies across the enterprise. This is where the ratings below are recorded | [4], [5] |
-| TOGAF® Phase E/F and Phase G/H | Migration planning, governance, compliance and change management | [1] (not individually verified) |
-| TOGAF® Architecture Principles and Requirements Management | Criteria that technologies are rated against | [1] (not individually verified) |
-| Gartner TIME model: Tolerate, Invest, Migrate, Eliminate | Inspiration only. TIME rates **applications** on *business value* × *technical fit*; it is not defined for technologies. The rating scale below is a technology-level analogue, not a mapping | [6] |
-| Thoughtworks Technology Radar: Adopt, Trial, Assess, Hold | Rings for communicating the result. *Hold* means "don't start anything new with this, no harm in existing projects", which corresponds closely to *Legacy*/*Discouraged* below. *Assess* corresponds to *Under evaluation* | [7] |
-| ISO/IEC 25010 | Product quality characteristics as a checklist for the quality criteria (see [Architecture Rating](ISAQB-CPSA/10-architecture-rating.md)) | [8] |
-| arc42 section 10 (Quality Requirements) | Format for making quality requirements specific and measurable | [9] |
-| SPDX | Standardised licence identifiers for the `Licence` field of the inventory | [10] |
+| TOGAF® 10 ADM Phase D (Technology Architecture) | Baseline vs. target technology architecture, gap analysis. Technology Architecture outputs include the Technology Standards catalog and the Technology Portfolio catalog | [1], [2] |
+| TOGAF® Technology Portfolio catalog | List of *all technology in use* (hardware, infrastructure software, application software). Typically the start point of the Technology Architecture phase and the foundation for the other matrices and diagrams. This is the inventory of the flows below | [2], [5] |
+| TOGAF® Technology Standards catalog | Agreed technology standards with versions, lifecycles and refresh cycles. Also used to identify discrepancies across the enterprise. This is where the ratings below are recorded | [2], [6] |
+| TOGAF® Architecture Board | Cross-organisation decision body: basis for decisions on architectures, enforcing compliance, granting dispensations (= exceptions here), recommended four to five and no more than ten permanent members | [3] |
+| TOGAF® Architecture Compliance | Reviewing that projects conform to the agreed architecture and standards | [4] |
+| TOGAF® Phase E/F and Phase G/H, Principles, Requirements Management | Migration planning, governance, change management, criteria for rating | [1] (names only, content not individually verified) |
+| Gartner TIME model: Tolerate, Invest, Migrate, Eliminate | Inspiration only. TIME rates **applications** on *business value* × *technical fit*; it is not defined for technologies. The rating scale below is a technology-level analogue, not a mapping | [7] |
+| Thoughtworks Technology Radar: Adopt, Trial, Assess, Hold | Rings for communicating the result. *Hold* means "don't start anything new with this, no harm in existing projects", which corresponds closely to *Legacy*/*Discouraged* below. *Assess* corresponds to *Under evaluation* | [8] |
+| ISO/IEC 25010 | Product quality characteristics as a checklist for the quality criteria (see [Architecture Rating](ISAQB-CPSA/10-architecture-rating.md)) | [9] |
+| arc42 section 10 (Quality Requirements) | Format for making quality requirements specific and measurable | [10] |
+| SPDX | Standardised licence identifiers for the `Licence` field of the inventory | [11] |
 | ITIL 4 (continual improvement, change enablement) | Idea for the review cycle. Not verified against the publication | not verified |
 
 !!! warning "Verification status"
-    Sources [3] and [4] are the TOGAF 9.0 work product pages. The TOGAF 10 edition restructured the content into modular documents. That both catalogs keep these names and definitions in the 10th edition was **not** verified, because the 10th edition pages could not be fetched. Check against [5] before quoting them as TOGAF 10.
-    Sources [6] and [7] are secondary or vendor texts; the primary Gartner definition is paywalled.
+    Primary sources are the **TOGAF® Standard, 10th Edition** ([1] to [4]). That the Technology Standards catalog and the Technology Portfolio catalog are Technology Architecture outputs of the 10th edition was confirmed through search results for [1] and [2]; the pages themselves could not be opened here (network proxy). The detailed wording of both catalog definitions in the table is quoted from the TOGAF 9.0 work product pages [5], [6], because only those were readable. Check the wording against [2] before quoting it as TOGAF 10.
+    Sources [7] and [8] are secondary or vendor texts; the primary Gartner definition is paywalled.
 
 ## Building blocks shared by all flows
 
@@ -132,14 +133,54 @@ Weight the criteria per category. Document the weights once, not per assessment.
 
 ### Roles
 
-| Role | Task |
-|---|---|
-| Technology steward (per category) | Appointed **when the process for the category is started**. Owns inventory and ratings of the category, prepares assessments and the decision proposal |
-| Product architects | Provide data for their products, bring requirements, apply ratings |
-| Architecture board | TOGAF-style board. Takes the **final decision** on ratings, generic requirements and exceptions. Kept small and time-boxed |
-| Legal / security / procurement | Consulted where the generic requirements or risk ratings need it |
+Abbreviations are used in the flows and the RACI below. **Not every role takes part in every process**; the flow tables list only the roles that are involved, all others are not needed for that step.
+
+| Abbr. | Role | Task in this process |
+|---|---|---|
+| **TS** | Technology steward (per category) | The one coordinating the assessment. Appointed **when the process for the category is started**. Owns inventory and ratings of the category, prepares assessments and the decision proposal |
+| **PM** | Product management | Brings business needs and priorities, owns the product roadmap and therefore the migration decisions of a product. Accountable for exception requests of their product |
+| **DEV** | Product development | Provides usage and rationale for the technologies in their product, evaluates candidates, runs proofs of concept, implements migrations |
+| **DEL** | Delivery (operations, release, customer deployment) | Brings operational facts: operability, incidents, patching effort, on-premise deployment constraints. Executes rollouts |
+| **AB** | Architecture board | TOGAF-style board. Takes the **final decision** on ratings, generic requirements and exceptions (dispensations). Small and time-boxed |
+| **PA** | Product architect | Links the product to the process: validates inventory data, brings architecture requirements, checks compliance of the product against the catalog |
+| **OWN** | Process owner / architecture office | Owns the process itself, plans cycles, prepares board meetings, maintains and publishes the catalog (catalog custodian) |
+| **SEC** | Security | Assesses security aspects of technologies, reports vulnerabilities and security incidents as re-rating triggers |
+| **LEG** | Legal and compliance | Owns the licence and compliance rules behind the generic requirements. (The licence assessment method itself is outside this flow) |
+| **PRO** | Procurement / vendor management | Brings contract, cost and vendor situation for commercial technologies |
+
+Optional roles, added when needed: **QA / test** (test tooling categories), **Support** (customer-facing impact of technology changes), **Data protection officer** (categories that touch personal data), **Customers or partners** as source of external constraints (represented through PM, never directly decision making).
 
 The steward proposes, the board decides. The steward does not decide alone, and the board does not prepare assessments.
+
+### RACI (generic)
+
+R = responsible (does the work), A = accountable (one per row, owns the result), C = consulted, I = informed, blank = not involved. This is the default; the board may adapt it to the organisation.
+
+| Activity | OWN | TS | PM | DEV | DEL | PA | AB | SEC | LEG | PRO |
+|---|---|---|---|---|---|---|---|---|---|---|
+| Maintain the process itself | A/R | C | C | | C | C | C | | | |
+| Draft and maintain generic requirements | R | C | C | | C | C | A | R | R | C |
+| Prioritise categories, define category, appoint steward | R | I | C | | | C | A | | | |
+| Provide inventory data per product | I | A | C | R | C | R | | | | |
+| Consolidate requirements and needs | | A/R | R | R | C | C | I | C | | |
+| Scan candidates not yet in use (Flow B) | | A/R | I | C | | C | | C | C | C |
+| Assess against generic requirements and criteria | | A/R | C | C | C | C | I | C | C | C |
+| Proof of concept | | A | I | R | C | C | | C | | |
+| Prepare rating proposal | | A/R | C | C | C | C | I | | | |
+| **Decide rating** | I | C | C | I | I | C | A/R | C | C | |
+| Publish catalog | A/R | R | I | I | I | I | I | | | |
+| Plan migration or exit | | C | A | R | R | C | I | | | |
+| Fast lane: request a technology decision (Flow D) | | C | A | R | C | R | I | | | |
+| Fast lane: decide on request | I | R | I | I | | C | A | C | | |
+| Request an exception | | C | A | R | | C | I | C | | |
+| **Decide an exception** | I | C | C | I | I | C | A/R | C | C | |
+| Check product compliance against the catalog | A | C | I | C | C | R | I | | | |
+| Trigger re-rating (expiry, vulnerability, licence event) | C | A/R | I | | C | | I | R | R | C |
+
+Notes:
+
+* The board stays small. Decisions in the fast lane may be **delegated** to the steward for low-impact cases (for example a library inside a Preferred framework). The delegation rule is set by the board and listed as open question.
+* PM is accountable for migrations and exceptions because they own the product's priorities and budget. Delivering the change is DEV and DEL.
 
 ---
 
@@ -149,24 +190,26 @@ This is the flow described in the request. One category at a time is run through
 
 ```mermaid
 flowchart LR
-    A[1. Select category,<br/>name steward] --> B[2. Collect technologies<br/>and usage rationale]
-    B --> C[3. Consolidate requirements<br/>and needs]
-    C --> D[4. Check generic requirements,<br/>assess against criteria]
-    D --> E[5. Rate:<br/>Preferred / Acceptable / Legacy /<br/>Discouraged / High risk]
-    E --> F[6. Board decision<br/>and publish]
-    F --> G[7. Derive migration backlog<br/>and exceptions]
+    A["1. Select category,<br/>name steward<br/><i>OWN, AB</i>"] --> B["2. Collect technologies<br/>and usage rationale<br/><i>PA, DEV, DEL</i>"]
+    B --> C["3. Consolidate requirements<br/>and needs<br/><i>TS, PM, DEV</i>"]
+    C --> D["4. Check generic requirements,<br/>assess against criteria<br/><i>TS, SEC, LEG, PRO</i>"]
+    D --> E["5. Rate (proposal):<br/>Preferred / Acceptable / Legacy /<br/>Discouraged / High risk<br/><i>TS</i>"]
+    E --> F["6. Board decision<br/>and publish<br/><i>AB, OWN</i>"]
+    F --> G["7. Derive migration backlog<br/>and exceptions<br/><i>PM, DEV, DEL</i>"]
     G --> A
 ```
 
-| Step | Result | TOGAF® reference |
-|---|---|---|
-| 1. Select category | Category definition, named steward, priority (by cost, risk or pain) | Preliminary, Phase A |
-| 2. Collect | Inventory records for all products | Phase D baseline |
-| 3. Consolidate | Requirement list per category, with product-specific needs flagged | Requirements Management |
-| 4. Assess | Scoring per criterion, rationale documented | Phase D gap analysis |
-| 5. Rate | Rating per technology plus risk type | Technology Standards Catalog |
-| 6. Decide | Decision record, published catalog | Phase G governance |
-| 7. Derive | Migration candidates, exceptions, owners | Phase E/F |
+Roles are shown in italics below each step (abbreviations: see [Roles](#roles)). Only the roles named in a step are involved.
+
+| Step | Result | A (accountable) | R (responsible) | C (consulted) | TOGAF® reference |
+|---|---|---|---|---|---|
+| 1. Select category | Category definition, named steward, priority (by cost, risk or pain) | AB | OWN | PM, PA | Preliminary, Phase A |
+| 2. Collect | Inventory records for all products | TS | PA, DEV | DEL, PM | Phase D baseline |
+| 3. Consolidate | Requirement list per category, with product-specific needs flagged | TS | PM, DEV | DEL, PA, SEC | Requirements Management |
+| 4. Assess | Scoring per criterion, rationale documented | TS | TS | DEV, DEL, PA, SEC, LEG, PRO | Phase D gap analysis |
+| 5. Rate | Rating proposal per technology plus risk type | TS | TS | PA, PM, DEV, DEL | Technology Standards catalog |
+| 6. Decide | Decision record, published catalog | AB | AB, OWN (publish) | TS, PM, SEC, LEG, PA | Architecture Board |
+| 7. Derive | Migration candidates, exceptions, owners | PM | DEV, DEL | TS, PA | Phase E/F |
 
 **Pros**
 
@@ -215,6 +258,16 @@ flowchart TD
 * Candidates get a lighter first assessment. Only candidates passing a go/no-go move to a **proof of concept**; the PoC is a separate, scheduled work item, not part of the cycle.
 * New technologies start as **Under evaluation** (radar ring *Assess*), never directly as *Preferred*.
 
+**Roles added compared to Flow A:**
+
+| Step | A | R | C | Note |
+|---|---|---|---|---|
+| 2b. Scan candidates | TS | TS | DEV, PA, SEC, PRO | Each candidate gets an advocate (usually DEV) and a critic (usually SEC or PA) |
+| Relevance filter | TS | TS | PM, PA | Entry criteria applied by the steward, borderline cases to the board |
+| Proof of concept (separate work item) | TS | DEV | DEL, SEC, PA | Scheduled by PM, not part of the cycle time-box |
+
+All other steps as in Flow A.
+
 **Pros**
 
 * Avoids cementing the status quo, finds better targets for the Legacy/Discouraged items.
@@ -240,6 +293,17 @@ flowchart LR
     C --> D[Publish technology standards catalog]
     D --> E[Roadmap and migration plan]
 ```
+
+**Roles:** this is a programme, not a recurring cycle.
+
+| Step | A | R | C |
+|---|---|---|---|
+| Programme set-up, categories clustered | AB | OWN | TS (all appointed up front), PM |
+| Full inventory | OWN | PA, DEV | DEL, PM |
+| Shallow rating and risk screen | AB | TS (per category) | SEC, LEG, PRO |
+| Publish catalog and roadmap | OWN | OWN, TS | PM, DEL, AB |
+
+Because all stewards work in parallel, the board and the architecture office are the bottleneck.
 
 **Pros**
 
@@ -273,6 +337,16 @@ flowchart LR
     E --> F[Update catalog]
     E --> G[Exception or new standard]
 ```
+
+**Roles:** only a few roles are needed. The fast lane skips DEL, PRO and LEG unless the request touches them.
+
+| Step | A | R | C | I |
+|---|---|---|---|---|
+| Project states the need | PM | DEV, PA | TS | |
+| Lookup in catalog, Preferred: use it | PM | DEV | | TS |
+| Lightweight assessment | AB | TS | PA, SEC, DEL (operability) | PM, DEV |
+| Decision (or delegated to TS for low-impact cases) | AB | AB | TS, PM | DEV, OWN |
+| Update catalog | OWN | OWN, TS | | AB |
 
 **Pros**
 
@@ -317,6 +391,14 @@ flowchart TD
 
 Priorities for the deep dives can be driven by a simple score: **number of products affected × risk × cost**. Start where the pain is largest, not where the category list begins.
 
+**Roles per mechanism:**
+
+| Mechanism | A | R | C | Roles *not* involved |
+|---|---|---|---|---|
+| Baseline (Flow C, shallow) | OWN | PA, DEV | TS, SEC, LEG, DEL | PRO, PM (informed only) |
+| Deep dive (Flow B) | AB | TS | PM, DEV, DEL, PA, SEC, LEG, PRO | none, this is the full flow |
+| Fast lane (Flow D) | AB | TS | PA, DEV | LEG, PRO (only if relevant), DEL (only for operability) |
+
 **Pros**
 
 * Early value: the baseline surfaces the worst risks (for example licence issues) within weeks.
@@ -342,6 +424,14 @@ Ratings must change when the world changes. Triggers:
 * New product requirement which the current rating did not consider.
 * Migration completed: set to *Legacy* → *retired*.
 
+| Trigger | Detected by (R) | Accountable | Decides |
+|---|---|---|---|
+| Review date expired | OWN | TS | AB (on proposal) |
+| Licence change, acquisition, end of support | LEG, PRO, TS | TS | AB |
+| Critical vulnerability or repeated incidents | SEC, DEL | TS | AB |
+| New product requirement not covered by the rating | PM, DEV, PA | TS | AB |
+| Migration completed | DEV, DEL | PM | TS updates the state to *Retired*, AB informed |
+
 ```mermaid
 stateDiagram-v2
     [*] --> UnderEvaluation
@@ -360,10 +450,22 @@ stateDiagram-v2
 
 ## Supporting flow: Exception handling
 
-1. Team documents need and why the rated alternatives do not fit.
-2. Steward checks, the architecture board decides within a fixed time (for example 5 working days).
-3. Exception is recorded with owner, scope and **expiry date**.
-4. Repeated exceptions for the same need are a signal to re-assess the category.
+An exception (a *dispensation* in TOGAF® terms, granted by the Architecture Board [3]) is the only way to deviate from a binding rating.
+
+```mermaid
+flowchart LR
+    A["1. Document need<br/>and why rated alternatives do not fit<br/><i>DEV, PA (A: PM)</i>"] --> B["2. Check completeness,<br/>assess impact<br/><i>TS, SEC</i>"]
+    B --> C["3. Decide within fixed time<br/><i>AB</i>"]
+    C --> D["4. Record with owner, scope, expiry<br/><i>OWN</i>"]
+    D --> E["5. Follow up at expiry<br/><i>PM, TS</i>"]
+```
+
+1. Team documents need and why the rated alternatives do not fit. PM is accountable that the need is real, DEV and PA prepare it.
+2. Steward checks completeness and impact (SEC is consulted when risk is involved). The architecture board decides within a fixed time (for example 5 working days).
+3. Exception is recorded with owner, scope and **expiry date** by the architecture office.
+4. At expiry the product either migrates or requests a renewal. Repeated exceptions for the same need are a signal to re-assess the category.
+
+Roles not involved by default: DEL, PRO, LEG (consulted only when the exception touches their area).
 
 ## Comparison of flows
 
@@ -406,20 +508,24 @@ Decided:
 Still open:
 
 * The exception process: who may request, how long may an exception run, how are expired exceptions followed up? (The statement "exceptions should ..." was not completed in the input; the proposal above is the minimum: board decides, scoped, time-limited, recorded.)
-* Board composition, meeting cadence and decision quorum.
+* Board composition, meeting cadence and decision quorum (TOGAF® recommends four to five, at most ten permanent members [3]).
+* Delegation rule: which fast-lane decisions may the steward take without the board?
+* Confirm the role set and the RACI; are the optional roles (QA, Support, data protection) needed from the start?
 * Concrete content of the generic requirements.
 * How much time a steward gets, and who the first stewards are.
 * Which category is the pilot?
 
 ## Sources
 
-1. The Open Group: [TOGAF® Standard, ADM – Phase D: Technology Architecture](https://pubs.opengroup.org/togaf-standard/adm/chap08.html) (10th edition)
-2. The Open Group: [TOGAF® Standard 9.2 – Phase D: Technology Architecture](https://pubs.opengroup.org/architecture/togaf92-doc/arch/chap11.html)
-3. The Open Group: [Artifact: Technology Portfolio Catalog](https://pubs.opengroup.org/architecture/togaf90-doc/epf/TOGAF9/workproducts/Technology%20Portfolio%20Catalog_1B13325D.html) (TOGAF 9.0 work product)
-4. The Open Group: [Artifact: Technology Standards Catalog](https://pubs.opengroup.org/architecture/togaf90-doc/epf/TOGAF9/workproducts/Technology%20Standards%20Catalog_D8B8157.html) (TOGAF 9.0 work product)
-5. The Open Group: [TOGAF® Standard – Architecture Content](https://pubs.opengroup.org/togaf-standard/architecture-content/index.html) (10th edition)
-6. LeanIX: [Gartner TIME model](https://www.leanix.net/en/wiki/ea/gartner-time-model) (secondary source for Gartner's TIME framework)
-7. Thoughtworks: [Build your own Technology Radar](https://www.thoughtworks.com/en-de/insights/blog/build-your-own-technology-radar)
-8. arc42 Quality Model: [ISO/IEC 25010](https://quality.arc42.org/standards/iso-25010); standard itself: ISO/IEC 25010:2023
-9. arc42: [Section 10 – Quality Requirements](https://docs.arc42.org/section-10/)
-10. SPDX: [Handling licence information / SPDX licence identifiers](https://spdx.dev/learn/handling-license-info/)
+1. The Open Group: [TOGAF® Standard (10th Edition), ADM – Phase D: Technology Architecture](https://pubs.opengroup.org/togaf-standard/adm/chap08.html)
+2. The Open Group: [TOGAF® Standard (10th Edition), Architecture Content](https://pubs.opengroup.org/togaf-standard/architecture-content/index.html)
+3. The Open Group: [TOGAF® Standard (10th Edition), EA Capability and Governance – Architecture Board](https://pubs.opengroup.org/togaf-standard/ea-capability-and-governance/chap04.html)
+4. The Open Group: [TOGAF® Standard (10th Edition), EA Capability and Governance – Architecture Compliance](https://pubs.opengroup.org/togaf-standard/ea-capability-and-governance/chap06.html)
+5. The Open Group: [Artifact: Technology Portfolio Catalog](https://pubs.opengroup.org/architecture/togaf90-doc/epf/TOGAF9/workproducts/Technology%20Portfolio%20Catalog_1B13325D.html) (TOGAF 9.0 work product, quoted for wording only)
+6. The Open Group: [Artifact: Technology Standards Catalog](https://pubs.opengroup.org/architecture/togaf90-doc/epf/TOGAF9/workproducts/Technology%20Standards%20Catalog_D8B8157.html) (TOGAF 9.0 work product, quoted for wording only)
+7. LeanIX: [Gartner TIME model](https://www.leanix.net/en/wiki/ea/gartner-time-model) (secondary source for Gartner's TIME framework)
+8. Thoughtworks: [Build your own Technology Radar](https://www.thoughtworks.com/en-de/insights/blog/build-your-own-technology-radar)
+9. arc42 Quality Model: [ISO/IEC 25010](https://quality.arc42.org/standards/iso-25010); standard itself: ISO/IEC 25010:2023
+10. arc42: [Section 10 – Quality Requirements](https://docs.arc42.org/section-10/)
+11. SPDX: [Handling licence information / SPDX licence identifiers](https://spdx.dev/learn/handling-license-info/)
+12. The Open Group: [TOGAF® Series Guide: Architecture Skills Framework](https://pubs.opengroup.org/togaf-standard/architecture-skills-framework/) (title only checked; the roles in this chapter are adapted to product organisations and not taken from it)

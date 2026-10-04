@@ -19,16 +19,23 @@ The goal is to **harmonize software components over products** in a controlled, 
 
 Nothing here is new. The flows are assembled from established building blocks:
 
-| Standard | What is reused |
-|---|---|
-| TOGAF® ADM Phase D (Technology Architecture) | Baseline vs. target technology architecture, gap analysis |
-| TOGAF® Technology Portfolio Catalog and Technology Standards Catalog | The catalogs where technologies and their lifecycle status are recorded (see [Architecture Repository](Content-Framework/Documents/arch-repository.md)) |
-| TOGAF® Phase E/F and Phase G/H | Migration planning, governance, compliance and change management |
-| TOGAF® Architecture Principles and Requirements Management | Criteria that technologies are rated against |
-| TIME model (Gartner): Tolerate, Invest, Migrate, Eliminate | Disposition of existing applications and technologies. The rating below is a technology-level variant of it |
-| ThoughtWorks Technology Radar (Adopt, Trial, Assess, Hold) | Rings for new and emerging technologies. Good for communicating the result |
-| ITIL 4 Service Value System | Continual improvement and change enablement for the review cycle |
-| ISO/IEC 25010 and arc42 chapter 10 | Quality attributes as rating criteria (see [Architecture Rating](ISAQB-CPSA/10-architecture-rating.md)) |
+| Standard | What is reused | Source |
+|---|---|---|
+| TOGAF® ADM Phase D (Technology Architecture) | Baseline vs. target technology architecture, gap analysis | [1], [2] |
+| TOGAF® Technology Portfolio Catalog | List of *all technology in use* (hardware, infrastructure software, application software). Typically the start point of Phase D and the basis for defining technology standards. This is the inventory of the flows below | [3], [5] |
+| TOGAF® Technology Standards Catalog | Agreed technology standards with versions, lifecycles and refresh cycles. Also used to identify discrepancies across the enterprise. This is where the ratings below are recorded | [4], [5] |
+| TOGAF® Phase E/F and Phase G/H | Migration planning, governance, compliance and change management | [1] (not individually verified) |
+| TOGAF® Architecture Principles and Requirements Management | Criteria that technologies are rated against | [1] (not individually verified) |
+| Gartner TIME model: Tolerate, Invest, Migrate, Eliminate | Inspiration only. TIME rates **applications** on *business value* × *technical fit*; it is not defined for technologies. The rating scale below is a technology-level analogue, not a mapping | [6] |
+| Thoughtworks Technology Radar: Adopt, Trial, Assess, Hold | Rings for communicating the result. *Hold* means "don't start anything new with this, no harm in existing projects", which corresponds closely to *Legacy*/*Discouraged* below. *Assess* corresponds to *Under evaluation* | [7] |
+| ISO/IEC 25010 | Product quality characteristics as a checklist for the quality criteria (see [Architecture Rating](ISAQB-CPSA/10-architecture-rating.md)) | [8] |
+| arc42 section 10 (Quality Requirements) | Format for making quality requirements specific and measurable | [9] |
+| SPDX | Standardised licence identifiers for the `Licence` field of the inventory | [10] |
+| ITIL 4 (continual improvement, change enablement) | Idea for the review cycle. Not verified against the publication | not verified |
+
+!!! warning "Verification status"
+    Sources [3] and [4] are the TOGAF 9.0 work product pages. The TOGAF 10 edition restructured the content into modular documents. That both catalogs keep these names and definitions in the 10th edition was **not** verified, because the 10th edition pages could not be fetched. Check against [5] before quoting them as TOGAF 10.
+    Sources [6] and [7] are secondary or vendor texts; the primary Gartner definition is paywalled.
 
 ## Building blocks shared by all flows
 
@@ -357,3 +364,16 @@ If architecture capacity is very small, use Flow A plus Flow D and add horizon s
 * Where is the catalog stored (file, wiki, tool)? See [Architecture Repository](Content-Framework/Documents/arch-repository.md).
 * Is the rating scale extended by *Acceptable*, or kept to the four ratings requested?
 * How is the licence assessment done (internal legal, external tool such as an SCA scanner)?
+
+## Sources
+
+1. The Open Group: [TOGAF® Standard, ADM – Phase D: Technology Architecture](https://pubs.opengroup.org/togaf-standard/adm/chap08.html) (10th edition)
+2. The Open Group: [TOGAF® Standard 9.2 – Phase D: Technology Architecture](https://pubs.opengroup.org/architecture/togaf92-doc/arch/chap11.html)
+3. The Open Group: [Artifact: Technology Portfolio Catalog](https://pubs.opengroup.org/architecture/togaf90-doc/epf/TOGAF9/workproducts/Technology%20Portfolio%20Catalog_1B13325D.html) (TOGAF 9.0 work product)
+4. The Open Group: [Artifact: Technology Standards Catalog](https://pubs.opengroup.org/architecture/togaf90-doc/epf/TOGAF9/workproducts/Technology%20Standards%20Catalog_D8B8157.html) (TOGAF 9.0 work product)
+5. The Open Group: [TOGAF® Standard – Architecture Content](https://pubs.opengroup.org/togaf-standard/architecture-content/index.html) (10th edition)
+6. LeanIX: [Gartner TIME model](https://www.leanix.net/en/wiki/ea/gartner-time-model) (secondary source for Gartner's TIME framework)
+7. Thoughtworks: [Build your own Technology Radar](https://www.thoughtworks.com/en-de/insights/blog/build-your-own-technology-radar)
+8. arc42 Quality Model: [ISO/IEC 25010](https://quality.arc42.org/standards/iso-25010); standard itself: ISO/IEC 25010:2023
+9. arc42: [Section 10 – Quality Requirements](https://docs.arc42.org/section-10/)
+10. SPDX: [Handling licence information / SPDX licence identifiers](https://spdx.dev/learn/handling-license-info/)

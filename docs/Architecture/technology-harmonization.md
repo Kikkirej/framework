@@ -54,6 +54,8 @@ Examples of what belongs here (the concrete content is the organisation's decisi
 * Minimum security and support expectations (maintained, security fixes available).
 * Compliance obligations that hold for all products.
 
+Requirements of the superior organisation (see [Embedding](#embedding-in-the-technology-approval-process-of-the-superior-organisation)) are inherited here. This chapter's generic requirements may be stricter than the superior ones, never weaker.
+
 Customer-mandated or on-premise constraints are part of this list, not a separate mechanism. The *licence assessment itself* (how a licence is analysed and classified) is **not defined in this flow**. The flow only consumes its result as a pass/fail input to the generic requirements.
 
 ### Technology categories ("types")
@@ -88,6 +90,8 @@ The set of categories is **open-ended and configured per use case**. There is no
 | Licence | SPDX identifier, commercial terms, cost |
 | Lifecycle | Release date, end of support, community health |
 | Owner | Person who answers questions about it |
+| Product contacts | The PM, DEV, DEL and PA contact **per product** that uses the technology (see [Contacts per role](#contacts-per-role)) |
+| Superior approval | Status of the approval by the superior organisation, and for legal/security checks who performed them, the scope and the date (see [Embedding](#embedding-in-the-technology-approval-process-of-the-superior-organisation)) |
 | Replaceability | How deeply is it embedded (library vs. data model vs. platform)? |
 
 ### Rating scale
@@ -418,6 +422,92 @@ flowchart LR
 
 Roles not involved by default: DEL, PRO, LEG (consulted only when the exception touches their area).
 
+## Embedding in the technology approval process of the superior organisation
+
+The process in this chapter works at the level of a **product landscape** (a set of products). The superior organisation (group, enterprise) usually has its own technology approval process, with its own legal, security and architecture checks. Both must fit together without doing the same work twice and without contradicting each other.
+
+TOGAF® describes architecture boards that operate at several levels, local (domain experts) and global (organisation-wide responsibility) [3]. The board of this chapter is the local one; the superior approval body is the global one. The rating and the approval answer different questions:
+
+| | Superior approval | Rating in this chapter |
+|---|---|---|
+| Question | "May this technology be used in the organisation at all?" | "Which of the approved technologies do we use, and how?" |
+| Result | Approved / not approved (possibly with conditions) | Preferred / Acceptable / Legacy / Discouraged / High risk |
+| Scope | Whole organisation | The product landscape |
+| Owner | Superior architecture, legal, security | Local architecture board |
+
+**Rule:** a technology can only be rated *Preferred* or *Acceptable* if the superior approval is *approved*. A local rating never overrides a rejection by the superior organisation. A technology that is *not approved* may still be rated *Under evaluation*, *Legacy* (existing use) or *High risk*.
+
+### Embedding variants
+
+The right variant depends on how the superior process is organised. The variant is chosen once and written into the generic requirements.
+
+| Variant | How it works | Pros | Cons |
+|---|---|---|---|
+| **1. Superior list as input (pre-approved catalog)** | The superior list of approved technologies is an input. The local process only chooses among approved technologies | Clear, no double work | Candidates not on the list need a request to the superior organisation first, which can be slow |
+| **2. Gate before rating (sequential)** | The local assessment proposes a rating, then the superior approval is requested for technologies not yet approved. The board decides after the approval | Superior sees a prepared, evidence-based request | Longest lead time |
+| **3. In parallel** | The superior check and the local assessment run at the same time, the board decides when both are ready | Shortest lead time | Wasted work if the superior organisation rejects; needs good coordination |
+| **4. Delegated checks** | The superior organisation delegates the legal and/or security check to this process (see below). Approval remains with the superior organisation or is delegated as a whole for defined cases | Fast, uses local knowledge | Needs trust, clear scope and audit |
+
+Variants can be combined, for example variant 1 for common technologies and variant 4 for the legal check of low-risk libraries.
+
+```mermaid
+flowchart TD
+    A[Technology assessed in a category<br/><i>TS</i>] --> B{Already approved by<br/>superior organisation?}
+    B -->|Yes| G[Local rating proposal<br/><i>TS</i>]
+    B -->|No| C{Check delegated<br/>to local process?}
+    C -->|Fully| D[Local legal / security check<br/><i>LEG, SEC</i>]
+    C -->|Partly| E[Local check where delegated,<br/>request rest from superior<br/><i>TS, LEG, SEC</i>]
+    C -->|No| F[Request approval from superior org<br/><i>TS, OWN</i>]
+    D --> H[Record result and evidence<br/><i>OWN</i>]
+    E --> H
+    F --> I{Approved?}
+    I -->|Yes| H
+    I -->|No| J[Rating limited to<br/>Under evaluation / Legacy / High risk<br/><i>AB</i>]
+    H --> G
+    G --> K[Board decision<br/><i>AB</i>]
+    J --> K
+```
+
+### Delegating the legal and security check
+
+The superior organisation may delegate the legal (licence, compliance) and/or the security check of technologies to this local process. The delegation is not implicit; it is agreed in writing between the superior approval body and the local architecture board. The following should be part of the agreement:
+
+| Item | Content |
+|---|---|
+| Scope | Which checks (legal, security, or both), for which technology classes or risk levels (for example "libraries with a permissive licence", not "databases") |
+| Criteria | Which checklist or method applies. The local process **uses the superior criteria**; this flow does not define the licence assessment method itself |
+| Who performs it | The local LEG and SEC roles, or named delegates. If the local organisation has no such roles, the delegation is not possible for that check |
+| Evidence | What is recorded per technology: result, method/checklist version, person, date, scope. Stored in the catalog (field *Superior approval*) |
+| Exclusions | Cases that always go back to the superior organisation, for example copyleft or unclear licences, critical security findings, commercial contracts, personal data |
+| Escalation | A check that cannot be concluded locally, or any doubt, is escalated to the superior body |
+| Oversight | The superior organisation can sample the delegated checks, receives a regular report, and can narrow or revoke the delegation |
+| Accountability | Remains with the delegating superior body for the organisation-wide approval; the local board is accountable for performing the delegated check correctly |
+| Review | The delegation itself has a review date (for example yearly) |
+
+Without a delegation, the legal and security checks are always requested from the superior organisation, and the local process waits for the result.
+
+### Roles at the interface
+
+| Abbr. | External role | Task |
+|---|---|---|
+| **SUP-AB** | Superior approval body (global architecture board or equivalent) | Approves technologies organisation-wide, defines or grants delegations |
+| **SUP-LEG** | Superior legal / compliance | Performs or delegates legal checks, defines criteria |
+| **SUP-SEC** | Superior security | Performs or delegates security checks, defines criteria |
+
+Interface RACI (only the activities that cross the boundary):
+
+| Activity | OWN | TS | AB | LEG | SEC | SUP-AB | SUP-LEG | SUP-SEC |
+|---|---|---|---|---|---|---|---|---|
+| Agree the embedding variant and delegation | R | C | A | C | C | A/R* | C | C |
+| Request superior approval for a technology | R | A | I | C | C | I | | |
+| Decide superior approval | | I | I | | | A/R | C | C |
+| Perform delegated legal check | I | C | I | A/R | | I | C | |
+| Perform delegated security check | I | C | I | | A/R | I | | C |
+| Report on delegated checks | R | C | A | R | R | I | I | I |
+| Revoke or narrow a delegation | | | C | | | A/R | C | C |
+
+\* The delegation is agreed between both boards. The superior body is accountable for granting it, the local board for accepting and complying with it.
+
 ## Comparison of flows
 
 | Criterion | A: Category cycle | B: + Horizon scan | C: All at once | D: Demand-led | E: Hybrid |
@@ -476,6 +566,28 @@ Abbreviations are used in the flows and the RACI below. **Not every role takes p
 Optional roles, added when needed: **QA / test** (test tooling categories), **Support** (customer-facing impact of technology changes), **Data protection officer** (categories that touch personal data), **Customers or partners** as source of external constraints (represented through PM, never directly decision making).
 
 The steward proposes, the board decides. The steward does not decide alone, and the board does not prepare assessments.
+
+### Contacts per role
+
+Many different products take part, so the same role is typically held by **different people for different products**. The process must not assume one person per role.
+
+| Role | Cardinality | Consequence |
+|---|---|---|
+| PM, DEV, DEL, PA | **One or more contacts per product** | Every product that uses a technology in the category names its own contacts. The steward collects the contacts together with the inventory (field *Product contacts*) |
+| TS | One per category (may be several for a large category) | Named when the category process is started |
+| SEC, LEG, PRO | One central contact or team, possibly with product-specific delegates | Central contact is the default |
+| OWN, AB | Central | One team / one board |
+
+Rules for working with several contacts:
+
+* **"Consulted" means all affected product contacts are asked**, not just one. The steward defines the circle: all contacts of products that use a technology in the category, plus contacts of products which plan to.
+* **Consolidate a product's view.** Each product answers once (PM, DEV, DEL and PA of one product align internally), so answers are not contradictory within a product. The product architect (PA) is the default single voice of a product in the process, unless the product has agreed otherwise.
+* **Time-box the consultation** (for example 2 weeks) and state in the invitation what happens without an answer. Proposal: no answer within the period means no objection, but it is recorded and the contact is informed of the result.
+* **Responsible with several contacts** (for example PA in the RACI row for the inventory): every product's PA is responsible for *their* product's data. The steward is accountable for completeness.
+* **Accountable stays single.** In each RACI row exactly one role is accountable for the result, as before; several contacts may only be responsible or consulted. If a product-level accountability exists (PM for migration), it is accountable for *its own product* only.
+* **Contact data lives in the catalog** (or is linked from it) and is reviewed with the normal review date, because people change roles.
+* **Conflicts between products** (one product needs a technology, another wants it phased out) are not solved by the steward but brought to the board by the steward with the facts of both sides.
+
 
 ## RACI (generic)
 

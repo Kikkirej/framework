@@ -31,17 +31,18 @@ Nothing here is new. The flows are assembled from established building blocks:
 | TOGAF® Architecture Compliance | Reviewing that projects conform to the agreed architecture and standards | [4] |
 | TOGAF® Phase E/F and Phase G/H, Principles, Requirements Management | Migration planning, governance, change management, criteria for rating | [1] (names only, content not individually verified) |
 | Gartner TIME model: Tolerate, Invest, Migrate, Eliminate | Inspiration only. TIME rates **applications** on *business value* × *technical fit*; it is not defined for technologies. The rating scale below is a technology-level analogue, not a mapping | [7] |
-| Thoughtworks Technology Radar: Adopt, Trial, Assess, Hold | Rings for communicating the result. *Hold* means "don't start anything new with this, no harm in existing projects", which corresponds closely to *Legacy*/*Discouraged* below. *Assess* corresponds to *Under evaluation* | [8] |
+| Thoughtworks Technology Radar: Adopt, Trial, Assess, Hold | Rings for communicating the result. *Hold* means "don't start anything new with this, no harm in existing projects", which corresponds closely to *Legacy*/*Discouraged* below. *Assess* corresponds to *Under evaluation*, *Adopt* to *Preferred*. *Trial* has no direct equivalent (closest: a proof of concept, or *Acceptable* with the *Transition* condition) | [8] |
 | ISO/IEC 25010 | Product quality characteristics as a checklist for the quality criteria (see [Architecture Rating](ISAQB-CPSA/10-architecture-rating.md)) | [9] |
 | arc42 section 10 (Quality Requirements) | Format for making quality requirements specific and measurable | [10] |
 | SPDX | Standardised licence identifiers for the `Licence` field of the inventory | [11] |
+| SBOM formats (SPDX, CycloneDX) | Machine-readable list of the components of a product, used to generate and check the inventory automatically | [11], [13] |
 | ITIL 4 (continual improvement, change enablement) | Idea for the review cycle. Not verified against the publication | not verified |
 
 ## Building blocks shared by all flows
 
 ### Generic requirements (apply to every technology)
 
-Before any category-specific assessment, every technology must pass the **generic requirements**. They apply to all categories and are defined once by the architecture board, not per cycle. A technology failing a generic requirement cannot be rated *Preferred* or *Acceptable*.
+Before any category-specific assessment, every technology must pass the **generic requirements**. They apply to all categories and are defined once by the architecture board, not per cycle. A technology failing a generic requirement cannot be rated *Preferred* or *Acceptable*: if it is in use it is rated *High risk* (with the failed requirement as risk type), a candidate not in use is *Rejected*.
 
 Examples of what belongs here (the concrete content is the organisation's decision):
 
@@ -75,6 +76,16 @@ The set of categories is **open-ended and configured per use case**. There is no
 
 **Order.** The order is not fixed. It follows the priority score from Flow E (products affected × risk × cost) and is decided by the board when planning cycles. A category is also started on demand, for example when a project needs a decision in a category that has no ratings yet.
 
+### What counts as a technology (granularity)
+
+Not every dependency is rated individually. A product easily has hundreds of (transitive) libraries; rating each one would stall the process. Rule of thumb:
+
+* **Rated individually:** technologies that shape the architecture or are expensive to replace: runtimes, frameworks, databases, engines, platforms, and libraries that are used directly and are hard to replace (see *Replaceability* below).
+* **Covered by the generic requirements only:** all other libraries, including transitive dependencies. They are not rated, but must pass the generic requirements (licence, security, maintenance). This check should be automated, for example with a software bill of materials (SBOM, in SPDX [11] or CycloneDX [13] format) and dependency scanning in the build.
+* **Versions:** a rating applies to a technology and, where it matters, a **version range** (for example "Java 21+ Preferred, Java 8 to 11 Legacy"). Major versions with different support status or licence are rated separately.
+
+Where exactly the line lies is decided per category by the board when the category is defined.
+
 ### Inventory record (minimum data per technology and product)
 
 | Field | Description |
@@ -85,14 +96,15 @@ The set of categories is **open-ended and configured per use case**. There is no
 | Usage rationale | *Why* is it used? Which requirement or need does it serve? |
 | Licence | SPDX identifier, commercial terms, cost |
 | Lifecycle | Release date, end of support, community health |
-| Owner | Person who answers questions about it |
+| Technical owner | Person in the product who answers questions about this usage (usually from DEV). Ownership of the category and its ratings is with the steward (TS) |
 | Product contacts | The PM, DEV, DEL and PA contact **per product** that uses the technology (see [Contacts per role](#contacts-per-role)) |
 | Superior approval | Status of the approval by the superior organisation, and for legal/security checks who performed them, the scope and the date (see [Embedding](#embedding-in-the-technology-approval-process-of-the-superior-organisation)) |
 | Replaceability | How deeply is it embedded (library vs. data model vs. platform)? |
+| Last confirmed | Date on which the product confirmed the record. Records not confirmed within the review period are flagged as stale |
 
 ### Catalog
 
-The inventory records and the confirmed ratings together form the technology catalog (in TOGAF® terms the Technology Portfolio and Technology Standards catalogs, see above). The catalog is stored **in the tool the organisation already uses** (for example Confluence, Git or SharePoint). The process is tool-agnostic and does not require a new tool. For the options and their trade-offs see [Architecture Repository](Content-Framework/Documents/arch-repository.md).
+The inventory records and the confirmed ratings together form the technology catalog (in TOGAF® terms the Technology Portfolio and Technology Standards catalogs, see above). The catalog is stored **in the tool the organisation already uses** (for example Confluence, Git or SharePoint). The process is tool-agnostic and does not require a new tool. Manually maintained inventories go out of date quickly, so wherever possible the usage data is generated from the build (SBOM, dependency manifests) and only the rationale, contacts and ratings are maintained by hand. For the options and their trade-offs see [Architecture Repository](Content-Framework/Documents/arch-repository.md).
 
 ### Rating scale
 
@@ -100,14 +112,25 @@ A rating is a **decision aid, not a decision**. The technology steward proposes 
 
 The scale, with a precise definition so that ratings stay comparable:
 
-| Rating (proposal, then confirmed by the board) | Meaning | New products | Existing products |
+| Rating (proposal, then confirmed by the board) | Meaning | New usage (new products **and** new components in existing products) | Existing usage |
 |---|---|---|---|
 | **Preferred** | Default choice. Passes generic requirements, supported, skills available, fits principles | Use by default | Keep |
-| **Acceptable** | Good in a defined context, but not the default (conditions below) | Allowed only if a documented condition holds | Keep |
-| **Legacy** | Still supported, but no longer a target | Not allowed | Keep, migrate at natural opportunity |
+| **Acceptable** | Good in a defined context, but not the default (conditions below) | Allowed only if a documented condition holds | Keep while the condition holds |
+| **Legacy** | Still supported, but no longer a target | Not allowed without exception | Keep, migrate at natural opportunity |
 | **Discouraged** | Works, but better alternatives exist or it conflicts with principles | Not allowed without exception | Plan migration |
-| **High risk** | Licence, security, vendor, end-of-life or compliance risk | Forbidden | Mitigation or exit plan with deadline |
-| **Under evaluation** | Not yet assessed (a *state*, not a rating) | Request assessment first | Schedule assessment |
+| **High risk** | Licence, security, vendor, end-of-life or compliance risk | Forbidden. Exceptions only with a documented mitigation and with SEC/LEG consulted | Mitigation or exit plan with deadline |
+
+In addition, these **states** are not ratings but are recorded in the catalog:
+
+| State | Meaning | New usage | Existing usage |
+|---|---|---|---|
+| **Under evaluation** | Not yet assessed, or assessment or superior approval pending | Request assessment first (fast lane, Flow D) | Keep, schedule assessment |
+| **Rejected** | Assessed and not adopted (candidate, or failed generic requirements before any use) | Not allowed; a new request needs new facts | not applicable |
+| **Retired** | Last usage removed from all products | Not allowed | not applicable |
+
+The column "New usage" deliberately covers existing products too: adding a *Discouraged* technology to a new component of an existing product is new usage, not existing usage.
+
+**One default per scope.** Within a category (or a clearly scoped part of it, for example "relational databases") there is normally **one** *Preferred* technology. If two are needed, either the scope is split, or the second one is *Acceptable* with its condition.
 
 **When is a technology *Acceptable* (and not Preferred)?** Every *Acceptable* rating must state its conditions in the catalog. A technology is only rated *Acceptable* if it passes the generic requirements **and** at least one of these applies. The conditions are written into the rating, for example:
 
@@ -121,9 +144,9 @@ Not valid reasons: personal preference, team familiarity alone, or "we already s
 Notes:
 
 * *Legacy* and *Discouraged* are deliberately different. Legacy is a lifecycle statement ("was fine, is aging"), Discouraged is a judgement ("we would not choose it").
-* *High risk* should always name the **risk type** (licence, security, vendor lock-in, end of support, compliance) so mitigation can be targeted.
+* *High risk* must always name the **risk type** (licence, security, vendor lock-in, end of support, compliance) so mitigation can be targeted.
 * Every rating carries a **review date**. A rating without expiry rots.
-* An **exception process** is mandatory because ratings are binding (see the Architecture Contract and Change Request documents in the [Content Framework](Content-Framework/index.md)). Exceptions are decided by the architecture board only, are limited in scope and time, and are recorded in the catalog.
+* An **exception process** is mandatory because ratings are binding (see the Architecture Contract and Change Request documents in the [Content Framework](Content-Framework/index.md)). Exceptions are decided by the architecture board only, are limited in scope and time, and are recorded in the catalog. A local exception can never override a rejection or a requirement of the superior organisation (see [Embedding](#embedding-in-the-technology-approval-process-of-the-superior-organisation)).
 
 ### Rating criteria (for the "requirements and needs are checked" step)
 
@@ -135,7 +158,7 @@ Notes:
 6. **Integration**: fit with the existing stack and with the architecture principles.
 7. **Exit cost**: how hard is it to leave again?
 
-Weight the criteria per category. Document the weights once, not per assessment.
+Weight the criteria per category. Document the weights once per category, **before** the first assessment (in step 3 of the cycle), not per assessment. Weights fixed after the scores are known invite tuning towards a favourite.
 
 The roles used in the flows (TS, PM, DEV, DEL, AB, ...) are defined in [Roles](#roles) at the end of this chapter, together with a [RACI](#raci-generic).
 
@@ -143,13 +166,13 @@ The roles used in the flows (TS, PM, DEV, DEL, AB, ...) are defined in [Roles](#
 
 ## Flow A: Category-by-category cycle (inventory → assess → decide)
 
-This is the flow described in the request. One category at a time is run through the full loop, and **only technologies that are already in use** are in scope.
+The basic cycle. One category at a time is run through the full loop, and **only technologies that are already in use** are in scope.
 
 ```mermaid
 flowchart LR
     A["1. Select category,<br/>name steward<br/><i>OWN, AB</i>"] --> B["2. Collect technologies<br/>and usage rationale<br/><i>PA, DEV, DEL</i>"]
     B --> C["3. Consolidate requirements<br/>and needs<br/><i>TS, PA (all others consulted)</i>"]
-    C --> D["4. Check generic requirements,<br/>assess against criteria<br/><i>TS, SEC, LEG, PRO</i>"]
+    C --> D["4. Check generic requirements and<br/>superior approval, assess against criteria<br/><i>TS, SEC, LEG, PRO</i>"]
     D --> E["5. Rate (proposal):<br/>Preferred / Acceptable / Legacy /<br/>Discouraged / High risk<br/><i>TS</i>"]
     E --> F["6. Board decision<br/>and publish<br/><i>AB, OWN</i>"]
     F --> G["7. Derive migration backlog<br/>and exceptions<br/><i>PM, DEV, DEL</i>"]
@@ -163,7 +186,7 @@ Roles are shown in italics below each step (abbreviations: see [Roles](#roles)).
 | 1. Select category | Category definition, named steward, priority (by cost, risk or pain) | AB | OWN | PM, PA | Preliminary, Phase A |
 | 2. Collect | Inventory records for all products | TS | PA, DEV | DEL, PM | Phase D baseline |
 | 3. Consolidate | Requirement list per category, with product-specific needs flagged | TS | TS, PA | all other roles (OWN, PM, DEV, DEL, AB, SEC, LEG, PRO) | Requirements Management |
-| 4. Assess | Scoring per criterion, rationale documented | TS | TS | DEV, DEL, PA, SEC, LEG, PRO | Phase D gap analysis |
+| 4. Assess | Pass/fail of generic requirements and superior approval status, scoring per criterion, rationale documented | TS | TS | PM, DEV, DEL, PA, SEC, LEG, PRO | Phase D gap analysis |
 | 5. Rate | Rating proposal per technology plus risk type | TS | TS | PA, PM, DEV, DEL | Technology Standards catalog |
 | 6. Decide | Decision record, published catalog | AB | AB, OWN (publish) | TS, PM, SEC, LEG, PA | Architecture Board |
 | 7. Derive | Migration candidates, exceptions, owners | PM | DEV, DEL | TS, PA | Phase E/F |
@@ -182,13 +205,13 @@ Roles are shown in italics below each step (abbreviations: see [Roles](#roles)).
 * Cross-category dependencies (for example a framework that dictates the database driver) are seen late.
 * Landscape-wide picture takes many cycles.
 
-**Mitigation:** Add Flow B as step 4a (see below).
+**Mitigation:** Add horizon scanning as step 2b, which is Flow B (see below).
 
 ---
 
 ## Flow B: Category cycle with horizon scanning (existing + candidates)
 
-Same as Flow A, but each cycle also looks at **technologies not yet in use** which are relevant for the category. This is the explicit extension requested.
+Same as Flow A, but each cycle also looks at **technologies not yet in use** which are relevant for the category.
 
 ```mermaid
 flowchart TD
@@ -202,6 +225,7 @@ flowchart TD
     D --> E[5. Rate]
     E --> G[6. Board decision]
     G --> H[7. Migration backlog,<br/>PoC backlog, exceptions]
+    H -.->|PoC result| D
 ```
 
 **Keeping scope under control (the scope-creep guard):**
@@ -213,7 +237,7 @@ flowchart TD
 * **Cap** the number of candidates per cycle (for example max. 3 to 5).
 * **Time-box** the scan (for example 2 weeks) and the whole cycle (for example 6 to 8 weeks).
 * Candidates get a lighter first assessment. Only candidates passing a go/no-go move to a **proof of concept**; the PoC is a separate, scheduled work item, not part of the cycle.
-* New technologies start as **Under evaluation** (radar ring *Assess*), never directly as *Preferred*.
+* New technologies start as **Under evaluation** (radar ring *Assess*), never directly as *Preferred*. A candidate that needs a PoC stays *Under evaluation* until the PoC result has been assessed in the next cycle (dotted line above). Candidates that are assessed and not adopted are recorded as *Rejected* with the reason, so the same discussion is not repeated.
 
 **Roles added compared to Flow A:**
 
@@ -287,24 +311,29 @@ No up-front cycle. Technology choices are checked **when a project or product ne
 
 ```mermaid
 flowchart LR
-    A[Project needs a technology] --> B{In Technology<br/>Standards Catalog?}
-    B -->|Preferred, confirmed by board| C[Use it]
-    B -->|Not listed / not Preferred| D[Lightweight assessment<br/>in project Phase D]
+    A[Project needs a technology] --> B{Rating in Technology<br/>Standards Catalog?}
+    B -->|Preferred| C[Use it]
+    B -->|Acceptable| H{Documented<br/>condition holds?}
+    H -->|Yes| C
+    H -->|No| X
+    B -->|Legacy / Discouraged / High risk| X[Exception process]
+    B -->|Not listed / Under evaluation| D[Lightweight assessment<br/>in project Phase D]
+    B -->|Rejected| R[Not allowed,<br/>new request only with new facts]
     D --> E[Board decision<br/>delegation to steward possible]
     E --> F[Update catalog]
-    E --> G[Exception or new standard]
+    C --> F
 ```
 
-In the fast lane "Preferred, use it" is not a decision of the rating itself. It applies because the board has already confirmed that rating and thereby decided the standard case in advance. Everything else needs a board decision.
+In the fast lane "Preferred, use it" is not a decision of the rating itself. It applies because the board has already confirmed that rating and thereby decided the standard case in advance. The same holds for *Acceptable* when the product architect (PA) confirms that the documented condition holds; the usage and the condition are recorded in the catalog. Legacy, Discouraged and High risk go to the [exception process](#supporting-flow-exception-handling), not to a new assessment. Everything else needs a board decision. If the technology is not yet approved by the superior organisation, its lead time applies as well (see [Embedding](#embedding-in-the-technology-approval-process-of-the-superior-organisation)).
 
 **Roles:** only a few roles are needed. The fast lane skips DEL, PRO and LEG unless the request touches them.
 
 | Step | A | R | C | I |
 |---|---|---|---|---|
 | Project states the need | PM | DEV, PA | TS | |
-| Lookup in catalog, Preferred: use it | PM | DEV | | TS |
-| Lightweight assessment | AB | TS | PA, SEC, DEL (operability) | PM, DEV |
-| Decision (or delegated to TS for low-impact cases) | AB | AB | TS, PM | DEV, OWN |
+| Lookup in catalog, Preferred (or Acceptable with condition): use it | PM | DEV, PA | | TS |
+| Lightweight assessment | TS | TS | PA, SEC, DEL (operability) | PM, DEV |
+| Decision (or delegated to TS for low-impact cases) | AB | AB (TS if delegated) | TS, PM | DEV, OWN |
 | Update catalog | OWN | OWN, TS | | AB |
 
 **Pros**
@@ -337,8 +366,9 @@ flowchart TD
     end
     subgraph Fast["Continuous: fast lane (Flow D)"]
         D1[Project request] --> D2{Catalog says?}
-        D2 -->|Preferred| D3[Use]
-        D2 -->|Otherwise| D4[Lightweight assessment]
+        D2 -->|Preferred / Acceptable<br/>with condition| D3[Use]
+        D2 -->|Legacy / Discouraged /<br/>High risk| D5[Exception process]
+        D2 -->|Not listed /<br/>Under evaluation| D4[Lightweight assessment]
     end
     B2 --> C1
     C3 --> CAT[(Technology Standards Catalog)]
@@ -349,6 +379,8 @@ flowchart TD
 ```
 
 Priorities for the deep dives can be driven by a simple score: **number of products affected × risk × cost**. Start where the pain is largest, not where the category list begins.
+
+**Initial catalog.** After the baseline almost everything is *Under evaluation*, so the fast lane would send every request to an assessment. To avoid this, the board confirms the baseline result in **one batch decision**: obvious *High risk* and *Legacy* marks are confirmed, and technologies that are in use without findings stay *Under evaluation* with existing usage allowed. Repeated fast-lane requests in a category raise its priority for a deep dive.
 
 **Roles per mechanism:**
 
@@ -362,7 +394,7 @@ Priorities for the deep dives can be driven by a simple score: **number of produ
 
 * Early value: the baseline surfaces the worst risks (for example licence issues) within weeks.
 * Deep, evidence-based ratings where it matters, bounded scope per cycle.
-* Projects are never blocked: the fast lane answers within days.
+* Projects are rarely blocked: the fast lane answers within days (unless a superior approval is needed, which has its own lead time).
 * Self-correcting: fast lane decisions feed the catalog, expiry dates trigger re-rating.
 
 **Cons**
@@ -381,31 +413,46 @@ Ratings must change when the world changes. Triggers:
 * Licence change of the vendor, acquisition, or end-of-support announcement.
 * Critical vulnerability or repeated security incidents.
 * New product requirement which the current rating did not consider.
-* Migration completed: set to *Legacy* → *retired*.
+* Superior approval revoked, narrowed or newly granted.
+* Last usage removed (migrations completed in **all** products): state changes to *Retired*.
 
 | Trigger | Detected by (R) | Accountable | Decides |
 |---|---|---|---|
 | Review date expired | OWN | TS | AB (on proposal) |
 | Licence change, acquisition, end of support | LEG, PRO, TS | TS | AB |
 | Critical vulnerability or repeated incidents | SEC, DEL | TS | AB |
+| Superior approval changed | OWN, SUP-AB | TS | AB |
 | New product requirement not covered by the rating | PM, DEV, PA | TS | AB |
-| Migration completed | DEV, DEL | PM | TS updates the state to *Retired*, AB informed |
+| Last usage removed (each product reports its completed migration) | DEV, DEL, PA | TS | TS updates the state to *Retired*, AB informed |
 
 ```mermaid
 stateDiagram-v2
     [*] --> UnderEvaluation
     UnderEvaluation --> Preferred: assessed, decided
-    UnderEvaluation --> Rejected
+    UnderEvaluation --> Acceptable: assessed, with condition
+    UnderEvaluation --> Legacy: in use, no longer a target
+    UnderEvaluation --> Discouraged: in use, better alternatives
+    UnderEvaluation --> HighRisk: in use, risk found
+    UnderEvaluation --> Rejected: candidate not adopted
+    Preferred --> Acceptable: new default chosen, still fits a context
     Preferred --> Legacy: better target chosen
     Preferred --> Discouraged: principles / fit changed
+    Acceptable --> Legacy: condition no longer holds
+    Acceptable --> Discouraged: condition no longer holds
     Preferred --> HighRisk: licence / security / vendor event
-    Legacy --> Retired: last usage removed
+    Acceptable --> HighRisk: licence / security / vendor event
+    Legacy --> HighRisk: end of support / risk event
+    Discouraged --> HighRisk: risk event
     Discouraged --> Legacy: no new usage, existing tolerated
-    HighRisk --> Preferred: risk resolved
+    Legacy --> Retired: last usage removed
+    Discouraged --> Retired: last usage removed
+    HighRisk --> Preferred: risk resolved, re-assessed
     HighRisk --> Retired: exit executed
     Rejected --> [*]
     Retired --> [*]
 ```
+
+The diagram shows the usual transitions, not every allowed one. Any change of rating is a board decision, except *Retired*, which is a fact recorded by the steward.
 
 ## Supporting flow: Exception handling
 
@@ -420,11 +467,23 @@ flowchart LR
 ```
 
 1. Team documents need and why the rated alternatives do not fit. PM is accountable that the need is real, DEV and PA prepare it.
-2. Steward checks completeness and impact (SEC is consulted when risk is involved). The architecture board decides within a fixed time (for example 5 working days).
-3. Exception is recorded with owner, scope and **expiry date** by the architecture office.
-4. At expiry the product either migrates or requests a renewal. Repeated exceptions for the same need are a signal to re-assess the category.
+2. Steward checks completeness and impact (SEC is consulted when risk is involved, LEG for licence or compliance topics).
+3. The architecture board decides within a fixed time (for example 5 working days). If the time is exceeded, OWN escalates to the board chair; there is **no implicit approval**. A rejected request is recorded with its reason; the product uses a rated alternative.
+4. An approved exception is recorded with owner, scope, conditions and **expiry date** by the architecture office.
+5. At expiry the product either has migrated or requests a renewal. An expired exception without renewal is a compliance finding (see [Compliance check](#supporting-flow-compliance-check)). Repeated exceptions for the same need are a signal to re-assess the category.
+
+Limits: an exception cannot grant what the superior organisation has rejected or what its inherited requirements forbid. Such cases go to the superior organisation.
 
 Roles not involved by default: DEL, PRO, LEG (consulted only when the exception touches their area).
+
+## Supporting flow: Compliance check
+
+Binding ratings only work if deviations are noticed. The compliance check (TOGAF® Architecture Compliance [4], documented as a [Compliance Assessment](Content-Framework/Documents/compliance-assessment.md)) compares each product with the catalog.
+
+* **When:** continuously where automated (SBOM and dependency scan in the build against the catalog), otherwise at major releases and at least once per review period.
+* **What:** new usage of technologies that are not *Preferred* or *Acceptable* without an exception; *Acceptable* usage whose condition no longer holds; expired exceptions; overdue migration or exit plans for *High risk*.
+* **Who:** PA performs the check for their product (R), OWN is accountable that it happens and reports the results to the board.
+* **Outcome:** a finding is fixed by the product (migration, removal) or turned into an exception request. Unresolved findings are escalated by OWN to the board. Findings are input for the review of the category.
 
 ## Embedding in the technology approval process of the superior organisation
 
@@ -439,7 +498,12 @@ TOGAF® describes architecture boards that operate at several levels, local (dom
 | Scope | Whole organisation | The product landscape |
 | Owner | Superior architecture, legal, security | Local architecture board |
 
-**Rule:** a technology can only be rated *Preferred* or *Acceptable* if the superior approval is *approved*. A local rating never overrides a rejection by the superior organisation. A technology that is *not approved* may still be rated *Under evaluation*, *Legacy* (existing use) or *High risk*.
+**Rule:** a technology can only be rated *Preferred* or *Acceptable* if the superior approval is *approved*. Conditions of the superior approval are taken over into the local rating. A local rating or exception never overrides a rejection by the superior organisation. A technology that is *not approved* is:
+
+* *Under evaluation* while the superior approval is pending,
+* *High risk* (risk type compliance) if it is in use and was rejected, with an exit plan,
+* *Legacy* only if the superior organisation explicitly tolerates the existing use (grandfathering),
+* *Rejected* if it is not in use.
 
 ### Embedding variants
 
@@ -466,7 +530,7 @@ flowchart TD
     E --> H
     F --> I{Approved?}
     I -->|Yes| H
-    I -->|No| J[Rating limited to<br/>Under evaluation / Legacy / High risk<br/><i>AB</i>]
+    I -->|No| J[Rating limited to<br/>High risk / Legacy if tolerated / Rejected<br/><i>AB</i>]
     H --> G
     G --> K[Board decision<br/><i>AB</i>]
     J --> K
@@ -502,7 +566,8 @@ Interface RACI (only the activities that cross the boundary):
 
 | Activity | OWN | TS | AB | LEG | SEC | SUP-AB | SUP-LEG | SUP-SEC |
 |---|---|---|---|---|---|---|---|---|
-| Agree the embedding variant and delegation | R | C | A | C | C | A/R* | C | C |
+| Choose the embedding variant, accept a delegation | R | C | A | C | C | C | C | C |
+| Grant a delegation | I | | C | C | C | A/R | C | C |
 | Request superior approval for a technology | R | A | I | C | C | I | | |
 | Decide superior approval | | I | I | | | A/R | C | C |
 | Perform delegated legal check | I | C | I | A/R | | I | C | |
@@ -510,7 +575,7 @@ Interface RACI (only the activities that cross the boundary):
 | Report on delegated checks | R | C | A | R | R | I | I | I |
 | Revoke or narrow a delegation | | | C | | | A/R | C | C |
 
-\* The delegation is agreed between both boards. The superior body is accountable for granting it, the local board for accepting and complying with it.
+The delegation is agreed between both boards, split into two rows so that each row keeps a single accountable role: the superior body is accountable for granting it, the local board for accepting and complying with it.
 
 ## Comparison of flows
 
@@ -556,6 +621,8 @@ Optional roles, added when needed: **QA / test** (test tooling categories), **Su
 
 The steward proposes, the board decides. The steward does not decide alone, and the board does not prepare assessments.
 
+**Conflicts of interest.** Stewards and board members often also work for a product. A board member declares when a decision concerns their own product (exception, rating of a technology the product depends on) and does not vote on it. A steward who is also PA or DEV of an affected product has the assessment reviewed by a second person.
+
 ### Contacts per role
 
 Many different products take part, so the same role is typically held by **different people for different products**. The process must not assume one person per role.
@@ -597,11 +664,12 @@ R = responsible (does the work), A = accountable (one per row, owns the result),
 | Publish catalog | A/R | R | I | I | I | I | I | | | |
 | Plan migration or exit | | C | A | R | R | C | I | | | |
 | Fast lane: request a technology decision (Flow D) | | C | A | R | C | R | I | | | |
-| Fast lane: decide on request | I | R | I | I | | C | A | C | | |
+| Fast lane: decide on request | I | C (R if delegated) | I | I | | C | A/R | C | | |
 | Request an exception | | C | A | R | | C | I | C | | |
 | **Decide an exception** | I | C | C | I | I | C | A/R | C | C | |
 | Check product compliance against the catalog | A | C | I | C | C | R | I | | | |
-| Trigger re-rating (expiry, vulnerability, licence event) | C | A/R | I | | C | | I | R | R | C |
+| Confirm *Acceptable* condition for new usage (fast lane) | | I | A | C | | R | | | | |
+| Trigger re-rating (expiry, vulnerability, licence event, new requirement) | R | A/R | R | R | R | R | I | R | R | R |
 
 Notes:
 
@@ -622,3 +690,4 @@ Notes:
 10. arc42: [Section 10 – Quality Requirements](https://docs.arc42.org/section-10/)
 11. SPDX: [Handling licence information / SPDX licence identifiers](https://spdx.dev/learn/handling-license-info/)
 12. The Open Group: [TOGAF® Series Guide: Architecture Skills Framework](https://pubs.opengroup.org/togaf-standard/architecture-skills-framework/) (title only checked; the roles in this chapter are adapted to product organisations and not taken from it)
+13. OWASP CycloneDX: [CycloneDX Bill of Materials Standard](https://cyclonedx.org/) (named as an SBOM format only, not individually verified)

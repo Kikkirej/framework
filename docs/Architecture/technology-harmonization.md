@@ -620,8 +620,6 @@ Optional roles, added when needed: **QA / test** (test tooling categories), **Su
 
 The steward proposes, the board decides. The steward does not decide alone, and the board does not prepare assessments.
 
-**Conflicts of interest.** Stewards and board members often also work for a product. A board member declares when a decision concerns their own product (exception, rating of a technology the product depends on) and does not vote on it. A steward who is also PA or DEV of an affected product has the assessment reviewed by a second person.
-
 ### Contacts per role
 
 Many different products take part, so the same role is typically held by **different people for different products**. The process must not assume one person per role.
@@ -689,4 +687,4 @@ Notes:
 10. arc42: [Section 10 – Quality Requirements](https://docs.arc42.org/section-10/)
 11. SPDX: [Handling licence information / SPDX licence identifiers](https://spdx.dev/learn/handling-license-info/)
 12. The Open Group: [TOGAF® Series Guide: Architecture Skills Framework](https://pubs.opengroup.org/togaf-standard/architecture-skills-framework/) (title only checked; the roles in this chapter are adapted to product organisations and not taken from it)
-13. OWASP CycloneDX: [CycloneDX Bill of Materials Standard](https://cyclonedx.org/) (named as an SBOM format only, not individually verified)
+13. OWASP CycloneDX: [CycloneDX Bill of Materials Standard](https://cyclonedx.org/) (SBOM format for the automated inventory and the generic-requirements check of libraries; content not verified, site not reachable when drafting)

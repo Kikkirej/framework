@@ -1,8 +1,5 @@
 # Technology Harmonization across Products
 
-!!! note "Status: Draft / proposal"
-    This chapter is a planning document. It proposes processes, it does not yet describe an established practice.
-
 !!! info "Made with Claude"
     This chapter was drafted with the help of Claude (AI assistant by Anthropic) and then reviewed and decided on by the author. Sources were checked as far as stated in the [source list](#sources); verify citations before relying on them.
 
@@ -687,4 +684,4 @@ Notes:
 10. arc42: [Section 10 – Quality Requirements](https://docs.arc42.org/section-10/)
 11. SPDX: [Handling licence information / SPDX licence identifiers](https://spdx.dev/learn/handling-license-info/)
 12. The Open Group: [TOGAF® Series Guide: Architecture Skills Framework](https://pubs.opengroup.org/togaf-standard/architecture-skills-framework/) (title only checked; the roles in this chapter are adapted to product organisations and not taken from it)
-13. OWASP CycloneDX: [CycloneDX Bill of Materials Standard](https://cyclonedx.org/) (SBOM format for the automated inventory and the generic-requirements check of libraries; content not verified, site not reachable when drafting)
+13. OWASP CycloneDX: [CycloneDX Bill of Materials Standard](https://cyclonedx.org/) (SBOM format for the automated inventory and the generic-requirements check of libraries)

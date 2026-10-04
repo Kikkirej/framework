@@ -3,6 +3,9 @@
 !!! note "Status: Draft / proposal"
     This chapter is a planning document. It proposes processes, it does not yet describe an established practice.
 
+!!! info "Made with Claude"
+    This chapter was drafted with the help of Claude (AI assistant by Anthropic) and then reviewed and decided on by the author. Sources were checked as far as stated in the verification note below; verify citations before relying on them.
+
 ## Goal
 
 Several products grow over time and each team picks its own libraries, frameworks, databases, engines and platforms.
@@ -39,27 +42,46 @@ Nothing here is new. The flows are assembled from established building blocks:
 
 ## Building blocks shared by all flows
 
+### Generic requirements (apply to every technology)
+
+Before any category-specific assessment, every technology must pass the **generic requirements**. They apply to all categories and are defined once by the architecture board, not per cycle. A technology failing a generic requirement cannot be rated *Preferred* or *Acceptable*.
+
+Examples of what belongs here (the concrete content is the organisation's decision):
+
+* Permitted and forbidden open source licence families (for example "no strong copyleft in distributed products").
+* **Deployment constraints**, including on-premise: runs without internet access, no mandatory SaaS dependency, supported on customer-provided platforms.
+* Minimum security and support expectations (maintained, security fixes available).
+* Compliance obligations that hold for all products.
+
+Customer-mandated or on-premise constraints are part of this list, not a separate mechanism. The *licence assessment itself* (how a licence is analysed and classified) is **not defined in this flow**. The flow only consumes its result as a pass/fail input to the generic requirements.
+
 ### Technology categories ("types")
 
 Technologies are always assessed per **category**, never as one flat list. Comparing a message broker with a UI framework is meaningless.
-Suggested categories (adapt to the product landscape):
 
-* Programming languages and runtimes
-* Frameworks and libraries (backend, frontend)
-* Data stores (relational, document, search, cache, time series)
+The set of categories is **open-ended and configured per use case**. There is no fixed or complete list. Typical examples:
+
+* Databases (relational, document, search, time series)
+* Key-value stores and caches
+* Runtimes and programming languages
+* UI frameworks
 * Messaging and integration
 * Workflow and process engines (see [Workflow Engines](../technologies/Workflow-Engines/index.md))
 * Identity and access
-* Observability (logging, metrics, tracing)
+* Observability
 * Build, CI/CD and packaging
 * Runtime platforms (containers, orchestration, cloud services)
+
+**Defining a category.** A category is created when someone starts the process for it (a product architect or the board requests it). The definition is short: name, scope (what is in, what is out), and the steward. Overlapping categories are avoided by scope statements; a technology belongs to exactly one category, additional uses are noted in the inventory.
+
+**Order.** The order is not fixed. It follows the priority score from Flow E (products affected × risk × cost) and is decided by the board when planning cycles. A category is also started on demand, for example when a project needs a decision in a category that has no ratings yet.
 
 ### Inventory record (minimum data per technology and product)
 
 | Field | Description |
 |---|---|
 | Technology and version | Name, version, vendor or community |
-| Category | One of the categories above |
+| Category | One of the configured categories |
 | Product(s) using it | Link to the product |
 | Usage rationale | *Why* is it used? Which requirement or need does it serve? |
 | Licence | SPDX identifier, commercial terms, cost |
@@ -69,29 +91,38 @@ Suggested categories (adapt to the product landscape):
 
 ### Rating scale
 
-The scale proposed in the request, with a precise definition so that ratings stay comparable:
+Ratings are **binding for all products**. The scale, with a precise definition so that ratings stay comparable:
 
 | Rating | Meaning | New products | Existing products |
 |---|---|---|---|
-| **Preferred** | Default choice. Supported, skills available, fits principles | Use by default | Keep |
-| **Acceptable** *(optional addition)* | Fine for a specific context, but not the default | Allowed with short rationale | Keep |
+| **Preferred** | Default choice. Passes generic requirements, supported, skills available, fits principles | Use by default | Keep |
+| **Acceptable** | Good in a defined context, but not the default (conditions below) | Allowed only if a documented condition holds | Keep |
 | **Legacy** | Still supported, but no longer a target | Not allowed | Keep, migrate at natural opportunity |
 | **Discouraged** | Works, but better alternatives exist or it conflicts with principles | Not allowed without exception | Plan migration |
 | **High risk** | Licence, security, vendor, end-of-life or compliance risk | Forbidden | Mitigation or exit plan with deadline |
-| **Unrated / Under evaluation** | Not yet assessed (a *state*, not a rating) | Request assessment first | Schedule assessment |
+| **Under evaluation** | Not yet assessed (a *state*, not a rating) | Request assessment first | Schedule assessment |
+
+**When is a technology *Acceptable* (and not Preferred)?** Every *Acceptable* rating must state its conditions in the catalog. A technology is only rated *Acceptable* if it passes the generic requirements **and** at least one of these applies. The conditions are written into the rating, for example:
+
+* **Context-specific fit:** it is the better choice for a clearly bounded use case (for example a search engine for full-text search while a relational database is Preferred for general data).
+* **Preferred option does not cover a documented requirement:** the Preferred technology fails a specific, recorded requirement of the product.
+* **Transition:** it is the planned target or a stepping stone for a migration and not yet fully rolled out.
+* **Platform constraint:** a platform, partner or customer environment prescribes it (and the generic requirements are still met).
+
+Not valid reasons: personal preference, team familiarity alone, or "we already started". Familiarity may be noted but does not justify *Acceptable* on its own. *Acceptable* is reviewed at the normal review date and drops to *Discouraged* or *Legacy* when its condition no longer holds.
 
 Notes:
 
 * *Legacy* and *Discouraged* are deliberately different. Legacy is a lifecycle statement ("was fine, is aging"), Discouraged is a judgement ("we would not choose it").
 * *High risk* should always name the **risk type** (licence, security, vendor lock-in, end of support, compliance) so mitigation can be targeted.
 * Every rating carries a **review date**. A rating without expiry rots.
-* An **exception process** is mandatory (see the Architecture Contract and Change Request documents in the [Content Framework](Content-Framework/index.md)), otherwise the rating system gets bypassed.
+* An **exception process** is mandatory because ratings are binding (see the Architecture Contract and Change Request documents in the [Content Framework](Content-Framework/index.md)). Exceptions are decided by the architecture board only, are limited in scope and time, and are recorded in the catalog.
 
 ### Rating criteria (for the "requirements and needs are checked" step)
 
 1. **Functional fit**: covers the collected requirements and needs.
 2. **Quality attributes**: performance, security, operability, scalability, maintainability.
-3. **Licence and cost**: licence compatibility with the distribution model (SaaS vs. on-premise), total cost of ownership.
+3. **Cost**: total cost of ownership. Licence compliance is a generic requirement (a pre-condition), not weighed here.
 4. **Vendor and community health**: release cadence, bus factor, roadmap, support options.
 5. **Skills**: available in the organisation and on the labour market.
 6. **Integration**: fit with the existing stack and with the architecture principles.
@@ -103,10 +134,12 @@ Weight the criteria per category. Document the weights once, not per assessment.
 
 | Role | Task |
 |---|---|
-| Technology steward (per category) | Owns inventory and ratings of the category, prepares assessments |
+| Technology steward (per category) | Appointed **when the process for the category is started**. Owns inventory and ratings of the category, prepares assessments and the decision proposal |
 | Product architects | Provide data for their products, bring requirements, apply ratings |
-| Architecture board | Decides ratings and exceptions, kept small and time-boxed |
-| Legal / security / procurement | Consulted for licence and risk ratings |
+| Architecture board | TOGAF-style board. Takes the **final decision** on ratings, generic requirements and exceptions. Kept small and time-boxed |
+| Legal / security / procurement | Consulted where the generic requirements or risk ratings need it |
+
+The steward proposes, the board decides. The steward does not decide alone, and the board does not prepare assessments.
 
 ---
 
@@ -116,10 +149,10 @@ This is the flow described in the request. One category at a time is run through
 
 ```mermaid
 flowchart LR
-    A[1. Select category] --> B[2. Collect technologies<br/>and usage rationale]
+    A[1. Select category,<br/>name steward] --> B[2. Collect technologies<br/>and usage rationale]
     B --> C[3. Consolidate requirements<br/>and needs]
-    C --> D[4. Assess against criteria]
-    D --> E[5. Rate:<br/>Preferred / Legacy /<br/>Discouraged / High risk]
+    C --> D[4. Check generic requirements,<br/>assess against criteria]
+    D --> E[5. Rate:<br/>Preferred / Acceptable / Legacy /<br/>Discouraged / High risk]
     E --> F[6. Board decision<br/>and publish]
     F --> G[7. Derive migration backlog<br/>and exceptions]
     G --> A
@@ -127,7 +160,7 @@ flowchart LR
 
 | Step | Result | TOGAF® reference |
 |---|---|---|
-| 1. Select category | Prioritised list of categories (by cost, risk or pain) | Preliminary, Phase A |
+| 1. Select category | Category definition, named steward, priority (by cost, risk or pain) | Preliminary, Phase A |
 | 2. Collect | Inventory records for all products | Phase D baseline |
 | 3. Consolidate | Requirement list per category, with product-specific needs flagged | Requirements Management |
 | 4. Assess | Scoring per criterion, rationale documented | Phase D gap analysis |
@@ -328,7 +361,7 @@ stateDiagram-v2
 ## Supporting flow: Exception handling
 
 1. Team documents need and why the rated alternatives do not fit.
-2. Steward checks, board decides within a fixed time (for example 5 working days).
+2. Steward checks, the architecture board decides within a fixed time (for example 5 working days).
 3. Exception is recorded with owner, scope and **expiry date**.
 4. Repeated exceptions for the same need are a signal to re-assess the category.
 
@@ -355,15 +388,28 @@ stateDiagram-v2
 
 If architecture capacity is very small, use Flow A plus Flow D and add horizon scanning only when a Legacy/Discouraged rating needs a successor.
 
-## Open questions
+## Decisions taken and remaining open questions
 
-* Which categories exist and in which order are they tackled?
-* Who is the technology steward per category, and how much time do they get?
-* Is a rating binding for all products or a recommendation? Who enforces it?
-* How are on-premise customer constraints (customer-mandated technology) reflected?
-* Where is the catalog stored (file, wiki, tool)? See [Architecture Repository](Content-Framework/Documents/arch-repository.md).
-* Is the rating scale extended by *Acceptable*, or kept to the four ratings requested?
-* How is the licence assessment done (internal legal, external tool such as an SCA scanner)?
+Decided:
+
+| Question | Decision |
+|---|---|
+| Which categories, in which order? | Open-ended, configured per use case. Order by priority score or on demand, decided by the board (see Technology categories) |
+| Steward and decision | Steward per category, named at process start. Final decision by the architecture board |
+| Binding? | Ratings are binding for all products. Deviations only through the exception process |
+| Generic requirements | Defined once, apply to all technologies (for example permitted licence families) |
+| On-premise and customer constraints | Part of the generic requirements |
+| Where is the catalog stored? | In the tool already used by the organisation (Confluence, Git, SharePoint, ...). The process is tool-agnostic. See [Architecture Repository](Content-Framework/Documents/arch-repository.md) |
+| Rating scale | Extended by *Acceptable* with explicit conditions |
+| Licence assessment | Not defined in this flow. Only its result is used as generic requirement input |
+
+Still open:
+
+* The exception process: who may request, how long may an exception run, how are expired exceptions followed up? (The statement "exceptions should ..." was not completed in the input; the proposal above is the minimum: board decides, scoped, time-limited, recorded.)
+* Board composition, meeting cadence and decision quorum.
+* Concrete content of the generic requirements.
+* How much time a steward gets, and who the first stewards are.
+* Which category is the pilot?
 
 ## Sources
 

@@ -535,66 +535,6 @@ Interface RACI (only the activities that cross the boundary):
 
 If architecture capacity is very small, use Flow A plus Flow D and add horizon scanning only when a Legacy/Discouraged rating needs a successor.
 
-## Roles at the interface
-
-| Abbr. | External role | Task |
-|---|---|---|
-| **SUP-AB** | Superior approval body (global architecture board or equivalent) | Approves technologies organisation-wide, defines or grants delegations |
-| **SUP-LEG** | Superior legal / compliance | Performs or delegates legal checks, defines criteria |
-| **SUP-SEC** | Superior security | Performs or delegates security checks, defines criteria |
-
-Interface RACI (only the activities that cross the boundary):
-
-| Activity | OWN | TS | AB | LEG | SEC | SUP-AB | SUP-LEG | SUP-SEC |
-|---|---|---|---|---|---|---|---|---|
-| Agree the embedding variant and delegation | R | C | A | C | C | A/R* | C | C |
-| Request superior approval for a technology | R | A | I | C | C | I | | |
-| Decide superior approval | | I | I | | | A/R | C | C |
-| Perform delegated legal check | I | C | I | A/R | | I | C | |
-| Perform delegated security check | I | C | I | | A/R | I | | C |
-| Report on delegated checks | R | C | A | R | R | I | I | I |
-| Revoke or narrow a delegation | | | C | | | A/R | C | C |
-
-\* The delegation is agreed between both boards. The superior body is accountable for granting it, the local board for accepting and complying with it.
-
-## Comparison of flows
-
-| Criterion | A: Category cycle | B: + Horizon scan | C: All at once | D: Demand-led | E: Hybrid |
-|---|---|---|---|---|---|
-| Time to first result | Medium | Medium to long | Long | Short | Short |
-| Depth of assessment | High | High | Low to medium | Varies | High where it matters |
-| Considers technologies not yet in use | No | Yes | Rarely | Only ad hoc | Yes |
-| Scope-creep risk | Low | Medium (guarded) | High | Low | Medium |
-| Effort on product teams | Medium | Medium | High (burst) | Low | Medium, spread out |
-| Cleans up existing sprawl | Yes, step by step | Yes | Yes, via roadmap | No | Yes |
-| Cross-category view | Weak | Weak | Strong | None | Medium (baseline) |
-| Governance complexity | Low | Medium | Medium | Low | Higher |
-| Fits small architecture team | Yes | Partly | No | Yes | Partly |
-
-## Recommendation
-
-1. Start with **Flow E**, but keep the baseline shallow (inventory and obvious risks only).
-2. Run the first deep dive as **Flow B** on one category with high pain and few candidates, as a pilot, to calibrate effort, criteria and the rating scale.
-3. Run **Flow D** from the start for new projects, fed by the first catalog version.
-4. Review the process itself after two cycles.
-
-If architecture capacity is very small, use Flow A plus Flow D and add horizon scanning only when a Legacy/Discouraged rating needs a successor.
-
-## Decisions taken
-
-Decided:
-
-| Question | Decision |
-|---|---|
-| Which categories, in which order? | Open-ended, configured per use case. Order by priority score or on demand, decided by the board (see Technology categories) |
-| Steward and decision | Steward per category, named at process start. Final decision by the architecture board |
-| Binding? | Ratings are binding for all products. Deviations only through the exception process |
-| Generic requirements | Defined once, apply to all technologies (for example permitted licence families) |
-| On-premise and customer constraints | Part of the generic requirements |
-| Where is the catalog stored? | In the tool already used by the organisation (Confluence, Git, SharePoint, ...). The process is tool-agnostic. See [Architecture Repository](Content-Framework/Documents/arch-repository.md) |
-| Rating scale | Extended by *Acceptable* with explicit conditions |
-| Licence assessment | Not defined in this flow. Only its result is used as generic requirement input |
-
 ## Roles
 
 Abbreviations are used in the flows and the RACI below. **Not every role takes part in every process**; the flow tables list only the roles that are involved, all others are not needed for that step.

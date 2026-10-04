@@ -131,56 +131,7 @@ Notes:
 
 Weight the criteria per category. Document the weights once, not per assessment.
 
-### Roles
-
-Abbreviations are used in the flows and the RACI below. **Not every role takes part in every process**; the flow tables list only the roles that are involved, all others are not needed for that step.
-
-| Abbr. | Role | Task in this process |
-|---|---|---|
-| **TS** | Technology steward (per category) | The one coordinating the assessment. Appointed **when the process for the category is started**. Owns inventory and ratings of the category, prepares assessments and the decision proposal |
-| **PM** | Product management | Brings business needs and priorities, owns the product roadmap and therefore the migration decisions of a product. Accountable for exception requests of their product |
-| **DEV** | Product development | Provides usage and rationale for the technologies in their product, evaluates candidates, runs proofs of concept, implements migrations |
-| **DEL** | Delivery (operations, release, customer deployment) | Brings operational facts: operability, incidents, patching effort, on-premise deployment constraints. Executes rollouts |
-| **AB** | Architecture board | TOGAF-style board. Takes the **final decision** on ratings, generic requirements and exceptions (dispensations). Small and time-boxed |
-| **PA** | Product architect | Links the product to the process: validates inventory data, brings architecture requirements, checks compliance of the product against the catalog |
-| **OWN** | Process owner / architecture office | Owns the process itself, plans cycles, prepares board meetings, maintains and publishes the catalog (catalog custodian) |
-| **SEC** | Security | Assesses security aspects of technologies, reports vulnerabilities and security incidents as re-rating triggers |
-| **LEG** | Legal and compliance | Owns the licence and compliance rules behind the generic requirements. (The licence assessment method itself is outside this flow) |
-| **PRO** | Procurement / vendor management | Brings contract, cost and vendor situation for commercial technologies |
-
-Optional roles, added when needed: **QA / test** (test tooling categories), **Support** (customer-facing impact of technology changes), **Data protection officer** (categories that touch personal data), **Customers or partners** as source of external constraints (represented through PM, never directly decision making).
-
-The steward proposes, the board decides. The steward does not decide alone, and the board does not prepare assessments.
-
-### RACI (generic)
-
-R = responsible (does the work), A = accountable (one per row, owns the result), C = consulted, I = informed, blank = not involved. This is the default; the board may adapt it to the organisation.
-
-| Activity | OWN | TS | PM | DEV | DEL | PA | AB | SEC | LEG | PRO |
-|---|---|---|---|---|---|---|---|---|---|---|
-| Maintain the process itself | A/R | C | C | | C | C | C | | | |
-| Draft and maintain generic requirements | R | C | C | | C | C | A | R | R | C |
-| Prioritise categories, define category, appoint steward | R | I | C | | | C | A | | | |
-| Provide inventory data per product | I | A | C | R | C | R | | | | |
-| Consolidate requirements and needs | | A/R | R | R | C | C | I | C | | |
-| Scan candidates not yet in use (Flow B) | | A/R | I | C | | C | | C | C | C |
-| Assess against generic requirements and criteria | | A/R | C | C | C | C | I | C | C | C |
-| Proof of concept | | A | I | R | C | C | | C | | |
-| Prepare rating proposal | | A/R | C | C | C | C | I | | | |
-| **Decide rating** | I | C | C | I | I | C | A/R | C | C | |
-| Publish catalog | A/R | R | I | I | I | I | I | | | |
-| Plan migration or exit | | C | A | R | R | C | I | | | |
-| Fast lane: request a technology decision (Flow D) | | C | A | R | C | R | I | | | |
-| Fast lane: decide on request | I | R | I | I | | C | A | C | | |
-| Request an exception | | C | A | R | | C | I | C | | |
-| **Decide an exception** | I | C | C | I | I | C | A/R | C | C | |
-| Check product compliance against the catalog | A | C | I | C | C | R | I | | | |
-| Trigger re-rating (expiry, vulnerability, licence event) | C | A/R | I | | C | | I | R | R | C |
-
-Notes:
-
-* The board stays small. Decisions in the fast lane may be **delegated** to the steward for low-impact cases (for example a library inside a Preferred framework). The delegation rule is set by the board.
-* PM is accountable for migrations and exceptions because they own the product's priorities and budget. Delivering the change is DEV and DEL.
+The roles used in the flows (TS, PM, DEV, DEL, AB, ...) are defined in [Roles](#roles) at the end of this chapter, together with a [RACI](#raci-generic).
 
 ---
 
@@ -504,6 +455,57 @@ Decided:
 | Where is the catalog stored? | In the tool already used by the organisation (Confluence, Git, SharePoint, ...). The process is tool-agnostic. See [Architecture Repository](Content-Framework/Documents/arch-repository.md) |
 | Rating scale | Extended by *Acceptable* with explicit conditions |
 | Licence assessment | Not defined in this flow. Only its result is used as generic requirement input |
+
+## Roles
+
+Abbreviations are used in the flows and the RACI below. **Not every role takes part in every process**; the flow tables list only the roles that are involved, all others are not needed for that step.
+
+| Abbr. | Role | Task in this process |
+|---|---|---|
+| **TS** | Technology steward (per category) | The one coordinating the assessment. Appointed **when the process for the category is started**. Owns inventory and ratings of the category, prepares assessments and the decision proposal |
+| **PM** | Product management | Brings business needs and priorities, owns the product roadmap and therefore the migration decisions of a product. Accountable for exception requests of their product |
+| **DEV** | Product development | Provides usage and rationale for the technologies in their product, evaluates candidates, runs proofs of concept, implements migrations |
+| **DEL** | Delivery (operations, release, customer deployment) | Brings operational facts: operability, incidents, patching effort, on-premise deployment constraints. Executes rollouts |
+| **AB** | Architecture board | TOGAF-style board. Takes the **final decision** on ratings, generic requirements and exceptions (dispensations). Small and time-boxed |
+| **PA** | Product architect | Links the product to the process: validates inventory data, brings architecture requirements, checks compliance of the product against the catalog |
+| **OWN** | Process owner / architecture office | Owns the process itself, plans cycles, prepares board meetings, maintains and publishes the catalog (catalog custodian) |
+| **SEC** | Security | Assesses security aspects of technologies, reports vulnerabilities and security incidents as re-rating triggers |
+| **LEG** | Legal and compliance | Owns the licence and compliance rules behind the generic requirements. (The licence assessment method itself is outside this flow) |
+| **PRO** | Procurement / vendor management | Brings contract, cost and vendor situation for commercial technologies |
+
+Optional roles, added when needed: **QA / test** (test tooling categories), **Support** (customer-facing impact of technology changes), **Data protection officer** (categories that touch personal data), **Customers or partners** as source of external constraints (represented through PM, never directly decision making).
+
+The steward proposes, the board decides. The steward does not decide alone, and the board does not prepare assessments.
+
+## RACI (generic)
+
+R = responsible (does the work), A = accountable (one per row, owns the result), C = consulted, I = informed, blank = not involved. This is the default; the board may adapt it to the organisation.
+
+| Activity | OWN | TS | PM | DEV | DEL | PA | AB | SEC | LEG | PRO |
+|---|---|---|---|---|---|---|---|---|---|---|
+| Maintain the process itself | A/R | C | C | | C | C | C | | | |
+| Draft and maintain generic requirements | R | C | C | | C | C | A | R | R | C |
+| Prioritise categories, define category, appoint steward | R | I | C | | | C | A | | | |
+| Provide inventory data per product | I | A | C | R | C | R | | | | |
+| Consolidate requirements and needs | | A/R | R | R | C | C | I | C | | |
+| Scan candidates not yet in use (Flow B) | | A/R | I | C | | C | | C | C | C |
+| Assess against generic requirements and criteria | | A/R | C | C | C | C | I | C | C | C |
+| Proof of concept | | A | I | R | C | C | | C | | |
+| Prepare rating proposal | | A/R | C | C | C | C | I | | | |
+| **Decide rating** | I | C | C | I | I | C | A/R | C | C | |
+| Publish catalog | A/R | R | I | I | I | I | I | | | |
+| Plan migration or exit | | C | A | R | R | C | I | | | |
+| Fast lane: request a technology decision (Flow D) | | C | A | R | C | R | I | | | |
+| Fast lane: decide on request | I | R | I | I | | C | A | C | | |
+| Request an exception | | C | A | R | | C | I | C | | |
+| **Decide an exception** | I | C | C | I | I | C | A/R | C | C | |
+| Check product compliance against the catalog | A | C | I | C | C | R | I | | | |
+| Trigger re-rating (expiry, vulnerability, licence event) | C | A/R | I | | C | | I | R | R | C |
+
+Notes:
+
+* The board stays small. Decisions in the fast lane may be **delegated** to the steward for low-impact cases (for example a library inside a Preferred framework). The delegation rule is set by the board.
+* PM is accountable for migrations and exceptions because they own the product's priorities and budget. Delivering the change is DEV and DEL.
 
 ## Sources
 

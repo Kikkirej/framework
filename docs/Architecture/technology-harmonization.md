@@ -142,7 +142,7 @@ This is the flow described in the request. One category at a time is run through
 ```mermaid
 flowchart LR
     A["1. Select category,<br/>name steward<br/><i>OWN, AB</i>"] --> B["2. Collect technologies<br/>and usage rationale<br/><i>PA, DEV, DEL</i>"]
-    B --> C["3. Consolidate requirements<br/>and needs<br/><i>TS, PM, DEV</i>"]
+    B --> C["3. Consolidate requirements<br/>and needs<br/><i>TS, PA (all others consulted)</i>"]
     C --> D["4. Check generic requirements,<br/>assess against criteria<br/><i>TS, SEC, LEG, PRO</i>"]
     D --> E["5. Rate (proposal):<br/>Preferred / Acceptable / Legacy /<br/>Discouraged / High risk<br/><i>TS</i>"]
     E --> F["6. Board decision<br/>and publish<br/><i>AB, OWN</i>"]
@@ -156,7 +156,7 @@ Roles are shown in italics below each step (abbreviations: see [Roles](#roles)).
 |---|---|---|---|---|---|
 | 1. Select category | Category definition, named steward, priority (by cost, risk or pain) | AB | OWN | PM, PA | Preliminary, Phase A |
 | 2. Collect | Inventory records for all products | TS | PA, DEV | DEL, PM | Phase D baseline |
-| 3. Consolidate | Requirement list per category, with product-specific needs flagged | TS | PM, DEV | DEL, PA, SEC | Requirements Management |
+| 3. Consolidate | Requirement list per category, with product-specific needs flagged | TS | TS, PA | all other roles (OWN, PM, DEV, DEL, AB, SEC, LEG, PRO) | Requirements Management |
 | 4. Assess | Scoring per criterion, rationale documented | TS | TS | DEV, DEL, PA, SEC, LEG, PRO | Phase D gap analysis |
 | 5. Rate | Rating proposal per technology plus risk type | TS | TS | PA, PM, DEV, DEL | Technology Standards catalog |
 | 6. Decide | Decision record, published catalog | AB | AB, OWN (publish) | TS, PM, SEC, LEG, PA | Architecture Board |
@@ -487,7 +487,7 @@ R = responsible (does the work), A = accountable (one per row, owns the result),
 | Draft and maintain generic requirements | R | C | C | | C | C | A | R | R | C |
 | Prioritise categories, define category, appoint steward | R | I | C | | | C | A | | | |
 | Provide inventory data per product | I | A | C | R | C | R | | | | |
-| Consolidate requirements and needs | | A/R | R | R | C | C | I | C | | |
+| Consolidate requirements and needs | C | A/R | C | C | C | R | C | C | C | C |
 | Scan candidates not yet in use (Flow B) | | A/R | I | C | | C | | C | C | C |
 | Assess against generic requirements and criteria | | A/R | C | C | C | C | I | C | C | C |
 | Proof of concept | | A | I | R | C | C | | C | | |

@@ -179,7 +179,7 @@ R = responsible (does the work), A = accountable (one per row, owns the result),
 
 Notes:
 
-* The board stays small. Decisions in the fast lane may be **delegated** to the steward for low-impact cases (for example a library inside a Preferred framework). The delegation rule is set by the board and listed as open question.
+* The board stays small. Decisions in the fast lane may be **delegated** to the steward for low-impact cases (for example a library inside a Preferred framework). The delegation rule is set by the board.
 * PM is accountable for migrations and exceptions because they own the product's priorities and budget. Delivering the change is DEV and DEL.
 
 ---
@@ -490,7 +490,7 @@ Roles not involved by default: DEL, PRO, LEG (consulted only when the exception 
 
 If architecture capacity is very small, use Flow A plus Flow D and add horizon scanning only when a Legacy/Discouraged rating needs a successor.
 
-## Decisions taken and remaining open questions
+## Decisions taken
 
 Decided:
 
@@ -504,16 +504,6 @@ Decided:
 | Where is the catalog stored? | In the tool already used by the organisation (Confluence, Git, SharePoint, ...). The process is tool-agnostic. See [Architecture Repository](Content-Framework/Documents/arch-repository.md) |
 | Rating scale | Extended by *Acceptable* with explicit conditions |
 | Licence assessment | Not defined in this flow. Only its result is used as generic requirement input |
-
-Still open:
-
-* The exception process: who may request, how long may an exception run, how are expired exceptions followed up? (The statement "exceptions should ..." was not completed in the input; the proposal above is the minimum: board decides, scoped, time-limited, recorded.)
-* Board composition, meeting cadence and decision quorum (TOGAF® recommends four to five, at most ten permanent members [3]).
-* Delegation rule: which fast-lane decisions may the steward take without the board?
-* Confirm the role set and the RACI; are the optional roles (QA, Support, data protection) needed from the start?
-* Concrete content of the generic requirements.
-* How much time a steward gets, and who the first stewards are.
-* Which category is the pilot?
 
 ## Sources
 
